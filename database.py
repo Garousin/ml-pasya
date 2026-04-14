@@ -1,11 +1,26 @@
 """
 Database Manager for ML API
-Handles connection to MySQL/MariaDB database
+Handles connection to MySQL/MariaDB and PostgreSQL databases
 """
+import importlib
 import pandas as pd
-import pymysql
-from pymysql.cursors import DictCursor
 from contextlib import contextmanager
+
+try:
+    import pymysql
+    from pymysql.cursors import DictCursor
+except ImportError:
+    pymysql = None
+    DictCursor = None
+
+try:
+    psycopg2 = importlib.import_module('psycopg2')
+    psycopg2_extras = importlib.import_module('psycopg2.extras')
+    RealDictCursor = getattr(psycopg2_extras, 'RealDictCursor', None)
+except Exception:
+    psycopg2 = None
+    RealDictCursor = None
+
 from db_config import DB_CONFIG, TABLES, COLUMN_MAPPING
 
 class DatabaseManager:
@@ -13,6 +28,7 @@ class DatabaseManager:
     
     def __init__(self):
         self.config = DB_CONFIG
+        self.db_type = str(self.config.get('type', 'mysql')).lower()
         self._connection = None
     
     @contextmanager
@@ -25,21 +41,43 @@ class DatabaseManager:
         """
         conn = None
         try:
-            connect_args = {
-                'host': self.config['host'],
-                'port': self.config['port'],
-                'user': self.config['user'],
-                'password': self.config['password'],
-                'database': self.config['database'],
-                'charset': self.config['charset']
-            }
-            # Only use DictCursor for cursor-based queries, not for pd.read_sql
-            if use_dict_cursor:
-                connect_args['cursorclass'] = DictCursor
-            conn = pymysql.connect(**connect_args)
+            if self.db_type.startswith('postgres'):
+                if psycopg2 is None:
+                    raise ImportError("psycopg2 is not installed")
+
+                connect_args = {
+                    'host': self.config['host'],
+                    'port': self.config['port'],
+                    'user': self.config['user'],
+                    'password': self.config['password'],
+                    'dbname': self.config['database'],
+                }
+                sslmode = self.config.get('sslmode')
+                if sslmode:
+                    connect_args['sslmode'] = sslmode
+                if use_dict_cursor and RealDictCursor is not None:
+                    connect_args['cursor_factory'] = RealDictCursor
+                conn = psycopg2.connect(**connect_args)
+            else:
+                if pymysql is None:
+                    raise ImportError("pymysql is not installed")
+
+                connect_args = {
+                    'host': self.config['host'],
+                    'port': self.config['port'],
+                    'user': self.config['user'],
+                    'password': self.config['password'],
+                    'database': self.config['database'],
+                    'charset': self.config['charset']
+                }
+                # Only use DictCursor for cursor-based queries, not for pd.read_sql
+                if use_dict_cursor and DictCursor is not None:
+                    connect_args['cursorclass'] = DictCursor
+                conn = pymysql.connect(**connect_args)
+
             yield conn
-        except pymysql.Error as e:
-            print(f"Database connection error: {e}")
+        except Exception as e:
+            print(f"Database connection error ({self.db_type}): {e}")
             raise
         finally:
             if conn:
@@ -149,7 +187,9 @@ class DatabaseManager:
                     cursor.execute(query)
                     result = cursor.fetchone()
                     if result:
-                        return result['min_year'], result['max_year']
+                        if isinstance(result, dict):
+                            return result['min_year'], result['max_year']
+                        return result[0], result[1]
                     return None, None
         except Exception as e:
             print(f"Error getting data range: {e}")
@@ -162,7 +202,12 @@ class DatabaseManager:
             with self.get_connection(use_dict_cursor=True) as conn:
                 with conn.cursor() as cursor:
                     cursor.execute(query)
-                    return [row['crop'] for row in cursor.fetchall()]
+                    rows = cursor.fetchall()
+                    if not rows:
+                        return []
+                    if isinstance(rows[0], dict):
+                        return [row['crop'] for row in rows]
+                    return [row[0] for row in rows]
         except Exception as e:
             print(f"Error getting crops: {e}")
             return []
@@ -174,7 +219,12 @@ class DatabaseManager:
             with self.get_connection(use_dict_cursor=True) as conn:
                 with conn.cursor() as cursor:
                     cursor.execute(query)
-                    return [row['municipality'] for row in cursor.fetchall()]
+                    rows = cursor.fetchall()
+                    if not rows:
+                        return []
+                    if isinstance(rows[0], dict):
+                        return [row['municipality'] for row in rows]
+                    return [row[0] for row in rows]
         except Exception as e:
             print(f"Error getting municipalities: {e}")
             return []
@@ -209,19 +259,35 @@ class DatabaseManager:
     
     def save_forecast(self, forecast_data):
         """Save or update a forecast in the database"""
-        query = f"""
-            INSERT INTO {TABLES['forecasts']} 
-            (crop, municipality, year, production_mt, confidence_lower, 
-             confidence_upper, trend_direction, growth_rate_percent)
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
-            ON DUPLICATE KEY UPDATE
-                production_mt = VALUES(production_mt),
-                confidence_lower = VALUES(confidence_lower),
-                confidence_upper = VALUES(confidence_upper),
-                trend_direction = VALUES(trend_direction),
-                growth_rate_percent = VALUES(growth_rate_percent),
-                generated_at = CURRENT_TIMESTAMP
-        """
+        if self.db_type.startswith('postgres'):
+            query = f"""
+                INSERT INTO {TABLES['forecasts']} 
+                (crop, municipality, year, production_mt, confidence_lower, 
+                 confidence_upper, trend_direction, growth_rate_percent)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+                ON CONFLICT (crop, municipality, year)
+                DO UPDATE SET
+                    production_mt = EXCLUDED.production_mt,
+                    confidence_lower = EXCLUDED.confidence_lower,
+                    confidence_upper = EXCLUDED.confidence_upper,
+                    trend_direction = EXCLUDED.trend_direction,
+                    growth_rate_percent = EXCLUDED.growth_rate_percent,
+                    generated_at = CURRENT_TIMESTAMP
+            """
+        else:
+            query = f"""
+                INSERT INTO {TABLES['forecasts']} 
+                (crop, municipality, year, production_mt, confidence_lower, 
+                 confidence_upper, trend_direction, growth_rate_percent)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+                ON DUPLICATE KEY UPDATE
+                    production_mt = VALUES(production_mt),
+                    confidence_lower = VALUES(confidence_lower),
+                    confidence_upper = VALUES(confidence_upper),
+                    trend_direction = VALUES(trend_direction),
+                    growth_rate_percent = VALUES(growth_rate_percent),
+                    generated_at = CURRENT_TIMESTAMP
+            """
         try:
             with self.get_connection(use_dict_cursor=True) as conn:
                 with conn.cursor() as cursor:
