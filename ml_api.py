@@ -9,7 +9,9 @@ import numpy as np
 import joblib
 import json
 import os
+import shutil
 from datetime import datetime
+from urllib.request import Request, urlopen
 
 # Import database manager
 try:
@@ -24,6 +26,65 @@ app = Flask(__name__)
 CORS(app)
 
 MODEL_DIR = 'model_artifacts'
+DEFAULT_MODEL_ARTIFACT_BASE_URL = os.environ.get(
+    'MODEL_ARTIFACT_BASE_URL',
+    'https://media.githubusercontent.com/media/Garousin/ML-pasya/main/model_artifacts'
+).rstrip('/')
+
+
+def is_git_lfs_pointer(file_path):
+    """Return True when the file is a Git LFS pointer text file, not real binary content."""
+    try:
+        if not os.path.exists(file_path):
+            return False
+        with open(file_path, 'rb') as f:
+            header = f.read(128)
+        return header.startswith(b'version https://git-lfs.github.com/spec/v1')
+    except Exception:
+        return False
+
+
+def get_artifact_url(file_name):
+    """Resolve artifact URL from explicit env var first, then fallback to base URL."""
+    env_map = {
+        'best_model.pkl': 'BEST_MODEL_URL',
+        'best_rf_model.pkl': 'BEST_RF_MODEL_URL',
+    }
+    env_var = env_map.get(file_name)
+    if env_var and os.environ.get(env_var):
+        return os.environ[env_var]
+    return f"{DEFAULT_MODEL_ARTIFACT_BASE_URL}/{file_name}"
+
+
+def ensure_model_artifact(file_name):
+    """Download model artifact when missing or when repository contains only an LFS pointer."""
+    file_path = os.path.join(MODEL_DIR, file_name)
+    missing = not os.path.exists(file_path)
+    pointer = is_git_lfs_pointer(file_path)
+
+    if not missing and not pointer:
+        return None
+
+    reason = 'missing' if missing else 'git-lfs pointer detected'
+    url = get_artifact_url(file_name)
+    print(f"[INFO] {file_name}: {reason}, downloading from {url}")
+
+    try:
+        os.makedirs(MODEL_DIR, exist_ok=True)
+        request = Request(url, headers={'User-Agent': 'ml-pasya-api/1.0'})
+        with urlopen(request, timeout=180) as response, open(file_path, 'wb') as out_file:
+            shutil.copyfileobj(response, out_file)
+
+        if is_git_lfs_pointer(file_path):
+            return (
+                f"{file_name} downloaded as Git LFS pointer. "
+                "Use media.githubusercontent.com URL or set BEST_MODEL_URL/BEST_RF_MODEL_URL."
+            )
+
+        print(f"[OK] Downloaded artifact: {file_name}")
+        return None
+    except Exception as e:
+        return f"{file_name} download failed: {e}"
 
 print("Loading ML API V2 (Productivity-First)...")
 
@@ -32,6 +93,11 @@ rf_model = None
 metadata = {}
 feature_stats = {}
 startup_errors = []
+
+for artifact_name in ('best_model.pkl', 'best_rf_model.pkl'):
+    download_error = ensure_model_artifact(artifact_name)
+    if download_error:
+        startup_errors.append(download_error)
 
 try:
     model = joblib.load(os.path.join(MODEL_DIR, 'best_model.pkl'))
