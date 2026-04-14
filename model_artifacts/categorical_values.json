@@ -1,0 +1,51 @@
+{
+    "MUNICIPALITY": [
+        "ATOK",
+        "BAKUN",
+        "BOKOD",
+        "BUGUIAS",
+        "ITOGON",
+        "KABAYAN",
+        "KAPANGAN",
+        "KIBUNGAN",
+        "LATRINIDAD",
+        "MANKAYAN",
+        "SABLAN",
+        "TUBA",
+        "TUBLAY"
+    ],
+    "FARM TYPE": [
+        "IRRIGATED",
+        "RAINFED"
+    ],
+    "MONTH": [
+        "APR",
+        "AUG",
+        "DEC",
+        "FEB",
+        "JAN",
+        "JUL",
+        "JUN",
+        "MAR",
+        "MAY",
+        "NOV",
+        "OCT",
+        "SEP"
+    ],
+    "CROP": [
+        "BROCCOLI",
+        "CABBAGE",
+        "CARROTS",
+        "CAULIFLOWER",
+        "CHINESE CABBAGE",
+        "GARDEN PEAS",
+        "LETTUCE",
+        "SNAP BEANS",
+        "SWEET PEPPER",
+        "WHITE POTATO"
+    ],
+    "SEASON": [
+        "DRY",
+        "WET"
+    ]
+}

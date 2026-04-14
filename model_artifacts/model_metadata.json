@@ -1,0 +1,66 @@
+{
+  "model_type": "Extra Trees",
+  "prediction_target": "PRODUCTIVITY",
+  "prediction_method": "PRODUCTIVITY_FIRST",
+  "usage": "production = model.predict(X) * area",
+  "sklearn_version": "1.3.2",
+  "training_date": "2026-02-25T20:03:21.624710",
+  "test_r2_score": 0.8256824881616662,
+  "test_mae": 0.7906980453957331,
+  "test_mape": 156.95420860906782,
+  "n_samples_train": 24647,
+  "n_samples_test": 6162,
+  "categorical_features": [
+    "MUNICIPALITY",
+    "FARM TYPE",
+    "MONTH",
+    "CROP",
+    "SEASON"
+  ],
+  "numerical_features": [
+    "YEAR_NORMALIZED",
+    "MONTH_SIN",
+    "MONTH_COS",
+    "CROP_PRODUCTIVITY",
+    "MUNI_PRODUCTIVITY",
+    "CROP_MUNI_PRODUCTIVITY",
+    "CROP_MUNI_PRODUCTIVITY_MEAN",
+    "CROP_MUNI_MONTH_PRODUCTIVITY",
+    "CROP_SEASON_PRODUCTIVITY",
+    "PRODUCTIVITY_CV",
+    "LOG_AREA",
+    "AREA_RATIO"
+  ],
+  "feature_engineering": {
+    "season_map": {
+      "JAN": "DRY",
+      "FEB": "DRY",
+      "MAR": "DRY",
+      "APR": "DRY",
+      "MAY": "DRY",
+      "JUN": "WET",
+      "JUL": "WET",
+      "AUG": "WET",
+      "SEP": "WET",
+      "OCT": "WET",
+      "NOV": "DRY",
+      "DEC": "DRY"
+    },
+    "month_to_num": {
+      "JAN": 1,
+      "FEB": 2,
+      "MAR": 3,
+      "APR": 4,
+      "MAY": 5,
+      "JUN": 6,
+      "JUL": 7,
+      "AUG": 8,
+      "SEP": 9,
+      "OCT": 10,
+      "NOV": 11,
+      "DEC": 12
+    },
+    "year_min": 2015,
+    "year_max": 2024
+  }
+}

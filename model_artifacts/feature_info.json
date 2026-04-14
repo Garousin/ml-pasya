@@ -1,0 +1,25 @@
+{
+  "categorical_features": [
+    "MUNICIPALITY",
+    "FARM TYPE",
+    "MONTH",
+    "CROP",
+    "SEASON"
+  ],
+  "numerical_features": [
+    "YEAR_NORMALIZED",
+    "MONTH_SIN",
+    "MONTH_COS",
+    "CROP_PRODUCTIVITY",
+    "MUNI_PRODUCTIVITY",
+    "CROP_MUNI_PRODUCTIVITY",
+    "CROP_MUNI_PRODUCTIVITY_MEAN",
+    "CROP_MUNI_MONTH_PRODUCTIVITY",
+    "CROP_SEASON_PRODUCTIVITY",
+    "PRODUCTIVITY_CV",
+    "LOG_AREA",
+    "AREA_RATIO"
+  ],
+  "prediction_target": "PRODUCTIVITY",
+  "usage_note": "Model predicts PRODUCTIVITY. Multiply by area for PRODUCTION."
+}

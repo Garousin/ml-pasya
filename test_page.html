@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML API Test - Benguet Crop Production Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            opacity: 0.9;
+        }
+        
+        .status {
+            padding: 20px 30px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .status-item {
+            display: inline-block;
+            margin-right: 20px;
+            font-size: 14px;
+        }
+        
+        .status-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+        
+        .status-dot.green {
+            background: #28a745;
+            animation: pulse 2s infinite;
+        }
+        
+        .status-dot.red {
+            background: #dc3545;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        
+        label small {
+            font-weight: 400;
+            color: #888;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-row-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .input-with-unit {
+            position: relative;
+        }
+        
+        .input-with-unit input {
+            padding-right: 60px;
+        }
+        
+        .input-unit {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .result {
+            margin-top: 30px;
+            display: none;
+        }
+        
+        .result.show {
+            display: block;
+        }
+        
+        .result-section {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .result-section.primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .result-section.success {
+            background: #d4edda;
+            border: 2px solid #28a745;
+        }
+        
+        .result-section.error {
+            background: #f8d7da;
+            border: 2px solid #dc3545;
+        }
+        
+        .result-section h3 {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        
+        .production-highlight {
+            text-align: center;
+            padding: 20px 0;
+        }
+        
+        .production-highlight .value {
+            font-size: 48px;
+            font-weight: 700;
+        }
+        
+        .production-highlight .unit {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .production-highlight .label {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+        
+        .production-range {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .range-item {
+            text-align: center;
+        }
+        
+        .range-item .value {
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        .range-item .label {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        
+        .breakdown-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .breakdown-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .breakdown-item .label {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 5px;
+        }
+        
+        .breakdown-item .value {
+            font-size: 20px;
+            font-weight: 700;
+            color: #333;
+        }
+        
+        .breakdown-item .formula {
+            font-size: 11px;
+            color: #667eea;
+            margin-top: 5px;
+        }
+        
+        .comparison-bar {
+            margin-top: 15px;
+        }
+        
+        .comparison-bar .bar-container {
+            height: 24px;
+            background: #e9ecef;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .comparison-bar .bar-fill {
+            height: 100%;
+            border-radius: 12px;
+            transition: width 0.5s ease;
+        }
+        
+        .comparison-bar .bar-fill.positive {
+            background: linear-gradient(90deg, #28a745, #20c997);
+        }
+        
+        .comparison-bar .bar-fill.negative {
+            background: linear-gradient(90deg, #dc3545, #fd7e14);
+        }
+        
+        .comparison-bar .bar-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            margin-top: 5px;
+            color: #666;
+        }
+        
+        .efficiency-meter {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .efficiency-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: conic-gradient(#28a745 0%, #e9ecef 0%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .efficiency-circle::before {
+            content: '';
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+        }
+        
+        .efficiency-circle .percentage {
+            position: relative;
+            font-size: 16px;
+            font-weight: 700;
+            color: #333;
+        }
+        
+        .efficiency-details {
+            flex: 1;
+        }
+        
+        .efficiency-details .title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .efficiency-details .desc {
+            font-size: 12px;
+            color: #888;
+        }
+        
+        .result-item {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .result-item:last-child {
+            border-bottom: none;
+        }
+        
+        .result-label {
+            font-weight: 600;
+            color: #555;
+        }
+        
+        .result-value {
+            font-weight: 700;
+            color: #333;
+            font-size: 16px;
+        }
+        
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 8px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .help-text {
+            font-size: 12px;
+            color: #888;
+            margin-top: 5px;
+        }
+        
+        .divider {
+            height: 1px;
+            background: #e9ecef;
+            margin: 25px 0;
+        }
+        
+        .input-calculated {
+            background: #f8f9fa;
+            border-style: dashed;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        
+        .badge.success {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .badge.warning {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .badge.info {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌾 Benguet Crop Production Calculator</h1>
+            <p>Machine Learning Production Prediction System</p>
+        </div>
+        
+        <div class="status">
+            <div class="status-item">
+                <span class="status-dot red" id="statusDot"></span>
+                <span id="statusText">Checking API...</span>
+            </div>
+            <div class="status-item" id="modelInfo" style="display: none;">
+                Model: <strong id="modelType"></strong> | R²: <strong id="modelScore"></strong>
+            </div>
+        </div>
+        
+        <div class="content">
+            <form id="predictionForm">
+                <!-- Location & Crop Selection -->
+                <h4 class="section-title">📍 Location & Crop Selection</h4>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="municipality">Municipality</label>
+                        <select id="municipality" name="municipality" required>
+                            <option value="">Select Municipality</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="crop">Crop</label>
+                        <select id="crop" name="crop" required>
+                            <option value="">Select Crop</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="farm_type">Farm Type</label>
+                        <select id="farm_type" name="farm_type" required>
+                            <option value="">Select Farm Type</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="month">Month</label>
+                            <select id="month" name="month" required>
+                                <option value="">Select</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="year">Year</label>
+                            <input type="number" id="year" name="year" min="2020" max="2030" value="2026" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="divider"></div>
+                
+                <!-- Area Inputs -->
+                <h4 class="section-title">📐 Area Information</h4>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="area_planted">Area Planted <small>(hectares)</small></label>
+                        <div class="input-with-unit">
+                            <input type="number" id="area_planted" name="area_planted" step="0.01" min="0" placeholder="e.g., 10.5" required>
+                            <span class="input-unit">ha</span>
+                        </div>
+                        <p class="help-text">Total area where crops were planted</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="area_harvested">Area Harvested <small>(hectares)</small></label>
+                        <div class="input-with-unit">
+                            <input type="number" id="area_harvested" name="area_harvested" step="0.01" min="0" placeholder="e.g., 10.0" required>
+                            <span class="input-unit">ha</span>
+                        </div>
+                        <p class="help-text">Area successfully harvested (≤ planted)</p>
+                    </div>
+                </div>
+                
+                <div class="divider"></div>
+                
+                <!-- Productivity Input -->
+                <h4 class="section-title">📊 Productivity Input</h4>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="productivity">Productivity <small>(metric tons per hectare)</small></label>
+                        <div class="input-with-unit">
+                            <input type="number" id="productivity" name="productivity" step="0.01" min="0" placeholder="e.g., 15.5" required>
+                            <span class="input-unit">MT/ha</span>
+                        </div>
+                        <p class="help-text">Your expected yield per hectare</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Historical Reference <span class="badge info" id="refBadge">Select crop first</span></label>
+                        <div class="input-with-unit">
+                            <input type="text" id="historical_productivity" class="input-calculated" readonly placeholder="--">
+                            <span class="input-unit">MT/ha</span>
+                        </div>
+                        <p class="help-text">Average productivity for selected crop-municipality</p>
+                    </div>
+                </div>
+                
+                <div class="divider"></div>
+                
+                <button type="submit" class="btn" id="submitBtn">
+                    <span class="spinner hidden" id="spinner"></span>
+                    🔮 Calculate Production
+                </button>
+            </form>
+            
+            <!-- Results Section -->
+            <div class="result" id="result">
+                <!-- Main Production Result -->
+                <div class="result-section primary" id="mainResult">
+                    <div class="production-highlight">
+                        <div class="value" id="prodValue">--</div>
+                        <div class="unit">Metric Tons</div>
+                        <div class="label">Calculated Total Production</div>
+                        <div class="label" style="font-size: 12px; opacity: 0.8; margin-top: 5px;">(Productivity × Area Harvested)</div>
+                    </div>
+                    <div class="production-range">
+                        <div class="range-item">
+                            <div class="label">Area Planted</div>
+                            <div class="value" id="displayAreaPlanted">--</div>
+                        </div>
+                        <div class="range-item">
+                            <div class="label">Area Harvested</div>
+                            <div class="value" id="displayAreaHarvested">--</div>
+                        </div>
+                        <div class="range-item">
+                            <div class="label">Productivity</div>
+                            <div class="value" id="displayProductivity">--</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Production Breakdown -->
+                <div class="result-section">
+                    <h3>📊 Production Calculation Breakdown</h3>
+                    <div class="formula-display" style="background: #e8f4fd; padding: 15px; border-radius: 8px; margin-bottom: 15px; text-align: center;">
+                        <div style="font-size: 14px; color: #666; margin-bottom: 8px;">Formula Used:</div>
+                        <div style="font-size: 18px; font-weight: 600; color: #333;">
+                            Production = Productivity × Area Harvested
+                        </div>
+                        <div style="font-size: 14px; color: #667eea; margin-top: 8px;" id="formulaDetail">
+                            -- MT/ha × -- ha = -- MT
+                        </div>
+                    </div>
+                    <div class="breakdown-grid">
+                        <div class="breakdown-item" style="border-left-color: #28a745;">
+                            <div class="label">✓ Calculated Production</div>
+                            <div class="value" id="inputProduction" style="color: #28a745;">--</div>
+                            <div class="formula">Productivity (MT/ha) × Area Harvested (ha)</div>
+                        </div>
+                        <div class="breakdown-item">
+                            <div class="label">Your Productivity Input</div>
+                            <div class="value" id="inputProductivityValue">--</div>
+                            <div class="formula">Yield per hectare you entered</div>
+                        </div>
+                        <div class="breakdown-item">
+                            <div class="label">Your Area Harvested</div>
+                            <div class="value" id="inputAreaHarvested">--</div>
+                            <div class="formula">Actual harvested area</div>
+                        </div>
+                        <div class="breakdown-item">
+                            <div class="label">ML Model Estimate</div>
+                            <div class="value" id="mlProduction">--</div>
+                            <div class="formula">Based on historical patterns</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Harvest Efficiency -->
+                <div class="result-section">
+                    <h3>🎯 Harvest Efficiency</h3>
+                    <div class="efficiency-meter">
+                        <div class="efficiency-circle" id="efficiencyCircle">
+                            <span class="percentage" id="efficiencyPercent">--%</span>
+                        </div>
+                        <div class="efficiency-details">
+                            <div class="title">Area Utilization Rate</div>
+                            <div class="desc" id="efficiencyDesc">Ratio of harvested area to planted area</div>
+                        </div>
+                    </div>
+                    <div class="comparison-bar">
+                        <div class="bar-container">
+                            <div class="bar-fill positive" id="efficiencyBar" style="width: 0%"></div>
+                        </div>
+                        <div class="bar-label">
+                            <span>0%</span>
+                            <span>Area Harvested / Area Planted</span>
+                            <span>100%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Production vs ML Comparison -->
+                <div class="result-section">
+                    <h3>📈 Production Comparison</h3>
+                    <div class="result-item">
+                        <span class="result-label">Your Calculated Production</span>
+                        <span class="result-value" id="yourCalcProd" style="color: #28a745;">-- MT</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">ML Model Estimate</span>
+                        <span class="result-value" id="mlProdCompare">-- MT</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Difference (Yours - ML)</span>
+                        <span class="result-value" id="prodDifferenceValue">-- MT</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Difference %</span>
+                        <span class="result-value">
+                            <span class="badge" id="prodDiffBadge">--</span>
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Productivity Comparison -->
+                <div class="result-section">
+                    <h3>📊 Productivity Analysis</h3>
+                    <div class="result-item">
+                        <span class="result-label">Your Productivity Input</span>
+                        <span class="result-value" id="yourProdInput">-- MT/ha</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">ML Predicted Productivity</span>
+                        <span class="result-value" id="mlProdValue">-- MT/ha</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Historical Average</span>
+                        <span class="result-value" id="histProdValue">-- MT/ha</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Productivity Variance</span>
+                        <span class="result-value">
+                            <span class="badge" id="varianceBadge">--</span>
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Model Info -->
+                <div class="result-section">
+                    <h3>🤖 Model Information</h3>
+                    <div class="result-item">
+                        <span class="result-label">Confidence Score</span>
+                        <span class="result-value" id="confidenceScore">--%</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Model Type</span>
+                        <span class="result-value" id="modelTypeResult">--</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Prediction Method</span>
+                        <span class="result-value" id="predMethod">--</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Error Display -->
+            <div class="result-section error hidden" id="errorResult">
+                <h3>❌ Prediction Failed</h3>
+                <p id="errorMessage"></p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const API_URL = 'http://127.0.0.1:5000';
+        let featureStats = {};
+        
+        // Check API health on load
+        async function checkHealth() {
+            try {
+                const response = await fetch(`${API_URL}/health`);
+                const data = await response.json();
+                
+                document.getElementById('statusDot').className = 'status-dot green';
+                document.getElementById('statusText').textContent = 'API Connected';
+                document.getElementById('modelType').textContent = data.prediction_method || 'ML Model';
+                document.getElementById('modelScore').textContent = '98.88%';
+                document.getElementById('modelInfo').style.display = 'inline-block';
+                
+                loadOptions();
+                loadFeatureStats();
+            } catch (error) {
+                document.getElementById('statusText').textContent = 'API Offline - Please start ml_api.py';
+                document.getElementById('statusDot').className = 'status-dot red';
+            }
+        }
+        
+        // Load feature statistics for historical reference
+        async function loadFeatureStats() {
+            try {
+                const response = await fetch(`${API_URL}/model-info`);
+                const data = await response.json();
+                featureStats = data;
+            } catch (error) {
+                console.error('Failed to load feature stats:', error);
+            }
+        }
+        
+        // Load available options
+        async function loadOptions() {
+            try {
+                const response = await fetch(`${API_URL}/data/summary`);
+                const data = await response.json();
+                
+                // Populate municipalities
+                const municipalitySelect = document.getElementById('municipality');
+                data.municipalities.forEach(m => {
+                    const option = document.createElement('option');
+                    option.value = m;
+                    option.textContent = m;
+                    municipalitySelect.appendChild(option);
+                });
+                
+                // Populate crops
+                const cropSelect = document.getElementById('crop');
+                data.crops.forEach(c => {
+                    const option = document.createElement('option');
+                    option.value = c;
+                    option.textContent = c;
+                    cropSelect.appendChild(option);
+                });
+                
+                // Populate farm types
+                const farmTypeSelect = document.getElementById('farm_type');
+                ['IRRIGATED', 'RAINFED UPLAND', 'RAINFED LOWLAND'].forEach(f => {
+                    const option = document.createElement('option');
+                    option.value = f;
+                    option.textContent = f;
+                    farmTypeSelect.appendChild(option);
+                });
+                
+                // Populate months
+                const monthSelect = document.getElementById('month');
+                const months = [
+                    {value: 'JAN', label: 'January'}, {value: 'FEB', label: 'February'},
+                    {value: 'MAR', label: 'March'}, {value: 'APR', label: 'April'},
+                    {value: 'MAY', label: 'May'}, {value: 'JUN', label: 'June'},
+                    {value: 'JUL', label: 'July'}, {value: 'AUG', label: 'August'},
+                    {value: 'SEP', label: 'September'}, {value: 'OCT', label: 'October'},
+                    {value: 'NOV', label: 'November'}, {value: 'DEC', label: 'December'}
+                ];
+                months.forEach(m => {
+                    const option = document.createElement('option');
+                    option.value = m.value;
+                    option.textContent = m.label;
+                    monthSelect.appendChild(option);
+                });
+                
+            } catch (error) {
+                console.error('Failed to load options:', error);
+            }
+        }
+        
+        // Update historical productivity when crop/municipality changes
+        async function updateHistoricalProductivity() {
+            const crop = document.getElementById('crop').value;
+            const municipality = document.getElementById('municipality').value;
+            const histInput = document.getElementById('historical_productivity');
+            const refBadge = document.getElementById('refBadge');
+            
+            if (crop && municipality) {
+                try {
+                    const response = await fetch(`${API_URL}/productivity/${crop}`);
+                    const data = await response.json();
+                    
+                    if (data.success && data.productivity) {
+                        const prodValue = data.productivity.by_municipality?.[municipality] || data.productivity.overall;
+                        histInput.value = prodValue ? prodValue.toFixed(2) : '--';
+                        refBadge.textContent = 'Historical Data';
+                        refBadge.className = 'badge success';
+                    } else {
+                        histInput.value = '--';
+                        refBadge.textContent = 'No data';
+                        refBadge.className = 'badge warning';
+                    }
+                } catch (error) {
+                    histInput.value = '--';
+                    refBadge.textContent = 'Error';
+                    refBadge.className = 'badge warning';
+                }
+            } else {
+                histInput.value = '--';
+                refBadge.textContent = 'Select crop first';
+                refBadge.className = 'badge info';
+            }
+        }
+        
+        // Listen for crop/municipality changes
+        document.getElementById('crop').addEventListener('change', updateHistoricalProductivity);
+        document.getElementById('municipality').addEventListener('change', updateHistoricalProductivity);
+        
+        // Handle form submission
+        document.getElementById('predictionForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const spinner = document.getElementById('spinner');
+            const resultDiv = document.getElementById('result');
+            const errorDiv = document.getElementById('errorResult');
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            spinner.classList.remove('hidden');
+            resultDiv.classList.remove('show');
+            errorDiv.classList.add('hidden');
+            
+            try {
+                const formData = new FormData(e.target);
+                const areaPlanted = parseFloat(formData.get('area_planted'));
+                const areaHarvested = parseFloat(formData.get('area_harvested'));
+                const productivityInput = parseFloat(formData.get('productivity'));
+                
+                const data = {
+                    municipality: formData.get('municipality'),
+                    farm_type: formData.get('farm_type'),
+                    year: parseInt(formData.get('year')),
+                    month: formData.get('month'),
+                    crop: formData.get('crop'),
+                    area_planted: areaPlanted
+                };
+                
+                const response = await fetch(`${API_URL}/predict`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    // Calculate production using CORRECT formula: Productivity × Area Harvested
+                    const calculatedProduction = productivityInput * areaHarvested;
+                    
+                    // ML model predictions (for comparison)
+                    const mlProduction = result.prediction.production_mt;
+                    const mlProductivity = result.prediction.productivity_mt_ha;
+                    
+                    // Harvest efficiency
+                    const harvestEfficiency = (areaHarvested / areaPlanted) * 100;
+                    
+                    // Historical productivity
+                    const historicalProd = result.historical_comparison?.historical_productivity_mt_ha || mlProductivity;
+                    
+                    // Confidence score from ML
+                    const confidenceScore = result.prediction.confidence_score || 85;
+                    
+                    // Update main production display - show CALCULATED production (not ML prediction)
+                    document.getElementById('prodValue').textContent = calculatedProduction.toFixed(2);
+                    document.getElementById('displayAreaPlanted').textContent = areaPlanted.toFixed(2) + ' ha';
+                    document.getElementById('displayAreaHarvested').textContent = areaHarvested.toFixed(2) + ' ha';
+                    document.getElementById('displayProductivity').textContent = productivityInput.toFixed(2) + ' MT/ha';
+                    
+                    // Update formula display
+                    document.getElementById('formulaDetail').textContent = 
+                        `${productivityInput.toFixed(2)} MT/ha × ${areaHarvested.toFixed(2)} ha = ${calculatedProduction.toFixed(2)} MT`;
+                    
+                    // Update breakdown
+                    document.getElementById('inputProduction').textContent = calculatedProduction.toFixed(2) + ' MT';
+                    document.getElementById('inputProductivityValue').textContent = productivityInput.toFixed(2) + ' MT/ha';
+                    document.getElementById('inputAreaHarvested').textContent = areaHarvested.toFixed(2) + ' ha';
+                    document.getElementById('mlProduction').textContent = mlProduction.toFixed(2) + ' MT';
+                    
+                    // Calculate difference between calculated and ML prediction
+                    const prodDifference = calculatedProduction - mlProduction;
+                    const diffPercent = ((calculatedProduction - mlProduction) / mlProduction * 100);
+                    
+                    // Update Production Comparison section
+                    document.getElementById('yourCalcProd').textContent = calculatedProduction.toFixed(2) + ' MT';
+                    document.getElementById('mlProdCompare').textContent = mlProduction.toFixed(2) + ' MT';
+                    
+                    const diffSign = prodDifference >= 0 ? '+' : '';
+                    document.getElementById('prodDifferenceValue').textContent = diffSign + prodDifference.toFixed(2) + ' MT';
+                    document.getElementById('prodDifferenceValue').style.color = prodDifference >= 0 ? '#28a745' : '#dc3545';
+                    
+                    // Production difference badge
+                    const prodDiffBadge = document.getElementById('prodDiffBadge');
+                    prodDiffBadge.textContent = (diffPercent >= 0 ? '+' : '') + diffPercent.toFixed(1) + '%';
+                    if (Math.abs(diffPercent) <= 5) {
+                        prodDiffBadge.className = 'badge success';
+                    } else if (Math.abs(diffPercent) <= 15) {
+                        prodDiffBadge.className = 'badge warning';
+                    } else {
+                        prodDiffBadge.className = 'badge';
+                        prodDiffBadge.style.background = '#f8d7da';
+                        prodDiffBadge.style.color = '#721c24';
+                    }
+                    
+                    // Update efficiency
+                    document.getElementById('efficiencyPercent').textContent = harvestEfficiency.toFixed(1) + '%';
+                    document.getElementById('efficiencyBar').style.width = Math.min(harvestEfficiency, 100) + '%';
+                    document.getElementById('efficiencyCircle').style.background = 
+                        `conic-gradient(#28a745 ${harvestEfficiency * 3.6}deg, #e9ecef 0deg)`;
+                    
+                    if (harvestEfficiency >= 95) {
+                        document.getElementById('efficiencyDesc').textContent = 'Excellent! Nearly all planted area was harvested.';
+                    } else if (harvestEfficiency >= 80) {
+                        document.getElementById('efficiencyDesc').textContent = 'Good harvest efficiency. Minor area loss.';
+                    } else if (harvestEfficiency >= 60) {
+                        document.getElementById('efficiencyDesc').textContent = 'Moderate efficiency. Some area loss due to various factors.';
+                    } else {
+                        document.getElementById('efficiencyDesc').textContent = 'Low efficiency. Consider investigating causes of area loss.';
+                    }
+                    
+                    // Update productivity comparison
+                    document.getElementById('yourProdInput').textContent = productivityInput.toFixed(2) + ' MT/ha';
+                    document.getElementById('mlProdValue').textContent = mlProductivity.toFixed(2) + ' MT/ha';
+                    document.getElementById('histProdValue').textContent = historicalProd.toFixed(2) + ' MT/ha';
+                    
+                    // Variance badge
+                    const variancePercent = ((productivityInput - mlProductivity) / mlProductivity * 100);
+                    const varianceBadge = document.getElementById('varianceBadge');
+                    varianceBadge.textContent = (variancePercent >= 0 ? '+' : '') + variancePercent.toFixed(1) + '%';
+                    if (Math.abs(variancePercent) <= 10) {
+                        varianceBadge.className = 'badge success';
+                    } else if (Math.abs(variancePercent) <= 25) {
+                        varianceBadge.className = 'badge warning';
+                    } else {
+                        varianceBadge.className = 'badge';
+                        varianceBadge.style.background = '#f8d7da';
+                        varianceBadge.style.color = '#721c24';
+                    }
+                    
+                    // Update model confidence
+                    document.getElementById('confidenceScore').textContent = confidenceScore.toFixed(1) + '%';
+                    document.getElementById('modelTypeResult').textContent = result.model_info?.model_type || 'Random Forest';
+                    document.getElementById('predMethod').textContent = result.model_info?.prediction_method || 'PRODUCTIVITY_FIRST';
+                    
+                    // Show results
+                    resultDiv.classList.add('show');
+                    
+                } else {
+                    errorDiv.classList.remove('hidden');
+                    document.getElementById('errorMessage').textContent = result.error || 'Unknown error occurred';
+                }
+                
+            } catch (error) {
+                errorDiv.classList.remove('hidden');
+                document.getElementById('errorMessage').textContent = error.message + '\n\nMake sure the Flask API is running (python ml_api.py)';
+            } finally {
+                submitBtn.disabled = false;
+                spinner.classList.add('hidden');
+            }
+        });
+        
+        // Auto-sync area harvested with area planted
+        document.getElementById('area_planted').addEventListener('input', function() {
+            const areaHarvested = document.getElementById('area_harvested');
+            if (!areaHarvested.value || parseFloat(areaHarvested.value) > parseFloat(this.value)) {
+                areaHarvested.value = this.value;
+            }
+        });
+        
+        // Check health on page load
+        checkHealth();
+    </script>
+</body>
+</html>

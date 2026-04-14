@@ -1,0 +1,4032 @@
+{
+  "BROCCOLI_ATOK": {
+    "crop": "BROCCOLI",
+    "municipality": "ATOK",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1022.74
+      },
+      {
+        "year": 2026,
+        "production": 944.84
+      },
+      {
+        "year": 2027,
+        "production": 966.49
+      },
+      {
+        "year": 2028,
+        "production": 1024.48
+      },
+      {
+        "year": 2029,
+        "production": 1000.84
+      },
+      {
+        "year": 2030,
+        "production": 978.63
+      }
+    ],
+    "last_update": "2026-02-01 18:59:59.890471"
+  },
+  "BROCCOLI_BAKUN": {
+    "crop": "BROCCOLI",
+    "municipality": "BAKUN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1208.18
+      },
+      {
+        "year": 2026,
+        "production": 1216.86
+      },
+      {
+        "year": 2027,
+        "production": 1198.9
+      },
+      {
+        "year": 2028,
+        "production": 1202.49
+      },
+      {
+        "year": 2029,
+        "production": 1173.48
+      },
+      {
+        "year": 2030,
+        "production": 1180.41
+      }
+    ],
+    "last_update": "2026-02-01 18:59:59.924222"
+  },
+  "BROCCOLI_BOKOD": {
+    "crop": "BROCCOLI",
+    "municipality": "BOKOD",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1123.2
+      },
+      {
+        "year": 2026,
+        "production": 1105.61
+      },
+      {
+        "year": 2027,
+        "production": 1160.5
+      },
+      {
+        "year": 2028,
+        "production": 1177.4
+      },
+      {
+        "year": 2029,
+        "production": 1249.58
+      },
+      {
+        "year": 2030,
+        "production": 1189.99
+      }
+    ],
+    "last_update": "2026-02-01 18:59:59.957848"
+  },
+  "BROCCOLI_BUGUIAS": {
+    "crop": "BROCCOLI",
+    "municipality": "BUGUIAS",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1899.9
+      },
+      {
+        "year": 2026,
+        "production": 2048.98
+      },
+      {
+        "year": 2027,
+        "production": 2145.7
+      },
+      {
+        "year": 2028,
+        "production": 2338.2
+      },
+      {
+        "year": 2029,
+        "production": 2257.63
+      },
+      {
+        "year": 2030,
+        "production": 2332.11
+      }
+    ],
+    "last_update": "2026-02-01 18:59:59.990279"
+  },
+  "BROCCOLI_ITOGON": {
+    "crop": "BROCCOLI",
+    "municipality": "ITOGON",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1392.99
+      },
+      {
+        "year": 2026,
+        "production": 1352.24
+      },
+      {
+        "year": 2027,
+        "production": 1348.86
+      },
+      {
+        "year": 2028,
+        "production": 1368.11
+      },
+      {
+        "year": 2029,
+        "production": 1272.68
+      },
+      {
+        "year": 2030,
+        "production": 1358.0
+      }
+    ],
+    "last_update": "2026-02-01 19:00:00.025931"
+  },
+  "BROCCOLI_KABAYAN": {
+    "crop": "BROCCOLI",
+    "municipality": "KABAYAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1760.32
+      },
+      {
+        "year": 2026,
+        "production": 1803.22
+      },
+      {
+        "year": 2027,
+        "production": 1623.05
+      },
+      {
+        "year": 2028,
+        "production": 1620.2
+      },
+      {
+        "year": 2029,
+        "production": 1616.53
+      },
+      {
+        "year": 2030,
+        "production": 1580.06
+      }
+    ],
+    "last_update": "2026-02-01 19:00:00.060939"
+  },
+  "BROCCOLI_KAPANGAN": {
+    "crop": "BROCCOLI",
+    "municipality": "KAPANGAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 583.24
+      },
+      {
+        "year": 2026,
+        "production": 553.88
+      },
+      {
+        "year": 2027,
+        "production": 564.58
+      },
+      {
+        "year": 2028,
+        "production": 520.8
+      },
+      {
+        "year": 2029,
+        "production": 476.29
+      },
+      {
+        "year": 2030,
+        "production": 455.67
+      }
+    ],
+    "last_update": "2026-02-01 19:00:00.094073"
+  },
+  "BROCCOLI_KIBUNGAN": {
+    "crop": "BROCCOLI",
+    "municipality": "KIBUNGAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 947.01
+      },
+      {
+        "year": 2026,
+        "production": 949.96
+      },
+      {
+        "year": 2027,
+        "production": 1014.57
+      },
+      {
+        "year": 2028,
+        "production": 1049.16
+      },
+      {
+        "year": 2029,
+        "production": 1061.93
+      },
+      {
+        "year": 2030,
+        "production": 990.63
+      }
+    ],
+    "last_update": "2026-02-01 19:00:00.127904"
+  },
+  "BROCCOLI_LATRINIDAD": {
+    "crop": "BROCCOLI",
+    "municipality": "LATRINIDAD",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 5760.52
+      },
+      {
+        "year": 2026,
+        "production": 6115.99
+      },
+      {
+        "year": 2027,
+        "production": 6275.66
+      },
+      {
+        "year": 2028,
+        "production": 6807.59
+      },
+      {
+        "year": 2029,
+        "production": 6557.6
+      },
+      {
+        "year": 2030,
+        "production": 7233.33
+      }
+    ],
+    "last_update": "2026-02-01 19:00:00.161346"
+  },
+  "BROCCOLI_MANKAYAN": {
+    "crop": "BROCCOLI",
+    "municipality": "MANKAYAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 3189.47
+      },
+      {
+        "year": 2026,
+        "production": 3493.16
+      },
+      {
+        "year": 2027,
+        "production": 3330.16
+      },
+      {
+        "year": 2028,
+        "production": 3439.99
+      },
+      {
+        "year": 2029,
+        "production": 3403.44
+      },
+      {
+        "year": 2030,
+        "production": 3417.03
+      }
+    ],
+    "last_update": "2026-02-01 19:00:00.194174"
+  },
+  "BROCCOLI_SABLAN": {
+    "crop": "BROCCOLI",
+    "municipality": "SABLAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1210.11
+      },
+      {
+        "year": 2026,
+        "production": 1177.92
+      },
+      {
+        "year": 2027,
+        "production": 1269.73
+      },
+      {
+        "year": 2028,
+        "production": 1162.32
+      },
+      {
+        "year": 2029,
+        "production": 1183.45
+      },
+      {
+        "year": 2030,
+        "production": 1177.1
+      }
+    ],
+    "last_update": "2026-02-01 19:00:00.228318"
+  },
+  "BROCCOLI_TUBA": {
+    "crop": "BROCCOLI",
+    "municipality": "TUBA",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 841.9
+      },
+      {
+        "year": 2026,
+        "production": 874.55
+      },
+      {
+        "year": 2027,
+        "production": 857.04
+      },
+      {
+        "year": 2028,
+        "production": 806.94
+      },
+      {
+        "year": 2029,
+        "production": 786.34
+      },
+      {
+        "year": 2030,
+        "production": 771.54
+      }
+    ],
+    "last_update": "2026-02-01 19:00:00.263080"
+  },
+  "BROCCOLI_TUBLAY": {
+    "crop": "BROCCOLI",
+    "municipality": "TUBLAY",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1003.61
+      },
+      {
+        "year": 2026,
+        "production": 1047.02
+      },
+      {
+        "year": 2027,
+        "production": 1081.34
+      },
+      {
+        "year": 2028,
+        "production": 1025.38
+      },
+      {
+        "year": 2029,
+        "production": 1098.38
+      },
+      {
+        "year": 2030,
+        "production": 1096.07
+      }
+    ],
+    "last_update": "2026-02-01 19:00:00.296466"
+  },
+  "CABBAGE_ATOK": {
+    "crop": "CABBAGE",
+    "municipality": "ATOK",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 24285.73
+      },
+      {
+        "year": 2026,
+        "production": 24524.28
+      },
+      {
+        "year": 2027,
+        "production": 24425.83
+      },
+      {
+        "year": 2028,
+        "production": 23952.88
+      },
+      {
+        "year": 2029,
+        "production": 23657.43
+      },
+      {
+        "year": 2030,
+        "production": 25331.33
+      }
+    ],
+    "last_update": "2026-02-01 19:00:00.330488"
+  },
+  "CABBAGE_BAKUN": {
+    "crop": "CABBAGE",
+    "municipality": "BAKUN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 24429.97
+      },
+      {
+        "year": 2026,
+        "production": 22200.33
+      },
+      {
+        "year": 2027,
+        "production": 22162.44
+      },
+      {
+        "year": 2028,
+        "production": 19683.13
+      },
+      {
+        "year": 2029,
+        "production": 17779.49
+      },
+      {
+        "year": 2030,
+        "production": 16885.05
+      }
+    ],
+    "last_update": "2026-02-01 19:00:00.363781"
+  },
+  "CABBAGE_BOKOD": {
+    "crop": "CABBAGE",
+    "municipality": "BOKOD",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 3581.33
+      },
+      {
+        "year": 2026,
+        "production": 3759.28
+      },
+      {
+        "year": 2027,
+        "production": 3721.01
+      },
+      {
+        "year": 2028,
+        "production": 3753.66
+      },
+      {
+        "year": 2029,
+        "production": 4068.01
+      },
+      {
+        "year": 2030,
+        "production": 4038.53
+      }
+    ],
+    "last_update": "2026-02-01 19:00:00.397016"
+  },
+  "CABBAGE_BUGUIAS": {
+    "crop": "CABBAGE",
+    "municipality": "BUGUIAS",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 52613.36
+      },
+      {
+        "year": 2026,
+        "production": 49082.79
+      },
+      {
+        "year": 2027,
+        "production": 51122.84
+      },
+      {
+        "year": 2028,
+        "production": 46247.02
+      },
+      {
+        "year": 2029,
+        "production": 45217.08
+      },
+      {
+        "year": 2030,
+        "production": 47174.03
+      }
+    ],
+    "last_update": "2026-02-01 19:00:00.430423"
+  },
+  "CABBAGE_ITOGON": {
+    "crop": "CABBAGE",
+    "municipality": "ITOGON",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1439.98
+      },
+      {
+        "year": 2026,
+        "production": 1353.29
+      },
+      {
+        "year": 2027,
+        "production": 1379.82
+      },
+      {
+        "year": 2028,
+        "production": 1299.33
+      },
+      {
+        "year": 2029,
+        "production": 1362.72
+      },
+      {
+        "year": 2030,
+        "production": 1391.77
+      }
+    ],
+    "last_update": "2026-02-01 19:00:00.463838"
+  },
+  "CABBAGE_KABAYAN": {
+    "crop": "CABBAGE",
+    "municipality": "KABAYAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 38184.65
+      },
+      {
+        "year": 2026,
+        "production": 41197.09
+      },
+      {
+        "year": 2027,
+        "production": 41955.34
+      },
+      {
+        "year": 2028,
+        "production": 47571.0
+      },
+      {
+        "year": 2029,
+        "production": 50567.87
+      },
+      {
+        "year": 2030,
+        "production": 50732.59
+      }
+    ],
+    "last_update": "2026-02-01 19:00:00.498097"
+  },
+  "CABBAGE_KAPANGAN": {
+    "crop": "CABBAGE",
+    "municipality": "KAPANGAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 332.55
+      },
+      {
+        "year": 2026,
+        "production": 294.13
+      },
+      {
+        "year": 2027,
+        "production": 236.81
+      },
+      {
+        "year": 2028,
+        "production": 195.44
+      },
+      {
+        "year": 2029,
+        "production": 195.44
+      },
+      {
+        "year": 2030,
+        "production": 195.44
+      }
+    ],
+    "last_update": "2026-02-01 19:00:00.531431"
+  },
+  "CABBAGE_KIBUNGAN": {
+    "crop": "CABBAGE",
+    "municipality": "KIBUNGAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 33809.03
+      },
+      {
+        "year": 2026,
+        "production": 36751.38
+      },
+      {
+        "year": 2027,
+        "production": 35822.18
+      },
+      {
+        "year": 2028,
+        "production": 34477.24
+      },
+      {
+        "year": 2029,
+        "production": 32637.58
+      },
+      {
+        "year": 2030,
+        "production": 32163.92
+      }
+    ],
+    "last_update": "2026-02-01 19:00:00.564843"
+  },
+  "CABBAGE_LATRINIDAD": {
+    "crop": "CABBAGE",
+    "municipality": "LATRINIDAD",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1402.77
+      },
+      {
+        "year": 2026,
+        "production": 1451.14
+      },
+      {
+        "year": 2027,
+        "production": 1453.62
+      },
+      {
+        "year": 2028,
+        "production": 1410.58
+      },
+      {
+        "year": 2029,
+        "production": 1432.67
+      },
+      {
+        "year": 2030,
+        "production": 1510.54
+      }
+    ],
+    "last_update": "2026-02-01 19:00:00.599127"
+  },
+  "CABBAGE_MANKAYAN": {
+    "crop": "CABBAGE",
+    "municipality": "MANKAYAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 47963.6
+      },
+      {
+        "year": 2026,
+        "production": 51884.3
+      },
+      {
+        "year": 2027,
+        "production": 54453.45
+      },
+      {
+        "year": 2028,
+        "production": 54125.54
+      },
+      {
+        "year": 2029,
+        "production": 59414.78
+      },
+      {
+        "year": 2030,
+        "production": 58244.09
+      }
+    ],
+    "last_update": "2026-02-01 19:00:00.632409"
+  },
+  "CABBAGE_SABLAN": {
+    "crop": "CABBAGE",
+    "municipality": "SABLAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1175.64
+      },
+      {
+        "year": 2026,
+        "production": 1142.75
+      },
+      {
+        "year": 2027,
+        "production": 1173.79
+      },
+      {
+        "year": 2028,
+        "production": 1148.15
+      },
+      {
+        "year": 2029,
+        "production": 1176.31
+      },
+      {
+        "year": 2030,
+        "production": 1068.74
+      }
+    ],
+    "last_update": "2026-02-01 19:00:00.665841"
+  },
+  "CABBAGE_TUBA": {
+    "crop": "CABBAGE",
+    "municipality": "TUBA",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 862.24
+      },
+      {
+        "year": 2026,
+        "production": 871.32
+      },
+      {
+        "year": 2027,
+        "production": 813.73
+      },
+      {
+        "year": 2028,
+        "production": 778.5
+      },
+      {
+        "year": 2029,
+        "production": 811.54
+      },
+      {
+        "year": 2030,
+        "production": 753.97
+      }
+    ],
+    "last_update": "2026-02-01 19:00:00.699175"
+  },
+  "CABBAGE_TUBLAY": {
+    "crop": "CABBAGE",
+    "municipality": "TUBLAY",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1005.86
+      },
+      {
+        "year": 2026,
+        "production": 1041.31
+      },
+      {
+        "year": 2027,
+        "production": 1034.51
+      },
+      {
+        "year": 2028,
+        "production": 1092.48
+      },
+      {
+        "year": 2029,
+        "production": 1084.75
+      },
+      {
+        "year": 2030,
+        "production": 1044.68
+      }
+    ],
+    "last_update": "2026-02-01 19:00:00.731822"
+  },
+  "CARROTS_ATOK": {
+    "crop": "CARROTS",
+    "municipality": "ATOK",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 11212.62
+      },
+      {
+        "year": 2026,
+        "production": 10160.91
+      },
+      {
+        "year": 2027,
+        "production": 10781.35
+      },
+      {
+        "year": 2028,
+        "production": 10387.55
+      },
+      {
+        "year": 2029,
+        "production": 9636.93
+      },
+      {
+        "year": 2030,
+        "production": 9766.21
+      }
+    ],
+    "last_update": "2026-02-01 19:00:00.765413"
+  },
+  "CARROTS_BAKUN": {
+    "crop": "CARROTS",
+    "municipality": "BAKUN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 7716.75
+      },
+      {
+        "year": 2026,
+        "production": 7578.89
+      },
+      {
+        "year": 2027,
+        "production": 7553.9
+      },
+      {
+        "year": 2028,
+        "production": 6953.2
+      },
+      {
+        "year": 2029,
+        "production": 7233.47
+      },
+      {
+        "year": 2030,
+        "production": 7047.86
+      }
+    ],
+    "last_update": "2026-02-01 19:00:00.798989"
+  },
+  "CARROTS_BOKOD": {
+    "crop": "CARROTS",
+    "municipality": "BOKOD",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 2275.01
+      },
+      {
+        "year": 2026,
+        "production": 2344.92
+      },
+      {
+        "year": 2027,
+        "production": 2570.4
+      },
+      {
+        "year": 2028,
+        "production": 2519.09
+      },
+      {
+        "year": 2029,
+        "production": 2718.57
+      },
+      {
+        "year": 2030,
+        "production": 2583.16
+      }
+    ],
+    "last_update": "2026-02-01 19:00:00.833330"
+  },
+  "CARROTS_BUGUIAS": {
+    "crop": "CARROTS",
+    "municipality": "BUGUIAS",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 36628.77
+      },
+      {
+        "year": 2026,
+        "production": 39450.17
+      },
+      {
+        "year": 2027,
+        "production": 37078.41
+      },
+      {
+        "year": 2028,
+        "production": 38618.0
+      },
+      {
+        "year": 2029,
+        "production": 36943.82
+      },
+      {
+        "year": 2030,
+        "production": 39241.38
+      }
+    ],
+    "last_update": "2026-02-01 19:00:00.867345"
+  },
+  "CARROTS_ITOGON": {
+    "crop": "CARROTS",
+    "municipality": "ITOGON",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1167.99
+      },
+      {
+        "year": 2026,
+        "production": 1242.05
+      },
+      {
+        "year": 2027,
+        "production": 1121.77
+      },
+      {
+        "year": 2028,
+        "production": 1164.1
+      },
+      {
+        "year": 2029,
+        "production": 1187.5
+      },
+      {
+        "year": 2030,
+        "production": 1195.4
+      }
+    ],
+    "last_update": "2026-02-01 19:00:00.901351"
+  },
+  "CARROTS_KABAYAN": {
+    "crop": "CARROTS",
+    "municipality": "KABAYAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 33632.01
+      },
+      {
+        "year": 2026,
+        "production": 35910.95
+      },
+      {
+        "year": 2027,
+        "production": 36074.8
+      },
+      {
+        "year": 2028,
+        "production": 40003.43
+      },
+      {
+        "year": 2029,
+        "production": 42132.44
+      },
+      {
+        "year": 2030,
+        "production": 42740.03
+      }
+    ],
+    "last_update": "2026-02-01 19:00:00.934614"
+  },
+  "CARROTS_KAPANGAN": {
+    "crop": "CARROTS",
+    "municipality": "KAPANGAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1278.18
+      },
+      {
+        "year": 2026,
+        "production": 1191.5
+      },
+      {
+        "year": 2027,
+        "production": 1227.53
+      },
+      {
+        "year": 2028,
+        "production": 1274.63
+      },
+      {
+        "year": 2029,
+        "production": 1248.53
+      },
+      {
+        "year": 2030,
+        "production": 1281.36
+      }
+    ],
+    "last_update": "2026-02-01 19:00:00.967185"
+  },
+  "CARROTS_KIBUNGAN": {
+    "crop": "CARROTS",
+    "municipality": "KIBUNGAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 4937.21
+      },
+      {
+        "year": 2026,
+        "production": 4920.92
+      },
+      {
+        "year": 2027,
+        "production": 4968.15
+      },
+      {
+        "year": 2028,
+        "production": 4741.94
+      },
+      {
+        "year": 2029,
+        "production": 4860.89
+      },
+      {
+        "year": 2030,
+        "production": 4728.32
+      }
+    ],
+    "last_update": "2026-02-01 19:00:01.000279"
+  },
+  "CARROTS_LATRINIDAD": {
+    "crop": "CARROTS",
+    "municipality": "LATRINIDAD",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 3260.1
+      },
+      {
+        "year": 2026,
+        "production": 3401.13
+      },
+      {
+        "year": 2027,
+        "production": 3818.72
+      },
+      {
+        "year": 2028,
+        "production": 3962.43
+      },
+      {
+        "year": 2029,
+        "production": 4456.76
+      },
+      {
+        "year": 2030,
+        "production": 4730.14
+      }
+    ],
+    "last_update": "2026-02-01 19:00:01.033638"
+  },
+  "CARROTS_MANKAYAN": {
+    "crop": "CARROTS",
+    "municipality": "MANKAYAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 11279.85
+      },
+      {
+        "year": 2026,
+        "production": 11646.04
+      },
+      {
+        "year": 2027,
+        "production": 12663.54
+      },
+      {
+        "year": 2028,
+        "production": 12562.92
+      },
+      {
+        "year": 2029,
+        "production": 13020.49
+      },
+      {
+        "year": 2030,
+        "production": 14304.64
+      }
+    ],
+    "last_update": "2026-02-01 19:00:01.067187"
+  },
+  "CARROTS_SABLAN": {
+    "crop": "CARROTS",
+    "municipality": "SABLAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1263.24
+      },
+      {
+        "year": 2026,
+        "production": 1306.99
+      },
+      {
+        "year": 2027,
+        "production": 1309.25
+      },
+      {
+        "year": 2028,
+        "production": 1306.46
+      },
+      {
+        "year": 2029,
+        "production": 1298.54
+      },
+      {
+        "year": 2030,
+        "production": 1377.43
+      }
+    ],
+    "last_update": "2026-02-01 19:00:01.100182"
+  },
+  "CARROTS_TUBA": {
+    "crop": "CARROTS",
+    "municipality": "TUBA",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1365.08
+      },
+      {
+        "year": 2026,
+        "production": 1298.9
+      },
+      {
+        "year": 2027,
+        "production": 1334.72
+      },
+      {
+        "year": 2028,
+        "production": 1402.22
+      },
+      {
+        "year": 2029,
+        "production": 1491.95
+      },
+      {
+        "year": 2030,
+        "production": 1424.34
+      }
+    ],
+    "last_update": "2026-02-01 19:00:01.132959"
+  },
+  "CARROTS_TUBLAY": {
+    "crop": "CARROTS",
+    "municipality": "TUBLAY",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1064.33
+      },
+      {
+        "year": 2026,
+        "production": 1093.96
+      },
+      {
+        "year": 2027,
+        "production": 1058.02
+      },
+      {
+        "year": 2028,
+        "production": 1043.08
+      },
+      {
+        "year": 2029,
+        "production": 1081.95
+      },
+      {
+        "year": 2030,
+        "production": 1122.11
+      }
+    ],
+    "last_update": "2026-02-01 19:00:01.166238"
+  },
+  "CAULIFLOWER_ATOK": {
+    "crop": "CAULIFLOWER",
+    "municipality": "ATOK",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1381.32
+      },
+      {
+        "year": 2026,
+        "production": 1342.5
+      },
+      {
+        "year": 2027,
+        "production": 1406.02
+      },
+      {
+        "year": 2028,
+        "production": 1350.03
+      },
+      {
+        "year": 2029,
+        "production": 1382.13
+      },
+      {
+        "year": 2030,
+        "production": 1395.66
+      }
+    ],
+    "last_update": "2026-02-01 19:00:01.201046"
+  },
+  "CAULIFLOWER_BAKUN": {
+    "crop": "CAULIFLOWER",
+    "municipality": "BAKUN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1331.83
+      },
+      {
+        "year": 2026,
+        "production": 1263.46
+      },
+      {
+        "year": 2027,
+        "production": 1352.02
+      },
+      {
+        "year": 2028,
+        "production": 1323.04
+      },
+      {
+        "year": 2029,
+        "production": 1268.66
+      },
+      {
+        "year": 2030,
+        "production": 1291.65
+      }
+    ],
+    "last_update": "2026-02-01 19:00:01.234449"
+  },
+  "CAULIFLOWER_BOKOD": {
+    "crop": "CAULIFLOWER",
+    "municipality": "BOKOD",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 2088.85
+      },
+      {
+        "year": 2026,
+        "production": 2212.44
+      },
+      {
+        "year": 2027,
+        "production": 2235.02
+      },
+      {
+        "year": 2028,
+        "production": 2413.36
+      },
+      {
+        "year": 2029,
+        "production": 2565.53
+      },
+      {
+        "year": 2030,
+        "production": 2678.33
+      }
+    ],
+    "last_update": "2026-02-01 19:00:01.267759"
+  },
+  "CAULIFLOWER_BUGUIAS": {
+    "crop": "CAULIFLOWER",
+    "municipality": "BUGUIAS",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 812.73
+      },
+      {
+        "year": 2026,
+        "production": 848.07
+      },
+      {
+        "year": 2027,
+        "production": 862.95
+      },
+      {
+        "year": 2028,
+        "production": 898.06
+      },
+      {
+        "year": 2029,
+        "production": 850.04
+      },
+      {
+        "year": 2030,
+        "production": 909.15
+      }
+    ],
+    "last_update": "2026-02-01 19:00:01.300646"
+  },
+  "CAULIFLOWER_ITOGON": {
+    "crop": "CAULIFLOWER",
+    "municipality": "ITOGON",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1302.99
+      },
+      {
+        "year": 2026,
+        "production": 1370.45
+      },
+      {
+        "year": 2027,
+        "production": 1376.11
+      },
+      {
+        "year": 2028,
+        "production": 1416.44
+      },
+      {
+        "year": 2029,
+        "production": 1453.75
+      },
+      {
+        "year": 2030,
+        "production": 1378.58
+      }
+    ],
+    "last_update": "2026-02-01 19:00:01.333009"
+  },
+  "CAULIFLOWER_KABAYAN": {
+    "crop": "CAULIFLOWER",
+    "municipality": "KABAYAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 5877.03
+      },
+      {
+        "year": 2026,
+        "production": 6395.69
+      },
+      {
+        "year": 2027,
+        "production": 5990.16
+      },
+      {
+        "year": 2028,
+        "production": 6099.13
+      },
+      {
+        "year": 2029,
+        "production": 6261.11
+      },
+      {
+        "year": 2030,
+        "production": 6464.8
+      }
+    ],
+    "last_update": "2026-02-01 19:00:01.366473"
+  },
+  "CAULIFLOWER_KAPANGAN": {
+    "crop": "CAULIFLOWER",
+    "municipality": "KAPANGAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 756.9
+      },
+      {
+        "year": 2026,
+        "production": 750.35
+      },
+      {
+        "year": 2027,
+        "production": 707.48
+      },
+      {
+        "year": 2028,
+        "production": 717.58
+      },
+      {
+        "year": 2029,
+        "production": 663.42
+      },
+      {
+        "year": 2030,
+        "production": 694.4
+      }
+    ],
+    "last_update": "2026-02-01 19:00:01.400155"
+  },
+  "CAULIFLOWER_KIBUNGAN": {
+    "crop": "CAULIFLOWER",
+    "municipality": "KIBUNGAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 798.6
+      },
+      {
+        "year": 2026,
+        "production": 800.49
+      },
+      {
+        "year": 2027,
+        "production": 832.52
+      },
+      {
+        "year": 2028,
+        "production": 825.85
+      },
+      {
+        "year": 2029,
+        "production": 848.69
+      },
+      {
+        "year": 2030,
+        "production": 790.2
+      }
+    ],
+    "last_update": "2026-02-01 19:00:01.432967"
+  },
+  "CAULIFLOWER_LATRINIDAD": {
+    "crop": "CAULIFLOWER",
+    "municipality": "LATRINIDAD",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 558.38
+      },
+      {
+        "year": 2026,
+        "production": 542.22
+      },
+      {
+        "year": 2027,
+        "production": 480.61
+      },
+      {
+        "year": 2028,
+        "production": 457.25
+      },
+      {
+        "year": 2029,
+        "production": 434.8
+      },
+      {
+        "year": 2030,
+        "production": 419.91
+      }
+    ],
+    "last_update": "2026-02-01 19:00:01.466526"
+  },
+  "CAULIFLOWER_MANKAYAN": {
+    "crop": "CAULIFLOWER",
+    "municipality": "MANKAYAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1404.75
+      },
+      {
+        "year": 2026,
+        "production": 1257.89
+      },
+      {
+        "year": 2027,
+        "production": 1141.62
+      },
+      {
+        "year": 2028,
+        "production": 1065.23
+      },
+      {
+        "year": 2029,
+        "production": 928.74
+      },
+      {
+        "year": 2030,
+        "production": 797.92
+      }
+    ],
+    "last_update": "2026-02-01 19:00:01.500947"
+  },
+  "CAULIFLOWER_SABLAN": {
+    "crop": "CAULIFLOWER",
+    "municipality": "SABLAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1176.43
+      },
+      {
+        "year": 2026,
+        "production": 1194.6
+      },
+      {
+        "year": 2027,
+        "production": 1202.63
+      },
+      {
+        "year": 2028,
+        "production": 1275.75
+      },
+      {
+        "year": 2029,
+        "production": 1234.55
+      },
+      {
+        "year": 2030,
+        "production": 1204.89
+      }
+    ],
+    "last_update": "2026-02-01 19:00:01.534402"
+  },
+  "CAULIFLOWER_TUBA": {
+    "crop": "CAULIFLOWER",
+    "municipality": "TUBA",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 802.24
+      },
+      {
+        "year": 2026,
+        "production": 778.58
+      },
+      {
+        "year": 2027,
+        "production": 781.34
+      },
+      {
+        "year": 2028,
+        "production": 727.89
+      },
+      {
+        "year": 2029,
+        "production": 629.85
+      },
+      {
+        "year": 2030,
+        "production": 638.13
+      }
+    ],
+    "last_update": "2026-02-01 19:00:01.567504"
+  },
+  "CAULIFLOWER_TUBLAY": {
+    "crop": "CAULIFLOWER",
+    "municipality": "TUBLAY",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1069.24
+      },
+      {
+        "year": 2026,
+        "production": 1059.63
+      },
+      {
+        "year": 2027,
+        "production": 992.57
+      },
+      {
+        "year": 2028,
+        "production": 990.44
+      },
+      {
+        "year": 2029,
+        "production": 1069.36
+      },
+      {
+        "year": 2030,
+        "production": 1035.88
+      }
+    ],
+    "last_update": "2026-02-01 19:00:01.602010"
+  },
+  "CHINESE CABBAGE_ATOK": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "ATOK",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 7249.2
+      },
+      {
+        "year": 2026,
+        "production": 7574.44
+      },
+      {
+        "year": 2027,
+        "production": 7818.41
+      },
+      {
+        "year": 2028,
+        "production": 8389.59
+      },
+      {
+        "year": 2029,
+        "production": 9171.11
+      },
+      {
+        "year": 2030,
+        "production": 9391.22
+      }
+    ],
+    "last_update": "2026-02-01 19:00:01.636553"
+  },
+  "CHINESE CABBAGE_BAKUN": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "BAKUN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 14920.0
+      },
+      {
+        "year": 2026,
+        "production": 14398.17
+      },
+      {
+        "year": 2027,
+        "production": 13815.28
+      },
+      {
+        "year": 2028,
+        "production": 12323.24
+      },
+      {
+        "year": 2029,
+        "production": 11779.54
+      },
+      {
+        "year": 2030,
+        "production": 11531.75
+      }
+    ],
+    "last_update": "2026-02-01 19:00:01.670114"
+  },
+  "CHINESE CABBAGE_BOKOD": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "BOKOD",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 2099.79
+      },
+      {
+        "year": 2026,
+        "production": 1989.27
+      },
+      {
+        "year": 2027,
+        "production": 2232.49
+      },
+      {
+        "year": 2028,
+        "production": 2322.21
+      },
+      {
+        "year": 2029,
+        "production": 2379.58
+      },
+      {
+        "year": 2030,
+        "production": 2315.72
+      }
+    ],
+    "last_update": "2026-02-01 19:00:01.704500"
+  },
+  "CHINESE CABBAGE_BUGUIAS": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "BUGUIAS",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 24394.33
+      },
+      {
+        "year": 2026,
+        "production": 25377.63
+      },
+      {
+        "year": 2027,
+        "production": 23393.14
+      },
+      {
+        "year": 2028,
+        "production": 24328.89
+      },
+      {
+        "year": 2029,
+        "production": 24817.19
+      },
+      {
+        "year": 2030,
+        "production": 25501.99
+      }
+    ],
+    "last_update": "2026-02-01 19:00:01.736810"
+  },
+  "CHINESE CABBAGE_ITOGON": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "ITOGON",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1524.81
+      },
+      {
+        "year": 2026,
+        "production": 1437.37
+      },
+      {
+        "year": 2027,
+        "production": 1556.45
+      },
+      {
+        "year": 2028,
+        "production": 1538.62
+      },
+      {
+        "year": 2029,
+        "production": 1490.56
+      },
+      {
+        "year": 2030,
+        "production": 1534.96
+      }
+    ],
+    "last_update": "2026-02-01 19:00:01.770555"
+  },
+  "CHINESE CABBAGE_KABAYAN": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "KABAYAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 2838.81
+      },
+      {
+        "year": 2026,
+        "production": 3084.92
+      },
+      {
+        "year": 2027,
+        "production": 3067.12
+      },
+      {
+        "year": 2028,
+        "production": 3116.26
+      },
+      {
+        "year": 2029,
+        "production": 3136.12
+      },
+      {
+        "year": 2030,
+        "production": 3268.82
+      }
+    ],
+    "last_update": "2026-02-01 19:00:01.803252"
+  },
+  "CHINESE CABBAGE_KAPANGAN": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "KAPANGAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 795.13
+      },
+      {
+        "year": 2026,
+        "production": 772.09
+      },
+      {
+        "year": 2027,
+        "production": 796.94
+      },
+      {
+        "year": 2028,
+        "production": 791.44
+      },
+      {
+        "year": 2029,
+        "production": 835.66
+      },
+      {
+        "year": 2030,
+        "production": 880.65
+      }
+    ],
+    "last_update": "2026-02-01 19:00:01.836642"
+  },
+  "CHINESE CABBAGE_KIBUNGAN": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "KIBUNGAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1527.57
+      },
+      {
+        "year": 2026,
+        "production": 1539.13
+      },
+      {
+        "year": 2027,
+        "production": 1539.12
+      },
+      {
+        "year": 2028,
+        "production": 1503.03
+      },
+      {
+        "year": 2029,
+        "production": 1491.48
+      },
+      {
+        "year": 2030,
+        "production": 1558.63
+      }
+    ],
+    "last_update": "2026-02-01 19:00:01.869500"
+  },
+  "CHINESE CABBAGE_LATRINIDAD": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "LATRINIDAD",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 2132.58
+      },
+      {
+        "year": 2026,
+        "production": 2087.06
+      },
+      {
+        "year": 2027,
+        "production": 2331.36
+      },
+      {
+        "year": 2028,
+        "production": 2356.5
+      },
+      {
+        "year": 2029,
+        "production": 2473.75
+      },
+      {
+        "year": 2030,
+        "production": 2502.72
+      }
+    ],
+    "last_update": "2026-02-01 19:00:01.902882"
+  },
+  "CHINESE CABBAGE_MANKAYAN": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "MANKAYAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 25397.93
+      },
+      {
+        "year": 2026,
+        "production": 25914.78
+      },
+      {
+        "year": 2027,
+        "production": 25883.38
+      },
+      {
+        "year": 2028,
+        "production": 28781.31
+      },
+      {
+        "year": 2029,
+        "production": 29296.34
+      },
+      {
+        "year": 2030,
+        "production": 30218.94
+      }
+    ],
+    "last_update": "2026-02-01 19:00:01.935758"
+  },
+  "CHINESE CABBAGE_SABLAN": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "SABLAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1095.42
+      },
+      {
+        "year": 2026,
+        "production": 1091.09
+      },
+      {
+        "year": 2027,
+        "production": 1149.83
+      },
+      {
+        "year": 2028,
+        "production": 1082.48
+      },
+      {
+        "year": 2029,
+        "production": 1109.78
+      },
+      {
+        "year": 2030,
+        "production": 1112.66
+      }
+    ],
+    "last_update": "2026-02-01 19:00:01.968200"
+  },
+  "CHINESE CABBAGE_TUBA": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "TUBA",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 900.52
+      },
+      {
+        "year": 2026,
+        "production": 842.09
+      },
+      {
+        "year": 2027,
+        "production": 782.81
+      },
+      {
+        "year": 2028,
+        "production": 752.01
+      },
+      {
+        "year": 2029,
+        "production": 744.04
+      },
+      {
+        "year": 2030,
+        "production": 654.46
+      }
+    ],
+    "last_update": "2026-02-01 19:00:02.003786"
+  },
+  "CHINESE CABBAGE_TUBLAY": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "TUBLAY",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1063.58
+      },
+      {
+        "year": 2026,
+        "production": 1115.32
+      },
+      {
+        "year": 2027,
+        "production": 1063.29
+      },
+      {
+        "year": 2028,
+        "production": 1173.78
+      },
+      {
+        "year": 2029,
+        "production": 1182.49
+      },
+      {
+        "year": 2030,
+        "production": 1141.41
+      }
+    ],
+    "last_update": "2026-02-01 19:00:02.038252"
+  },
+  "GARDEN PEAS_ATOK": {
+    "crop": "GARDEN PEAS",
+    "municipality": "ATOK",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 940.1
+      },
+      {
+        "year": 2026,
+        "production": 864.01
+      },
+      {
+        "year": 2027,
+        "production": 863.43
+      },
+      {
+        "year": 2028,
+        "production": 844.21
+      },
+      {
+        "year": 2029,
+        "production": 753.28
+      },
+      {
+        "year": 2030,
+        "production": 773.83
+      }
+    ],
+    "last_update": "2026-02-01 19:00:02.072787"
+  },
+  "GARDEN PEAS_BAKUN": {
+    "crop": "GARDEN PEAS",
+    "municipality": "BAKUN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1927.34
+      },
+      {
+        "year": 2026,
+        "production": 1886.88
+      },
+      {
+        "year": 2027,
+        "production": 1930.72
+      },
+      {
+        "year": 2028,
+        "production": 1997.65
+      },
+      {
+        "year": 2029,
+        "production": 1974.8
+      },
+      {
+        "year": 2030,
+        "production": 2092.13
+      }
+    ],
+    "last_update": "2026-02-01 19:00:02.106234"
+  },
+  "GARDEN PEAS_BOKOD": {
+    "crop": "GARDEN PEAS",
+    "municipality": "BOKOD",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 625.37
+      },
+      {
+        "year": 2026,
+        "production": 573.11
+      },
+      {
+        "year": 2027,
+        "production": 562.43
+      },
+      {
+        "year": 2028,
+        "production": 548.36
+      },
+      {
+        "year": 2029,
+        "production": 522.99
+      },
+      {
+        "year": 2030,
+        "production": 517.65
+      }
+    ],
+    "last_update": "2026-02-01 19:00:02.139697"
+  },
+  "GARDEN PEAS_BUGUIAS": {
+    "crop": "GARDEN PEAS",
+    "municipality": "BUGUIAS",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 907.08
+      },
+      {
+        "year": 2026,
+        "production": 992.23
+      },
+      {
+        "year": 2027,
+        "production": 940.57
+      },
+      {
+        "year": 2028,
+        "production": 914.05
+      },
+      {
+        "year": 2029,
+        "production": 980.78
+      },
+      {
+        "year": 2030,
+        "production": 966.17
+      }
+    ],
+    "last_update": "2026-02-01 19:00:02.173025"
+  },
+  "GARDEN PEAS_ITOGON": {
+    "crop": "GARDEN PEAS",
+    "municipality": "ITOGON",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1094.85
+      },
+      {
+        "year": 2026,
+        "production": 1044.94
+      },
+      {
+        "year": 2027,
+        "production": 1044.42
+      },
+      {
+        "year": 2028,
+        "production": 1046.5
+      },
+      {
+        "year": 2029,
+        "production": 1009.85
+      },
+      {
+        "year": 2030,
+        "production": 1038.98
+      }
+    ],
+    "last_update": "2026-02-01 19:00:02.207343"
+  },
+  "GARDEN PEAS_KABAYAN": {
+    "crop": "GARDEN PEAS",
+    "municipality": "KABAYAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1291.68
+      },
+      {
+        "year": 2026,
+        "production": 1393.83
+      },
+      {
+        "year": 2027,
+        "production": 1395.56
+      },
+      {
+        "year": 2028,
+        "production": 1323.49
+      },
+      {
+        "year": 2029,
+        "production": 1350.36
+      },
+      {
+        "year": 2030,
+        "production": 1285.87
+      }
+    ],
+    "last_update": "2026-02-01 19:00:02.240669"
+  },
+  "GARDEN PEAS_KAPANGAN": {
+    "crop": "GARDEN PEAS",
+    "municipality": "KAPANGAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 689.07
+      },
+      {
+        "year": 2026,
+        "production": 701.77
+      },
+      {
+        "year": 2027,
+        "production": 637.57
+      },
+      {
+        "year": 2028,
+        "production": 613.98
+      },
+      {
+        "year": 2029,
+        "production": 575.39
+      },
+      {
+        "year": 2030,
+        "production": 525.66
+      }
+    ],
+    "last_update": "2026-02-01 19:00:02.273800"
+  },
+  "GARDEN PEAS_KIBUNGAN": {
+    "crop": "GARDEN PEAS",
+    "municipality": "KIBUNGAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 820.4
+      },
+      {
+        "year": 2026,
+        "production": 914.35
+      },
+      {
+        "year": 2027,
+        "production": 879.87
+      },
+      {
+        "year": 2028,
+        "production": 910.28
+      },
+      {
+        "year": 2029,
+        "production": 942.68
+      },
+      {
+        "year": 2030,
+        "production": 917.39
+      }
+    ],
+    "last_update": "2026-02-01 19:00:02.306107"
+  },
+  "GARDEN PEAS_LATRINIDAD": {
+    "crop": "GARDEN PEAS",
+    "municipality": "LATRINIDAD",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 763.49
+      },
+      {
+        "year": 2026,
+        "production": 748.1
+      },
+      {
+        "year": 2027,
+        "production": 843.29
+      },
+      {
+        "year": 2028,
+        "production": 789.19
+      },
+      {
+        "year": 2029,
+        "production": 823.5
+      },
+      {
+        "year": 2030,
+        "production": 843.78
+      }
+    ],
+    "last_update": "2026-02-01 19:00:02.339696"
+  },
+  "GARDEN PEAS_MANKAYAN": {
+    "crop": "GARDEN PEAS",
+    "municipality": "MANKAYAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1516.65
+      },
+      {
+        "year": 2026,
+        "production": 1598.08
+      },
+      {
+        "year": 2027,
+        "production": 1629.45
+      },
+      {
+        "year": 2028,
+        "production": 1643.32
+      },
+      {
+        "year": 2029,
+        "production": 1679.84
+      },
+      {
+        "year": 2030,
+        "production": 1689.45
+      }
+    ],
+    "last_update": "2026-02-01 19:00:02.373011"
+  },
+  "GARDEN PEAS_SABLAN": {
+    "crop": "GARDEN PEAS",
+    "municipality": "SABLAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 985.07
+      },
+      {
+        "year": 2026,
+        "production": 959.56
+      },
+      {
+        "year": 2027,
+        "production": 959.62
+      },
+      {
+        "year": 2028,
+        "production": 920.3
+      },
+      {
+        "year": 2029,
+        "production": 980.77
+      },
+      {
+        "year": 2030,
+        "production": 942.67
+      }
+    ],
+    "last_update": "2026-02-01 19:00:02.408112"
+  },
+  "GARDEN PEAS_TUBA": {
+    "crop": "GARDEN PEAS",
+    "municipality": "TUBA",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1077.24
+      },
+      {
+        "year": 2026,
+        "production": 1102.07
+      },
+      {
+        "year": 2027,
+        "production": 1078.63
+      },
+      {
+        "year": 2028,
+        "production": 1162.77
+      },
+      {
+        "year": 2029,
+        "production": 1169.29
+      },
+      {
+        "year": 2030,
+        "production": 1174.87
+      }
+    ],
+    "last_update": "2026-02-01 19:00:02.441767"
+  },
+  "GARDEN PEAS_TUBLAY": {
+    "crop": "GARDEN PEAS",
+    "municipality": "TUBLAY",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 679.79
+      },
+      {
+        "year": 2026,
+        "production": 675.59
+      },
+      {
+        "year": 2027,
+        "production": 600.66
+      },
+      {
+        "year": 2028,
+        "production": 594.73
+      },
+      {
+        "year": 2029,
+        "production": 557.95
+      },
+      {
+        "year": 2030,
+        "production": 506.01
+      }
+    ],
+    "last_update": "2026-02-01 19:00:02.475128"
+  },
+  "LETTUCE_ATOK": {
+    "crop": "LETTUCE",
+    "municipality": "ATOK",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1728.2
+      },
+      {
+        "year": 2026,
+        "production": 1594.97
+      },
+      {
+        "year": 2027,
+        "production": 1641.83
+      },
+      {
+        "year": 2028,
+        "production": 1633.38
+      },
+      {
+        "year": 2029,
+        "production": 1671.74
+      },
+      {
+        "year": 2030,
+        "production": 1647.08
+      }
+    ],
+    "last_update": "2026-02-01 19:00:02.510351"
+  },
+  "LETTUCE_BAKUN": {
+    "crop": "LETTUCE",
+    "municipality": "BAKUN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 2314.03
+      },
+      {
+        "year": 2026,
+        "production": 2361.01
+      },
+      {
+        "year": 2027,
+        "production": 2386.95
+      },
+      {
+        "year": 2028,
+        "production": 2514.42
+      },
+      {
+        "year": 2029,
+        "production": 2626.63
+      },
+      {
+        "year": 2030,
+        "production": 2626.97
+      }
+    ],
+    "last_update": "2026-02-01 19:00:02.542828"
+  },
+  "LETTUCE_BOKOD": {
+    "crop": "LETTUCE",
+    "municipality": "BOKOD",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 909.61
+      },
+      {
+        "year": 2026,
+        "production": 930.31
+      },
+      {
+        "year": 2027,
+        "production": 983.71
+      },
+      {
+        "year": 2028,
+        "production": 983.92
+      },
+      {
+        "year": 2029,
+        "production": 976.66
+      },
+      {
+        "year": 2030,
+        "production": 1014.25
+      }
+    ],
+    "last_update": "2026-02-01 19:00:02.576258"
+  },
+  "LETTUCE_BUGUIAS": {
+    "crop": "LETTUCE",
+    "municipality": "BUGUIAS",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 3558.43
+      },
+      {
+        "year": 2026,
+        "production": 3847.55
+      },
+      {
+        "year": 2027,
+        "production": 3761.32
+      },
+      {
+        "year": 2028,
+        "production": 3956.11
+      },
+      {
+        "year": 2029,
+        "production": 3877.66
+      },
+      {
+        "year": 2030,
+        "production": 4027.99
+      }
+    ],
+    "last_update": "2026-02-01 19:00:02.609760"
+  },
+  "LETTUCE_ITOGON": {
+    "crop": "LETTUCE",
+    "municipality": "ITOGON",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1253.54
+      },
+      {
+        "year": 2026,
+        "production": 1241.04
+      },
+      {
+        "year": 2027,
+        "production": 1298.27
+      },
+      {
+        "year": 2028,
+        "production": 1351.93
+      },
+      {
+        "year": 2029,
+        "production": 1357.57
+      },
+      {
+        "year": 2030,
+        "production": 1327.72
+      }
+    ],
+    "last_update": "2026-02-01 19:00:02.643132"
+  },
+  "LETTUCE_KABAYAN": {
+    "crop": "LETTUCE",
+    "municipality": "KABAYAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 818.77
+      },
+      {
+        "year": 2026,
+        "production": 820.85
+      },
+      {
+        "year": 2027,
+        "production": 815.16
+      },
+      {
+        "year": 2028,
+        "production": 835.37
+      },
+      {
+        "year": 2029,
+        "production": 845.77
+      },
+      {
+        "year": 2030,
+        "production": 810.48
+      }
+    ],
+    "last_update": "2026-02-01 19:00:02.675809"
+  },
+  "LETTUCE_KAPANGAN": {
+    "crop": "LETTUCE",
+    "municipality": "KAPANGAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 275.09
+      },
+      {
+        "year": 2026,
+        "production": 243.13
+      },
+      {
+        "year": 2027,
+        "production": 185.99
+      },
+      {
+        "year": 2028,
+        "production": 153.08
+      },
+      {
+        "year": 2029,
+        "production": 153.08
+      },
+      {
+        "year": 2030,
+        "production": 153.08
+      }
+    ],
+    "last_update": "2026-02-01 19:00:02.709555"
+  },
+  "LETTUCE_KIBUNGAN": {
+    "crop": "LETTUCE",
+    "municipality": "KIBUNGAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 892.58
+      },
+      {
+        "year": 2026,
+        "production": 909.13
+      },
+      {
+        "year": 2027,
+        "production": 994.75
+      },
+      {
+        "year": 2028,
+        "production": 1031.08
+      },
+      {
+        "year": 2029,
+        "production": 996.85
+      },
+      {
+        "year": 2030,
+        "production": 1022.0
+      }
+    ],
+    "last_update": "2026-02-01 19:00:02.742917"
+  },
+  "LETTUCE_LATRINIDAD": {
+    "crop": "LETTUCE",
+    "municipality": "LATRINIDAD",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 6763.2
+      },
+      {
+        "year": 2026,
+        "production": 7645.06
+      },
+      {
+        "year": 2027,
+        "production": 8319.25
+      },
+      {
+        "year": 2028,
+        "production": 8712.08
+      },
+      {
+        "year": 2029,
+        "production": 8795.16
+      },
+      {
+        "year": 2030,
+        "production": 9527.92
+      }
+    ],
+    "last_update": "2026-02-01 19:00:02.775410"
+  },
+  "LETTUCE_MANKAYAN": {
+    "crop": "LETTUCE",
+    "municipality": "MANKAYAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 3426.17
+      },
+      {
+        "year": 2026,
+        "production": 3501.8
+      },
+      {
+        "year": 2027,
+        "production": 3876.61
+      },
+      {
+        "year": 2028,
+        "production": 3921.72
+      },
+      {
+        "year": 2029,
+        "production": 4107.51
+      },
+      {
+        "year": 2030,
+        "production": 3931.09
+      }
+    ],
+    "last_update": "2026-02-01 19:00:02.808663"
+  },
+  "LETTUCE_SABLAN": {
+    "crop": "LETTUCE",
+    "municipality": "SABLAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1263.78
+      },
+      {
+        "year": 2026,
+        "production": 1219.5
+      },
+      {
+        "year": 2027,
+        "production": 1171.74
+      },
+      {
+        "year": 2028,
+        "production": 1242.63
+      },
+      {
+        "year": 2029,
+        "production": 1238.18
+      },
+      {
+        "year": 2030,
+        "production": 1252.1
+      }
+    ],
+    "last_update": "2026-02-01 19:00:02.841973"
+  },
+  "LETTUCE_TUBA": {
+    "crop": "LETTUCE",
+    "municipality": "TUBA",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 951.15
+      },
+      {
+        "year": 2026,
+        "production": 1032.09
+      },
+      {
+        "year": 2027,
+        "production": 1069.74
+      },
+      {
+        "year": 2028,
+        "production": 1061.98
+      },
+      {
+        "year": 2029,
+        "production": 1048.45
+      },
+      {
+        "year": 2030,
+        "production": 1119.61
+      }
+    ],
+    "last_update": "2026-02-01 19:00:02.874544"
+  },
+  "LETTUCE_TUBLAY": {
+    "crop": "LETTUCE",
+    "municipality": "TUBLAY",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1529.4
+      },
+      {
+        "year": 2026,
+        "production": 1611.91
+      },
+      {
+        "year": 2027,
+        "production": 1781.85
+      },
+      {
+        "year": 2028,
+        "production": 1803.84
+      },
+      {
+        "year": 2029,
+        "production": 1854.3
+      },
+      {
+        "year": 2030,
+        "production": 2033.38
+      }
+    ],
+    "last_update": "2026-02-01 19:00:02.908028"
+  },
+  "SNAP BEANS_ATOK": {
+    "crop": "SNAP BEANS",
+    "municipality": "ATOK",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1613.66
+      },
+      {
+        "year": 2026,
+        "production": 1555.4
+      },
+      {
+        "year": 2027,
+        "production": 1541.07
+      },
+      {
+        "year": 2028,
+        "production": 1515.21
+      },
+      {
+        "year": 2029,
+        "production": 1493.0
+      },
+      {
+        "year": 2030,
+        "production": 1479.59
+      }
+    ],
+    "last_update": "2026-02-01 19:00:02.942502"
+  },
+  "SNAP BEANS_BAKUN": {
+    "crop": "SNAP BEANS",
+    "municipality": "BAKUN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 3479.99
+      },
+      {
+        "year": 2026,
+        "production": 3500.93
+      },
+      {
+        "year": 2027,
+        "production": 3383.43
+      },
+      {
+        "year": 2028,
+        "production": 3512.32
+      },
+      {
+        "year": 2029,
+        "production": 3595.8
+      },
+      {
+        "year": 2030,
+        "production": 3336.99
+      }
+    ],
+    "last_update": "2026-02-01 19:00:02.974973"
+  },
+  "SNAP BEANS_BOKOD": {
+    "crop": "SNAP BEANS",
+    "municipality": "BOKOD",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 959.31
+      },
+      {
+        "year": 2026,
+        "production": 947.46
+      },
+      {
+        "year": 2027,
+        "production": 863.51
+      },
+      {
+        "year": 2028,
+        "production": 855.7
+      },
+      {
+        "year": 2029,
+        "production": 888.12
+      },
+      {
+        "year": 2030,
+        "production": 877.25
+      }
+    ],
+    "last_update": "2026-02-01 19:00:03.008733"
+  },
+  "SNAP BEANS_BUGUIAS": {
+    "crop": "SNAP BEANS",
+    "municipality": "BUGUIAS",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 862.68
+      },
+      {
+        "year": 2026,
+        "production": 832.75
+      },
+      {
+        "year": 2027,
+        "production": 844.62
+      },
+      {
+        "year": 2028,
+        "production": 875.87
+      },
+      {
+        "year": 2029,
+        "production": 834.54
+      },
+      {
+        "year": 2030,
+        "production": 917.57
+      }
+    ],
+    "last_update": "2026-02-01 19:00:03.041670"
+  },
+  "SNAP BEANS_ITOGON": {
+    "crop": "SNAP BEANS",
+    "municipality": "ITOGON",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1537.69
+      },
+      {
+        "year": 2026,
+        "production": 1497.7
+      },
+      {
+        "year": 2027,
+        "production": 1619.85
+      },
+      {
+        "year": 2028,
+        "production": 1528.18
+      },
+      {
+        "year": 2029,
+        "production": 1666.64
+      },
+      {
+        "year": 2030,
+        "production": 1612.1
+      }
+    ],
+    "last_update": "2026-02-01 19:00:03.075214"
+  },
+  "SNAP BEANS_KABAYAN": {
+    "crop": "SNAP BEANS",
+    "municipality": "KABAYAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1070.54
+      },
+      {
+        "year": 2026,
+        "production": 1008.74
+      },
+      {
+        "year": 2027,
+        "production": 995.51
+      },
+      {
+        "year": 2028,
+        "production": 999.94
+      },
+      {
+        "year": 2029,
+        "production": 942.1
+      },
+      {
+        "year": 2030,
+        "production": 900.62
+      }
+    ],
+    "last_update": "2026-02-01 19:00:03.108512"
+  },
+  "SNAP BEANS_KAPANGAN": {
+    "crop": "SNAP BEANS",
+    "municipality": "KAPANGAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1348.42
+      },
+      {
+        "year": 2026,
+        "production": 1195.43
+      },
+      {
+        "year": 2027,
+        "production": 1126.72
+      },
+      {
+        "year": 2028,
+        "production": 958.57
+      },
+      {
+        "year": 2029,
+        "production": 833.76
+      },
+      {
+        "year": 2030,
+        "production": 815.25
+      }
+    ],
+    "last_update": "2026-02-01 19:00:03.141344"
+  },
+  "SNAP BEANS_KIBUNGAN": {
+    "crop": "SNAP BEANS",
+    "municipality": "KIBUNGAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1363.12
+      },
+      {
+        "year": 2026,
+        "production": 1414.4
+      },
+      {
+        "year": 2027,
+        "production": 1448.35
+      },
+      {
+        "year": 2028,
+        "production": 1514.25
+      },
+      {
+        "year": 2029,
+        "production": 1510.41
+      },
+      {
+        "year": 2030,
+        "production": 1572.67
+      }
+    ],
+    "last_update": "2026-02-01 19:00:03.174998"
+  },
+  "SNAP BEANS_LATRINIDAD": {
+    "crop": "SNAP BEANS",
+    "municipality": "LATRINIDAD",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 2621.19
+      },
+      {
+        "year": 2026,
+        "production": 2872.78
+      },
+      {
+        "year": 2027,
+        "production": 2851.16
+      },
+      {
+        "year": 2028,
+        "production": 3148.23
+      },
+      {
+        "year": 2029,
+        "production": 3330.07
+      },
+      {
+        "year": 2030,
+        "production": 3429.71
+      }
+    ],
+    "last_update": "2026-02-01 19:00:03.208365"
+  },
+  "SNAP BEANS_MANKAYAN": {
+    "crop": "SNAP BEANS",
+    "municipality": "MANKAYAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 3716.53
+      },
+      {
+        "year": 2026,
+        "production": 4015.01
+      },
+      {
+        "year": 2027,
+        "production": 3982.18
+      },
+      {
+        "year": 2028,
+        "production": 4241.31
+      },
+      {
+        "year": 2029,
+        "production": 4374.13
+      },
+      {
+        "year": 2030,
+        "production": 4538.76
+      }
+    ],
+    "last_update": "2026-02-01 19:00:03.241995"
+  },
+  "SNAP BEANS_SABLAN": {
+    "crop": "SNAP BEANS",
+    "municipality": "SABLAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 2163.31
+      },
+      {
+        "year": 2026,
+        "production": 2025.63
+      },
+      {
+        "year": 2027,
+        "production": 1888.15
+      },
+      {
+        "year": 2028,
+        "production": 1821.99
+      },
+      {
+        "year": 2029,
+        "production": 1732.41
+      },
+      {
+        "year": 2030,
+        "production": 1747.2
+      }
+    ],
+    "last_update": "2026-02-01 19:00:03.275380"
+  },
+  "SNAP BEANS_TUBA": {
+    "crop": "SNAP BEANS",
+    "municipality": "TUBA",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1429.03
+      },
+      {
+        "year": 2026,
+        "production": 1128.29
+      },
+      {
+        "year": 2027,
+        "production": 972.56
+      },
+      {
+        "year": 2028,
+        "production": 972.56
+      },
+      {
+        "year": 2029,
+        "production": 972.56
+      },
+      {
+        "year": 2030,
+        "production": 972.56
+      }
+    ],
+    "last_update": "2026-02-01 19:00:03.307753"
+  },
+  "SNAP BEANS_TUBLAY": {
+    "crop": "SNAP BEANS",
+    "municipality": "TUBLAY",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1133.76
+      },
+      {
+        "year": 2026,
+        "production": 1173.45
+      },
+      {
+        "year": 2027,
+        "production": 1117.51
+      },
+      {
+        "year": 2028,
+        "production": 1167.68
+      },
+      {
+        "year": 2029,
+        "production": 1108.16
+      },
+      {
+        "year": 2030,
+        "production": 1186.62
+      }
+    ],
+    "last_update": "2026-02-01 19:00:03.341094"
+  },
+  "SWEET PEPPER_ATOK": {
+    "crop": "SWEET PEPPER",
+    "municipality": "ATOK",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1219.16
+      },
+      {
+        "year": 2026,
+        "production": 1196.87
+      },
+      {
+        "year": 2027,
+        "production": 1204.95
+      },
+      {
+        "year": 2028,
+        "production": 1259.73
+      },
+      {
+        "year": 2029,
+        "production": 1190.8
+      },
+      {
+        "year": 2030,
+        "production": 1283.45
+      }
+    ],
+    "last_update": "2026-02-01 19:00:03.375855"
+  },
+  "SWEET PEPPER_BAKUN": {
+    "crop": "SWEET PEPPER",
+    "municipality": "BAKUN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 2044.02
+      },
+      {
+        "year": 2026,
+        "production": 2077.61
+      },
+      {
+        "year": 2027,
+        "production": 2082.15
+      },
+      {
+        "year": 2028,
+        "production": 1961.86
+      },
+      {
+        "year": 2029,
+        "production": 1887.71
+      },
+      {
+        "year": 2030,
+        "production": 2021.11
+      }
+    ],
+    "last_update": "2026-02-01 19:00:03.408611"
+  },
+  "SWEET PEPPER_BOKOD": {
+    "crop": "SWEET PEPPER",
+    "municipality": "BOKOD",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1161.22
+      },
+      {
+        "year": 2026,
+        "production": 1116.15
+      },
+      {
+        "year": 2027,
+        "production": 1187.9
+      },
+      {
+        "year": 2028,
+        "production": 1161.28
+      },
+      {
+        "year": 2029,
+        "production": 1216.11
+      },
+      {
+        "year": 2030,
+        "production": 1165.81
+      }
+    ],
+    "last_update": "2026-02-01 19:00:03.441032"
+  },
+  "SWEET PEPPER_BUGUIAS": {
+    "crop": "SWEET PEPPER",
+    "municipality": "BUGUIAS",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1272.53
+      },
+      {
+        "year": 2026,
+        "production": 1274.52
+      },
+      {
+        "year": 2027,
+        "production": 1276.74
+      },
+      {
+        "year": 2028,
+        "production": 1414.23
+      },
+      {
+        "year": 2029,
+        "production": 1399.78
+      },
+      {
+        "year": 2030,
+        "production": 1375.93
+      }
+    ],
+    "last_update": "2026-02-01 19:00:03.474489"
+  },
+  "SWEET PEPPER_ITOGON": {
+    "crop": "SWEET PEPPER",
+    "municipality": "ITOGON",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1125.11
+      },
+      {
+        "year": 2026,
+        "production": 1151.07
+      },
+      {
+        "year": 2027,
+        "production": 1085.97
+      },
+      {
+        "year": 2028,
+        "production": 1124.01
+      },
+      {
+        "year": 2029,
+        "production": 1049.08
+      },
+      {
+        "year": 2030,
+        "production": 1072.97
+      }
+    ],
+    "last_update": "2026-02-01 19:00:03.507604"
+  },
+  "SWEET PEPPER_KABAYAN": {
+    "crop": "SWEET PEPPER",
+    "municipality": "KABAYAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1046.79
+      },
+      {
+        "year": 2026,
+        "production": 960.44
+      },
+      {
+        "year": 2027,
+        "production": 939.13
+      },
+      {
+        "year": 2028,
+        "production": 853.68
+      },
+      {
+        "year": 2029,
+        "production": 804.73
+      },
+      {
+        "year": 2030,
+        "production": 719.5
+      }
+    ],
+    "last_update": "2026-02-01 19:00:03.541506"
+  },
+  "SWEET PEPPER_KAPANGAN": {
+    "crop": "SWEET PEPPER",
+    "municipality": "KAPANGAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 13397.99
+      },
+      {
+        "year": 2026,
+        "production": 14702.61
+      },
+      {
+        "year": 2027,
+        "production": 16088.67
+      },
+      {
+        "year": 2028,
+        "production": 16251.29
+      },
+      {
+        "year": 2029,
+        "production": 17766.58
+      },
+      {
+        "year": 2030,
+        "production": 18730.82
+      }
+    ],
+    "last_update": "2026-02-01 19:00:03.574253"
+  },
+  "SWEET PEPPER_KIBUNGAN": {
+    "crop": "SWEET PEPPER",
+    "municipality": "KIBUNGAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1067.4
+      },
+      {
+        "year": 2026,
+        "production": 1021.77
+      },
+      {
+        "year": 2027,
+        "production": 1083.04
+      },
+      {
+        "year": 2028,
+        "production": 997.58
+      },
+      {
+        "year": 2029,
+        "production": 1029.57
+      },
+      {
+        "year": 2030,
+        "production": 1044.15
+      }
+    ],
+    "last_update": "2026-02-01 19:00:03.607606"
+  },
+  "SWEET PEPPER_LATRINIDAD": {
+    "crop": "SWEET PEPPER",
+    "municipality": "LATRINIDAD",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1733.03
+      },
+      {
+        "year": 2026,
+        "production": 1854.33
+      },
+      {
+        "year": 2027,
+        "production": 2122.35
+      },
+      {
+        "year": 2028,
+        "production": 2061.9
+      },
+      {
+        "year": 2029,
+        "production": 2198.4
+      },
+      {
+        "year": 2030,
+        "production": 2382.6
+      }
+    ],
+    "last_update": "2026-02-01 19:00:03.640269"
+  },
+  "SWEET PEPPER_MANKAYAN": {
+    "crop": "SWEET PEPPER",
+    "municipality": "MANKAYAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 2052.4
+      },
+      {
+        "year": 2026,
+        "production": 2100.19
+      },
+      {
+        "year": 2027,
+        "production": 1985.92
+      },
+      {
+        "year": 2028,
+        "production": 2107.81
+      },
+      {
+        "year": 2029,
+        "production": 2140.51
+      },
+      {
+        "year": 2030,
+        "production": 2222.93
+      }
+    ],
+    "last_update": "2026-02-01 19:00:03.673963"
+  },
+  "SWEET PEPPER_SABLAN": {
+    "crop": "SWEET PEPPER",
+    "municipality": "SABLAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1392.35
+      },
+      {
+        "year": 2026,
+        "production": 1437.84
+      },
+      {
+        "year": 2027,
+        "production": 1357.08
+      },
+      {
+        "year": 2028,
+        "production": 1449.78
+      },
+      {
+        "year": 2029,
+        "production": 1337.6
+      },
+      {
+        "year": 2030,
+        "production": 1408.67
+      }
+    ],
+    "last_update": "2026-02-01 19:00:03.706687"
+  },
+  "SWEET PEPPER_TUBA": {
+    "crop": "SWEET PEPPER",
+    "municipality": "TUBA",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 991.09
+      },
+      {
+        "year": 2026,
+        "production": 1012.99
+      },
+      {
+        "year": 2027,
+        "production": 1049.55
+      },
+      {
+        "year": 2028,
+        "production": 1011.49
+      },
+      {
+        "year": 2029,
+        "production": 972.16
+      },
+      {
+        "year": 2030,
+        "production": 1044.26
+      }
+    ],
+    "last_update": "2026-02-01 19:00:03.739359"
+  },
+  "SWEET PEPPER_TUBLAY": {
+    "crop": "SWEET PEPPER",
+    "municipality": "TUBLAY",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1330.21
+      },
+      {
+        "year": 2026,
+        "production": 1378.69
+      },
+      {
+        "year": 2027,
+        "production": 1411.97
+      },
+      {
+        "year": 2028,
+        "production": 1425.82
+      },
+      {
+        "year": 2029,
+        "production": 1302.71
+      },
+      {
+        "year": 2030,
+        "production": 1318.53
+      }
+    ],
+    "last_update": "2026-02-01 19:00:03.772747"
+  },
+  "WHITE POTATO_ATOK": {
+    "crop": "WHITE POTATO",
+    "municipality": "ATOK",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 20762.59
+      },
+      {
+        "year": 2026,
+        "production": 20764.17
+      },
+      {
+        "year": 2027,
+        "production": 20929.82
+      },
+      {
+        "year": 2028,
+        "production": 21680.67
+      },
+      {
+        "year": 2029,
+        "production": 22671.3
+      },
+      {
+        "year": 2030,
+        "production": 21271.68
+      }
+    ],
+    "last_update": "2026-02-01 19:00:03.806596"
+  },
+  "WHITE POTATO_BAKUN": {
+    "crop": "WHITE POTATO",
+    "municipality": "BAKUN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 25349.22
+      },
+      {
+        "year": 2026,
+        "production": 24184.84
+      },
+      {
+        "year": 2027,
+        "production": 24896.33
+      },
+      {
+        "year": 2028,
+        "production": 23757.04
+      },
+      {
+        "year": 2029,
+        "production": 22929.61
+      },
+      {
+        "year": 2030,
+        "production": 20856.57
+      }
+    ],
+    "last_update": "2026-02-01 19:00:03.840344"
+  },
+  "WHITE POTATO_BOKOD": {
+    "crop": "WHITE POTATO",
+    "municipality": "BOKOD",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 2457.3
+      },
+      {
+        "year": 2026,
+        "production": 2599.14
+      },
+      {
+        "year": 2027,
+        "production": 2757.02
+      },
+      {
+        "year": 2028,
+        "production": 2833.42
+      },
+      {
+        "year": 2029,
+        "production": 2882.1
+      },
+      {
+        "year": 2030,
+        "production": 3065.66
+      }
+    ],
+    "last_update": "2026-02-01 19:00:03.872841"
+  },
+  "WHITE POTATO_BUGUIAS": {
+    "crop": "WHITE POTATO",
+    "municipality": "BUGUIAS",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 64928.88
+      },
+      {
+        "year": 2026,
+        "production": 67377.7
+      },
+      {
+        "year": 2027,
+        "production": 68054.32
+      },
+      {
+        "year": 2028,
+        "production": 64988.97
+      },
+      {
+        "year": 2029,
+        "production": 66624.38
+      },
+      {
+        "year": 2030,
+        "production": 66718.93
+      }
+    ],
+    "last_update": "2026-02-01 19:00:03.906505"
+  },
+  "WHITE POTATO_ITOGON": {
+    "crop": "WHITE POTATO",
+    "municipality": "ITOGON",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1182.14
+      },
+      {
+        "year": 2026,
+        "production": 1210.2
+      },
+      {
+        "year": 2027,
+        "production": 1186.85
+      },
+      {
+        "year": 2028,
+        "production": 1182.01
+      },
+      {
+        "year": 2029,
+        "production": 1187.98
+      },
+      {
+        "year": 2030,
+        "production": 1180.25
+      }
+    ],
+    "last_update": "2026-02-01 19:00:03.939282"
+  },
+  "WHITE POTATO_KABAYAN": {
+    "crop": "WHITE POTATO",
+    "municipality": "KABAYAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 4232.03
+      },
+      {
+        "year": 2026,
+        "production": 4234.2
+      },
+      {
+        "year": 2027,
+        "production": 3822.82
+      },
+      {
+        "year": 2028,
+        "production": 3962.41
+      },
+      {
+        "year": 2029,
+        "production": 3684.4
+      },
+      {
+        "year": 2030,
+        "production": 3494.88
+      }
+    ],
+    "last_update": "2026-02-01 19:00:03.971628"
+  },
+  "WHITE POTATO_KAPANGAN": {
+    "crop": "WHITE POTATO",
+    "municipality": "KAPANGAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 4335.45
+      },
+      {
+        "year": 2026,
+        "production": 4844.86
+      },
+      {
+        "year": 2027,
+        "production": 5698.81
+      },
+      {
+        "year": 2028,
+        "production": 5976.39
+      },
+      {
+        "year": 2029,
+        "production": 6386.22
+      },
+      {
+        "year": 2030,
+        "production": 6552.17
+      }
+    ],
+    "last_update": "2026-02-01 19:00:04.005104"
+  },
+  "WHITE POTATO_KIBUNGAN": {
+    "crop": "WHITE POTATO",
+    "municipality": "KIBUNGAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 15552.22
+      },
+      {
+        "year": 2026,
+        "production": 12736.42
+      },
+      {
+        "year": 2027,
+        "production": 9056.29
+      },
+      {
+        "year": 2028,
+        "production": 6356.05
+      },
+      {
+        "year": 2029,
+        "production": 5955.0
+      },
+      {
+        "year": 2030,
+        "production": 5955.0
+      }
+    ],
+    "last_update": "2026-02-01 19:00:04.037957"
+  },
+  "WHITE POTATO_LATRINIDAD": {
+    "crop": "WHITE POTATO",
+    "municipality": "LATRINIDAD",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 4618.05
+      },
+      {
+        "year": 2026,
+        "production": 4826.04
+      },
+      {
+        "year": 2027,
+        "production": 5385.7
+      },
+      {
+        "year": 2028,
+        "production": 5940.71
+      },
+      {
+        "year": 2029,
+        "production": 5968.47
+      },
+      {
+        "year": 2030,
+        "production": 6422.14
+      }
+    ],
+    "last_update": "2026-02-01 19:00:04.071427"
+  },
+  "WHITE POTATO_MANKAYAN": {
+    "crop": "WHITE POTATO",
+    "municipality": "MANKAYAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 57599.23
+      },
+      {
+        "year": 2026,
+        "production": 55941.81
+      },
+      {
+        "year": 2027,
+        "production": 58591.76
+      },
+      {
+        "year": 2028,
+        "production": 64713.24
+      },
+      {
+        "year": 2029,
+        "production": 65284.64
+      },
+      {
+        "year": 2030,
+        "production": 67831.96
+      }
+    ],
+    "last_update": "2026-02-01 19:00:04.104877"
+  },
+  "WHITE POTATO_SABLAN": {
+    "crop": "WHITE POTATO",
+    "municipality": "SABLAN",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1290.96
+      },
+      {
+        "year": 2026,
+        "production": 1336.0
+      },
+      {
+        "year": 2027,
+        "production": 1337.75
+      },
+      {
+        "year": 2028,
+        "production": 1337.28
+      },
+      {
+        "year": 2029,
+        "production": 1282.76
+      },
+      {
+        "year": 2030,
+        "production": 1260.71
+      }
+    ],
+    "last_update": "2026-02-01 19:00:04.138213"
+  },
+  "WHITE POTATO_TUBA": {
+    "crop": "WHITE POTATO",
+    "municipality": "TUBA",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 903.54
+      },
+      {
+        "year": 2026,
+        "production": 857.15
+      },
+      {
+        "year": 2027,
+        "production": 788.05
+      },
+      {
+        "year": 2028,
+        "production": 773.54
+      },
+      {
+        "year": 2029,
+        "production": 721.92
+      },
+      {
+        "year": 2030,
+        "production": 666.75
+      }
+    ],
+    "last_update": "2026-02-01 19:00:04.170821"
+  },
+  "WHITE POTATO_TUBLAY": {
+    "crop": "WHITE POTATO",
+    "municipality": "TUBLAY",
+    "forecast": [
+      {
+        "year": 2025,
+        "production": 1164.41
+      },
+      {
+        "year": 2026,
+        "production": 1180.68
+      },
+      {
+        "year": 2027,
+        "production": 1239.49
+      },
+      {
+        "year": 2028,
+        "production": 1283.62
+      },
+      {
+        "year": 2029,
+        "production": 1235.46
+      },
+      {
+        "year": 2030,
+        "production": 1357.07
+      }
+    ],
+    "last_update": "2026-02-01 19:00:04.204873"
+  }
+}

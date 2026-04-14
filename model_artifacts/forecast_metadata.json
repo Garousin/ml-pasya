@@ -1,0 +1,34 @@
+{
+  "generated_date": "2026-02-01 19:00:04.218866",
+  "forecast_years": 6,
+  "total_forecasts": 130,
+  "crops_included": [
+    "BROCCOLI",
+    "CABBAGE",
+    "CARROTS",
+    "CAULIFLOWER",
+    "CHINESE CABBAGE",
+    "GARDEN PEAS",
+    "LETTUCE",
+    "SNAP BEANS",
+    "SWEET PEPPER",
+    "WHITE POTATO"
+  ],
+  "municipalities_included": [
+    "ATOK",
+    "BAKUN",
+    "BOKOD",
+    "BUGUIAS",
+    "ITOGON",
+    "KABAYAN",
+    "KAPANGAN",
+    "KIBUNGAN",
+    "LATRINIDAD",
+    "MANKAYAN",
+    "SABLAN",
+    "TUBA",
+    "TUBLAY"
+  ],
+  "data_source": "fulldataset.csv",
+  "note": "Pre-computed forecasts for all crop/municipality combinations"
+}

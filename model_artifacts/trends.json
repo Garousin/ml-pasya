@@ -1,0 +1,912 @@
+{
+  "BROCCOLI_ATOK": {
+    "crop": "BROCCOLI",
+    "municipality": "ATOK",
+    "direction": "decreasing",
+    "growth_rate_percent": -0.63,
+    "slope": -6.46
+  },
+  "BROCCOLI_BAKUN": {
+    "crop": "BROCCOLI",
+    "municipality": "BAKUN",
+    "direction": "decreasing",
+    "growth_rate_percent": -1.04,
+    "slope": -13.89
+  },
+  "BROCCOLI_BOKOD": {
+    "crop": "BROCCOLI",
+    "municipality": "BOKOD",
+    "direction": "increasing",
+    "growth_rate_percent": 2.83,
+    "slope": 26.99
+  },
+  "BROCCOLI_BUGUIAS": {
+    "crop": "BROCCOLI",
+    "municipality": "BUGUIAS",
+    "direction": "increasing",
+    "growth_rate_percent": 6.62,
+    "slope": 95.46
+  },
+  "BROCCOLI_ITOGON": {
+    "crop": "BROCCOLI",
+    "municipality": "ITOGON",
+    "direction": "increasing",
+    "growth_rate_percent": 0.13,
+    "slope": 1.76
+  },
+  "BROCCOLI_KABAYAN": {
+    "crop": "BROCCOLI",
+    "municipality": "KABAYAN",
+    "direction": "decreasing",
+    "growth_rate_percent": -1.89,
+    "slope": -37.16
+  },
+  "BROCCOLI_KAPANGAN": {
+    "crop": "BROCCOLI",
+    "municipality": "KAPANGAN",
+    "direction": "decreasing",
+    "growth_rate_percent": -3.98,
+    "slope": -30.74
+  },
+  "BROCCOLI_KIBUNGAN": {
+    "crop": "BROCCOLI",
+    "municipality": "KIBUNGAN",
+    "direction": "increasing",
+    "growth_rate_percent": 1.19,
+    "slope": 10.83
+  },
+  "BROCCOLI_LATRINIDAD": {
+    "crop": "BROCCOLI",
+    "municipality": "LATRINIDAD",
+    "direction": "increasing",
+    "growth_rate_percent": 5.76,
+    "slope": 251.82
+  },
+  "BROCCOLI_MANKAYAN": {
+    "crop": "BROCCOLI",
+    "municipality": "MANKAYAN",
+    "direction": "increasing",
+    "growth_rate_percent": 1.0,
+    "slope": 31.21
+  },
+  "BROCCOLI_SABLAN": {
+    "crop": "BROCCOLI",
+    "municipality": "SABLAN",
+    "direction": "decreasing",
+    "growth_rate_percent": -0.32,
+    "slope": -4.0
+  },
+  "BROCCOLI_TUBA": {
+    "crop": "BROCCOLI",
+    "municipality": "TUBA",
+    "direction": "decreasing",
+    "growth_rate_percent": -1.53,
+    "slope": -14.25
+  },
+  "BROCCOLI_TUBLAY": {
+    "crop": "BROCCOLI",
+    "municipality": "TUBLAY",
+    "direction": "increasing",
+    "growth_rate_percent": 0.06,
+    "slope": 0.58
+  },
+  "CABBAGE_ATOK": {
+    "crop": "CABBAGE",
+    "municipality": "ATOK",
+    "direction": "increasing",
+    "growth_rate_percent": 0.34,
+    "slope": 80.38
+  },
+  "CABBAGE_BAKUN": {
+    "crop": "CABBAGE",
+    "municipality": "BAKUN",
+    "direction": "decreasing",
+    "growth_rate_percent": -4.17,
+    "slope": -1289.75
+  },
+  "CABBAGE_BOKOD": {
+    "crop": "CABBAGE",
+    "municipality": "BOKOD",
+    "direction": "increasing",
+    "growth_rate_percent": 4.9,
+    "slope": 135.28
+  },
+  "CABBAGE_BUGUIAS": {
+    "crop": "CABBAGE",
+    "municipality": "BUGUIAS",
+    "direction": "decreasing",
+    "growth_rate_percent": -1.61,
+    "slope": -891.24
+  },
+  "CABBAGE_ITOGON": {
+    "crop": "CABBAGE",
+    "municipality": "ITOGON",
+    "direction": "decreasing",
+    "growth_rate_percent": -0.94,
+    "slope": -13.88
+  },
+  "CABBAGE_KABAYAN": {
+    "crop": "CABBAGE",
+    "municipality": "KABAYAN",
+    "direction": "increasing",
+    "growth_rate_percent": 15.22,
+    "slope": 3072.93
+  },
+  "CABBAGE_KAPANGAN": {
+    "crop": "CABBAGE",
+    "municipality": "KAPANGAN",
+    "direction": "decreasing",
+    "growth_rate_percent": -8.55,
+    "slope": -55.71
+  },
+  "CABBAGE_KIBUNGAN": {
+    "crop": "CABBAGE",
+    "municipality": "KIBUNGAN",
+    "direction": "decreasing",
+    "growth_rate_percent": -1.2,
+    "slope": -454.46
+  },
+  "CABBAGE_LATRINIDAD": {
+    "crop": "CABBAGE",
+    "municipality": "LATRINIDAD",
+    "direction": "increasing",
+    "growth_rate_percent": 1.78,
+    "slope": 22.8
+  },
+  "CABBAGE_MANKAYAN": {
+    "crop": "CABBAGE",
+    "municipality": "MANKAYAN",
+    "direction": "increasing",
+    "growth_rate_percent": 6.02,
+    "slope": 2241.98
+  },
+  "CABBAGE_SABLAN": {
+    "crop": "CABBAGE",
+    "municipality": "SABLAN",
+    "direction": "decreasing",
+    "growth_rate_percent": -0.49,
+    "slope": -5.79
+  },
+  "CABBAGE_TUBA": {
+    "crop": "CABBAGE",
+    "municipality": "TUBA",
+    "direction": "decreasing",
+    "growth_rate_percent": -2.36,
+    "slope": -23.81
+  },
+  "CABBAGE_TUBLAY": {
+    "crop": "CABBAGE",
+    "municipality": "TUBLAY",
+    "direction": "increasing",
+    "growth_rate_percent": 0.95,
+    "slope": 9.41
+  },
+  "CARROTS_ATOK": {
+    "crop": "CARROTS",
+    "municipality": "ATOK",
+    "direction": "decreasing",
+    "growth_rate_percent": -2.14,
+    "slope": -263.21
+  },
+  "CARROTS_BAKUN": {
+    "crop": "CARROTS",
+    "municipality": "BAKUN",
+    "direction": "decreasing",
+    "growth_rate_percent": -1.67,
+    "slope": -138.33
+  },
+  "CARROTS_BOKOD": {
+    "crop": "CARROTS",
+    "municipality": "BOKOD",
+    "direction": "increasing",
+    "growth_rate_percent": 4.41,
+    "slope": 81.19
+  },
+  "CARROTS_BUGUIAS": {
+    "crop": "CARROTS",
+    "municipality": "BUGUIAS",
+    "direction": "decreasing",
+    "growth_rate_percent": -0.31,
+    "slope": -120.57
+  },
+  "CARROTS_ITOGON": {
+    "crop": "CARROTS",
+    "municipality": "ITOGON",
+    "direction": "decreasing",
+    "growth_rate_percent": -0.55,
+    "slope": -6.72
+  },
+  "CARROTS_KABAYAN": {
+    "crop": "CARROTS",
+    "municipality": "KABAYAN",
+    "direction": "increasing",
+    "growth_rate_percent": 10.79,
+    "slope": 2203.3
+  },
+  "CARROTS_KAPANGAN": {
+    "crop": "CARROTS",
+    "municipality": "KAPANGAN",
+    "direction": "decreasing",
+    "growth_rate_percent": -0.38,
+    "slope": -4.86
+  },
+  "CARROTS_KIBUNGAN": {
+    "crop": "CARROTS",
+    "municipality": "KIBUNGAN",
+    "direction": "decreasing",
+    "growth_rate_percent": -0.29,
+    "slope": -14.55
+  },
+  "CARROTS_LATRINIDAD": {
+    "crop": "CARROTS",
+    "municipality": "LATRINIDAD",
+    "direction": "increasing",
+    "growth_rate_percent": 18.42,
+    "slope": 296.92
+  },
+  "CARROTS_MANKAYAN": {
+    "crop": "CARROTS",
+    "municipality": "MANKAYAN",
+    "direction": "increasing",
+    "growth_rate_percent": 4.94,
+    "slope": 449.29
+  },
+  "CARROTS_SABLAN": {
+    "crop": "CARROTS",
+    "municipality": "SABLAN",
+    "direction": "increasing",
+    "growth_rate_percent": 0.0,
+    "slope": 0.0
+  },
+  "CARROTS_TUBA": {
+    "crop": "CARROTS",
+    "municipality": "TUBA",
+    "direction": "increasing",
+    "growth_rate_percent": 3.08,
+    "slope": 34.4
+  },
+  "CARROTS_TUBLAY": {
+    "crop": "CARROTS",
+    "municipality": "TUBLAY",
+    "direction": "increasing",
+    "growth_rate_percent": 2.75,
+    "slope": 24.45
+  },
+  "CAULIFLOWER_ATOK": {
+    "crop": "CAULIFLOWER",
+    "municipality": "ATOK",
+    "direction": "increasing",
+    "growth_rate_percent": 1.68,
+    "slope": 20.46
+  },
+  "CAULIFLOWER_BAKUN": {
+    "crop": "CAULIFLOWER",
+    "municipality": "BAKUN",
+    "direction": "increasing",
+    "growth_rate_percent": 0.0,
+    "slope": 0.0
+  },
+  "CAULIFLOWER_BOKOD": {
+    "crop": "CAULIFLOWER",
+    "municipality": "BOKOD",
+    "direction": "increasing",
+    "growth_rate_percent": 8.04,
+    "slope": 114.14
+  },
+  "CAULIFLOWER_BUGUIAS": {
+    "crop": "CAULIFLOWER",
+    "municipality": "BUGUIAS",
+    "direction": "increasing",
+    "growth_rate_percent": 1.26,
+    "slope": 9.78
+  },
+  "CAULIFLOWER_ITOGON": {
+    "crop": "CAULIFLOWER",
+    "municipality": "ITOGON",
+    "direction": "increasing",
+    "growth_rate_percent": 0.69,
+    "slope": 8.94
+  },
+  "CAULIFLOWER_KABAYAN": {
+    "crop": "CAULIFLOWER",
+    "municipality": "KABAYAN",
+    "direction": "increasing",
+    "growth_rate_percent": 0.74,
+    "slope": 43.74
+  },
+  "CAULIFLOWER_KAPANGAN": {
+    "crop": "CAULIFLOWER",
+    "municipality": "KAPANGAN",
+    "direction": "decreasing",
+    "growth_rate_percent": -1.68,
+    "slope": -13.83
+  },
+  "CAULIFLOWER_KIBUNGAN": {
+    "crop": "CAULIFLOWER",
+    "municipality": "KIBUNGAN",
+    "direction": "increasing",
+    "growth_rate_percent": 0.29,
+    "slope": 2.31
+  },
+  "CAULIFLOWER_LATRINIDAD": {
+    "crop": "CAULIFLOWER",
+    "municipality": "LATRINIDAD",
+    "direction": "decreasing",
+    "growth_rate_percent": -3.93,
+    "slope": -27.44
+  },
+  "CAULIFLOWER_MANKAYAN": {
+    "crop": "CAULIFLOWER",
+    "municipality": "MANKAYAN",
+    "direction": "decreasing",
+    "growth_rate_percent": -5.7,
+    "slope": -115.73
+  },
+  "CAULIFLOWER_SABLAN": {
+    "crop": "CAULIFLOWER",
+    "municipality": "SABLAN",
+    "direction": "decreasing",
+    "growth_rate_percent": -0.32,
+    "slope": -4.0
+  },
+  "CAULIFLOWER_TUBA": {
+    "crop": "CAULIFLOWER",
+    "municipality": "TUBA",
+    "direction": "decreasing",
+    "growth_rate_percent": -4.16,
+    "slope": -45.44
+  },
+  "CAULIFLOWER_TUBLAY": {
+    "crop": "CAULIFLOWER",
+    "municipality": "TUBLAY",
+    "direction": "increasing",
+    "growth_rate_percent": 0.24,
+    "slope": 2.48
+  },
+  "CHINESE CABBAGE_ATOK": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "ATOK",
+    "direction": "increasing",
+    "growth_rate_percent": 7.33,
+    "slope": 386.7
+  },
+  "CHINESE CABBAGE_BAKUN": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "BAKUN",
+    "direction": "decreasing",
+    "growth_rate_percent": -2.93,
+    "slope": -499.35
+  },
+  "CHINESE CABBAGE_BOKOD": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "BOKOD",
+    "direction": "increasing",
+    "growth_rate_percent": 4.22,
+    "slope": 69.06
+  },
+  "CHINESE CABBAGE_BUGUIAS": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "BUGUIAS",
+    "direction": "decreasing",
+    "growth_rate_percent": -0.09,
+    "slope": -22.61
+  },
+  "CHINESE CABBAGE_ITOGON": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "ITOGON",
+    "direction": "decreasing",
+    "growth_rate_percent": -0.37,
+    "slope": -5.72
+  },
+  "CHINESE CABBAGE_KABAYAN": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "KABAYAN",
+    "direction": "increasing",
+    "growth_rate_percent": 1.2,
+    "slope": 33.17
+  },
+  "CHINESE CABBAGE_KAPANGAN": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "KAPANGAN",
+    "direction": "increasing",
+    "growth_rate_percent": 1.77,
+    "slope": 12.51
+  },
+  "CHINESE CABBAGE_KIBUNGAN": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "KIBUNGAN",
+    "direction": "decreasing",
+    "growth_rate_percent": -0.16,
+    "slope": -2.43
+  },
+  "CHINESE CABBAGE_LATRINIDAD": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "LATRINIDAD",
+    "direction": "increasing",
+    "growth_rate_percent": 3.3,
+    "slope": 59.26
+  },
+  "CHINESE CABBAGE_MANKAYAN": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "MANKAYAN",
+    "direction": "increasing",
+    "growth_rate_percent": 4.16,
+    "slope": 852.04
+  },
+  "CHINESE CABBAGE_SABLAN": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "SABLAN",
+    "direction": "decreasing",
+    "growth_rate_percent": -0.73,
+    "slope": -8.66
+  },
+  "CHINESE CABBAGE_TUBA": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "TUBA",
+    "direction": "decreasing",
+    "growth_rate_percent": -3.44,
+    "slope": -36.59
+  },
+  "CHINESE CABBAGE_TUBLAY": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "TUBLAY",
+    "direction": "increasing",
+    "growth_rate_percent": 2.4,
+    "slope": 22.62
+  },
+  "GARDEN PEAS_ATOK": {
+    "crop": "GARDEN PEAS",
+    "municipality": "ATOK",
+    "direction": "decreasing",
+    "growth_rate_percent": -3.03,
+    "slope": -33.1
+  },
+  "GARDEN PEAS_BAKUN": {
+    "crop": "GARDEN PEAS",
+    "municipality": "BAKUN",
+    "direction": "increasing",
+    "growth_rate_percent": 0.78,
+    "slope": 14.63
+  },
+  "GARDEN PEAS_BOKOD": {
+    "crop": "GARDEN PEAS",
+    "municipality": "BOKOD",
+    "direction": "decreasing",
+    "growth_rate_percent": -3.31,
+    "slope": -25.34
+  },
+  "GARDEN PEAS_BUGUIAS": {
+    "crop": "GARDEN PEAS",
+    "municipality": "BUGUIAS",
+    "direction": "increasing",
+    "growth_rate_percent": 0.25,
+    "slope": 2.36
+  },
+  "GARDEN PEAS_ITOGON": {
+    "crop": "GARDEN PEAS",
+    "municipality": "ITOGON",
+    "direction": "decreasing",
+    "growth_rate_percent": -0.57,
+    "slope": -6.2
+  },
+  "GARDEN PEAS_KABAYAN": {
+    "crop": "GARDEN PEAS",
+    "municipality": "KABAYAN",
+    "direction": "decreasing",
+    "growth_rate_percent": -0.25,
+    "slope": -3.38
+  },
+  "GARDEN PEAS_KAPANGAN": {
+    "crop": "GARDEN PEAS",
+    "municipality": "KAPANGAN",
+    "direction": "decreasing",
+    "growth_rate_percent": -4.13,
+    "slope": -38.74
+  },
+  "GARDEN PEAS_KIBUNGAN": {
+    "crop": "GARDEN PEAS",
+    "municipality": "KIBUNGAN",
+    "direction": "increasing",
+    "growth_rate_percent": 2.33,
+    "slope": 17.64
+  },
+  "GARDEN PEAS_LATRINIDAD": {
+    "crop": "GARDEN PEAS",
+    "municipality": "LATRINIDAD",
+    "direction": "increasing",
+    "growth_rate_percent": 3.68,
+    "slope": 23.26
+  },
+  "GARDEN PEAS_MANKAYAN": {
+    "crop": "GARDEN PEAS",
+    "municipality": "MANKAYAN",
+    "direction": "increasing",
+    "growth_rate_percent": 1.94,
+    "slope": 27.76
+  },
+  "GARDEN PEAS_SABLAN": {
+    "crop": "GARDEN PEAS",
+    "municipality": "SABLAN",
+    "direction": "decreasing",
+    "growth_rate_percent": -0.63,
+    "slope": -6.3
+  },
+  "GARDEN PEAS_TUBA": {
+    "crop": "GARDEN PEAS",
+    "municipality": "TUBA",
+    "direction": "increasing",
+    "growth_rate_percent": 0.92,
+    "slope": 9.58
+  },
+  "GARDEN PEAS_TUBLAY": {
+    "crop": "GARDEN PEAS",
+    "municipality": "TUBLAY",
+    "direction": "decreasing",
+    "growth_rate_percent": -3.62,
+    "slope": -30.99
+  },
+  "LETTUCE_ATOK": {
+    "crop": "LETTUCE",
+    "municipality": "ATOK",
+    "direction": "increasing",
+    "growth_rate_percent": 0.77,
+    "slope": 12.17
+  },
+  "LETTUCE_BAKUN": {
+    "crop": "LETTUCE",
+    "municipality": "BAKUN",
+    "direction": "increasing",
+    "growth_rate_percent": 4.3,
+    "slope": 79.24
+  },
+  "LETTUCE_BOKOD": {
+    "crop": "LETTUCE",
+    "municipality": "BOKOD",
+    "direction": "increasing",
+    "growth_rate_percent": 1.69,
+    "slope": 14.48
+  },
+  "LETTUCE_BUGUIAS": {
+    "crop": "LETTUCE",
+    "municipality": "BUGUIAS",
+    "direction": "increasing",
+    "growth_rate_percent": 3.04,
+    "slope": 94.82
+  },
+  "LETTUCE_ITOGON": {
+    "crop": "LETTUCE",
+    "municipality": "ITOGON",
+    "direction": "increasing",
+    "growth_rate_percent": 0.51,
+    "slope": 6.36
+  },
+  "LETTUCE_KABAYAN": {
+    "crop": "LETTUCE",
+    "municipality": "KABAYAN",
+    "direction": "increasing",
+    "growth_rate_percent": 0.92,
+    "slope": 6.93
+  },
+  "LETTUCE_KAPANGAN": {
+    "crop": "LETTUCE",
+    "municipality": "KAPANGAN",
+    "direction": "decreasing",
+    "growth_rate_percent": -9.05,
+    "slope": -52.09
+  },
+  "LETTUCE_KIBUNGAN": {
+    "crop": "LETTUCE",
+    "municipality": "KIBUNGAN",
+    "direction": "increasing",
+    "growth_rate_percent": 3.17,
+    "slope": 24.59
+  },
+  "LETTUCE_LATRINIDAD": {
+    "crop": "LETTUCE",
+    "municipality": "LATRINIDAD",
+    "direction": "increasing",
+    "growth_rate_percent": 19.41,
+    "slope": 631.16
+  },
+  "LETTUCE_MANKAYAN": {
+    "crop": "LETTUCE",
+    "municipality": "MANKAYAN",
+    "direction": "increasing",
+    "growth_rate_percent": 4.39,
+    "slope": 122.77
+  },
+  "LETTUCE_SABLAN": {
+    "crop": "LETTUCE",
+    "municipality": "SABLAN",
+    "direction": "decreasing",
+    "growth_rate_percent": -0.32,
+    "slope": -4.0
+  },
+  "LETTUCE_TUBA": {
+    "crop": "LETTUCE",
+    "municipality": "TUBA",
+    "direction": "increasing",
+    "growth_rate_percent": 1.91,
+    "slope": 17.16
+  },
+  "LETTUCE_TUBLAY": {
+    "crop": "LETTUCE",
+    "municipality": "TUBLAY",
+    "direction": "increasing",
+    "growth_rate_percent": 7.4,
+    "slope": 80.82
+  },
+  "SNAP BEANS_ATOK": {
+    "crop": "SNAP BEANS",
+    "municipality": "ATOK",
+    "direction": "decreasing",
+    "growth_rate_percent": -0.16,
+    "slope": -2.45
+  },
+  "SNAP BEANS_BAKUN": {
+    "crop": "SNAP BEANS",
+    "municipality": "BAKUN",
+    "direction": "decreasing",
+    "growth_rate_percent": -0.85,
+    "slope": -32.16
+  },
+  "SNAP BEANS_BOKOD": {
+    "crop": "SNAP BEANS",
+    "municipality": "BOKOD",
+    "direction": "decreasing",
+    "growth_rate_percent": -1.9,
+    "slope": -20.06
+  },
+  "SNAP BEANS_BUGUIAS": {
+    "crop": "SNAP BEANS",
+    "municipality": "BUGUIAS",
+    "direction": "increasing",
+    "growth_rate_percent": 0.54,
+    "slope": 4.45
+  },
+  "SNAP BEANS_ITOGON": {
+    "crop": "SNAP BEANS",
+    "municipality": "ITOGON",
+    "direction": "increasing",
+    "growth_rate_percent": 2.41,
+    "slope": 31.59
+  },
+  "SNAP BEANS_KABAYAN": {
+    "crop": "SNAP BEANS",
+    "municipality": "KABAYAN",
+    "direction": "decreasing",
+    "growth_rate_percent": -3.23,
+    "slope": -43.33
+  },
+  "SNAP BEANS_KAPANGAN": {
+    "crop": "SNAP BEANS",
+    "municipality": "KAPANGAN",
+    "direction": "decreasing",
+    "growth_rate_percent": -6.58,
+    "slope": -141.66
+  },
+  "SNAP BEANS_KIBUNGAN": {
+    "crop": "SNAP BEANS",
+    "municipality": "KIBUNGAN",
+    "direction": "increasing",
+    "growth_rate_percent": 3.66,
+    "slope": 40.93
+  },
+  "SNAP BEANS_LATRINIDAD": {
+    "crop": "SNAP BEANS",
+    "municipality": "LATRINIDAD",
+    "direction": "increasing",
+    "growth_rate_percent": 12.97,
+    "slope": 194.23
+  },
+  "SNAP BEANS_MANKAYAN": {
+    "crop": "SNAP BEANS",
+    "municipality": "MANKAYAN",
+    "direction": "increasing",
+    "growth_rate_percent": 4.59,
+    "slope": 135.22
+  },
+  "SNAP BEANS_SABLAN": {
+    "crop": "SNAP BEANS",
+    "municipality": "SABLAN",
+    "direction": "decreasing",
+    "growth_rate_percent": -2.67,
+    "slope": -64.94
+  },
+  "SNAP BEANS_TUBA": {
+    "crop": "SNAP BEANS",
+    "municipality": "TUBA",
+    "direction": "decreasing",
+    "growth_rate_percent": -9.8,
+    "slope": -307.51
+  },
+  "SNAP BEANS_TUBLAY": {
+    "crop": "SNAP BEANS",
+    "municipality": "TUBLAY",
+    "direction": "increasing",
+    "growth_rate_percent": 0.31,
+    "slope": 3.44
+  },
+  "SWEET PEPPER_ATOK": {
+    "crop": "SWEET PEPPER",
+    "municipality": "ATOK",
+    "direction": "increasing",
+    "growth_rate_percent": 1.07,
+    "slope": 11.93
+  },
+  "SWEET PEPPER_BAKUN": {
+    "crop": "SWEET PEPPER",
+    "municipality": "BAKUN",
+    "direction": "decreasing",
+    "growth_rate_percent": -0.15,
+    "slope": -2.98
+  },
+  "SWEET PEPPER_BOKOD": {
+    "crop": "SWEET PEPPER",
+    "municipality": "BOKOD",
+    "direction": "increasing",
+    "growth_rate_percent": 1.2,
+    "slope": 12.95
+  },
+  "SWEET PEPPER_BUGUIAS": {
+    "crop": "SWEET PEPPER",
+    "municipality": "BUGUIAS",
+    "direction": "increasing",
+    "growth_rate_percent": 2.73,
+    "slope": 29.98
+  },
+  "SWEET PEPPER_ITOGON": {
+    "crop": "SWEET PEPPER",
+    "municipality": "ITOGON",
+    "direction": "decreasing",
+    "growth_rate_percent": -0.85,
+    "slope": -9.95
+  },
+  "SWEET PEPPER_KABAYAN": {
+    "crop": "SWEET PEPPER",
+    "municipality": "KABAYAN",
+    "direction": "decreasing",
+    "growth_rate_percent": -4.19,
+    "slope": -55.78
+  },
+  "SWEET PEPPER_KAPANGAN": {
+    "crop": "SWEET PEPPER",
+    "municipality": "KAPANGAN",
+    "direction": "increasing",
+    "growth_rate_percent": 14.01,
+    "slope": 1047.5
+  },
+  "SWEET PEPPER_KIBUNGAN": {
+    "crop": "SWEET PEPPER",
+    "municipality": "KIBUNGAN",
+    "direction": "decreasing",
+    "growth_rate_percent": -1.18,
+    "slope": -13.79
+  },
+  "SWEET PEPPER_LATRINIDAD": {
+    "crop": "SWEET PEPPER",
+    "municipality": "LATRINIDAD",
+    "direction": "increasing",
+    "growth_rate_percent": 11.46,
+    "slope": 125.11
+  },
+  "SWEET PEPPER_MANKAYAN": {
+    "crop": "SWEET PEPPER",
+    "municipality": "MANKAYAN",
+    "direction": "increasing",
+    "growth_rate_percent": 3.03,
+    "slope": 51.29
+  },
+  "SWEET PEPPER_SABLAN": {
+    "crop": "SWEET PEPPER",
+    "municipality": "SABLAN",
+    "direction": "increasing",
+    "growth_rate_percent": 0.26,
+    "slope": 3.46
+  },
+  "SWEET PEPPER_TUBA": {
+    "crop": "SWEET PEPPER",
+    "municipality": "TUBA",
+    "direction": "decreasing",
+    "growth_rate_percent": -0.5,
+    "slope": -5.28
+  },
+  "SWEET PEPPER_TUBLAY": {
+    "crop": "SWEET PEPPER",
+    "municipality": "TUBLAY",
+    "direction": "increasing",
+    "growth_rate_percent": 0.33,
+    "slope": 4.44
+  },
+  "WHITE POTATO_ATOK": {
+    "crop": "WHITE POTATO",
+    "municipality": "ATOK",
+    "direction": "increasing",
+    "growth_rate_percent": 0.52,
+    "slope": 108.17
+  },
+  "WHITE POTATO_BAKUN": {
+    "crop": "WHITE POTATO",
+    "municipality": "BAKUN",
+    "direction": "decreasing",
+    "growth_rate_percent": -2.86,
+    "slope": -867.89
+  },
+  "WHITE POTATO_BOKOD": {
+    "crop": "WHITE POTATO",
+    "municipality": "BOKOD",
+    "direction": "increasing",
+    "growth_rate_percent": 4.5,
+    "slope": 91.06
+  },
+  "WHITE POTATO_BUGUIAS": {
+    "crop": "WHITE POTATO",
+    "municipality": "BUGUIAS",
+    "direction": "increasing",
+    "growth_rate_percent": 0.44,
+    "slope": 276.41
+  },
+  "WHITE POTATO_ITOGON": {
+    "crop": "WHITE POTATO",
+    "municipality": "ITOGON",
+    "direction": "decreasing",
+    "growth_rate_percent": -0.24,
+    "slope": -3.04
+  },
+  "WHITE POTATO_KABAYAN": {
+    "crop": "WHITE POTATO",
+    "municipality": "KABAYAN",
+    "direction": "decreasing",
+    "growth_rate_percent": -2.85,
+    "slope": -143.52
+  },
+  "WHITE POTATO_KAPANGAN": {
+    "crop": "WHITE POTATO",
+    "municipality": "KAPANGAN",
+    "direction": "increasing",
+    "growth_rate_percent": 21.24,
+    "slope": 444.83
+  },
+  "WHITE POTATO_KIBUNGAN": {
+    "crop": "WHITE POTATO",
+    "municipality": "KIBUNGAN",
+    "direction": "decreasing",
+    "growth_rate_percent": -9.52,
+    "slope": -3204.74
+  },
+  "WHITE POTATO_LATRINIDAD": {
+    "crop": "WHITE POTATO",
+    "municipality": "LATRINIDAD",
+    "direction": "increasing",
+    "growth_rate_percent": 20.22,
+    "slope": 428.38
+  },
+  "WHITE POTATO_MANKAYAN": {
+    "crop": "WHITE POTATO",
+    "municipality": "MANKAYAN",
+    "direction": "increasing",
+    "growth_rate_percent": 3.82,
+    "slope": 1781.19
+  },
+  "WHITE POTATO_SABLAN": {
+    "crop": "WHITE POTATO",
+    "municipality": "SABLAN",
+    "direction": "increasing",
+    "growth_rate_percent": 0.0,
+    "slope": 0.0
+  },
+  "WHITE POTATO_TUBA": {
+    "crop": "WHITE POTATO",
+    "municipality": "TUBA",
+    "direction": "decreasing",
+    "growth_rate_percent": -4.0,
+    "slope": -45.04
+  },
+  "WHITE POTATO_TUBLAY": {
+    "crop": "WHITE POTATO",
+    "municipality": "TUBLAY",
+    "direction": "increasing",
+    "growth_rate_percent": 3.33,
+    "slope": 32.45
+  }
+}

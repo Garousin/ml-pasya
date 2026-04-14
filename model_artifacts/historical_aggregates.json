@@ -1,0 +1,1302 @@
+{
+  "BROCCOLI_ATOK": {
+    "crop": "BROCCOLI",
+    "municipality": "ATOK",
+    "average": 1033.48,
+    "min": 726.0,
+    "max": 1179.74,
+    "last_year": 2024,
+    "last_production": 1172.06,
+    "years_available": 10
+  },
+  "BROCCOLI_BAKUN": {
+    "crop": "BROCCOLI",
+    "municipality": "BAKUN",
+    "average": 1333.87,
+    "min": 1070.0,
+    "max": 1505.8,
+    "last_year": 2024,
+    "last_production": 1070.0,
+    "years_available": 10
+  },
+  "BROCCOLI_BOKOD": {
+    "crop": "BROCCOLI",
+    "municipality": "BOKOD",
+    "average": 952.02,
+    "min": 707.8,
+    "max": 1536.44,
+    "last_year": 2024,
+    "last_production": 975.48,
+    "years_available": 10
+  },
+  "BROCCOLI_BUGUIAS": {
+    "crop": "BROCCOLI",
+    "municipality": "BUGUIAS",
+    "average": 1442.65,
+    "min": 958.98,
+    "max": 2145.25,
+    "last_year": 2024,
+    "last_production": 2145.25,
+    "years_available": 10
+  },
+  "BROCCOLI_ITOGON": {
+    "crop": "BROCCOLI",
+    "municipality": "ITOGON",
+    "average": 1317.0,
+    "min": 1290.0,
+    "max": 1345.0,
+    "last_year": 2024,
+    "last_production": 1330.0,
+    "years_available": 10
+  },
+  "BROCCOLI_KABAYAN": {
+    "crop": "BROCCOLI",
+    "municipality": "KABAYAN",
+    "average": 1966.42,
+    "min": 1561.0,
+    "max": 2802.9,
+    "last_year": 2024,
+    "last_production": 1597.0,
+    "years_available": 10
+  },
+  "BROCCOLI_KAPANGAN": {
+    "crop": "BROCCOLI",
+    "municipality": "KAPANGAN",
+    "average": 772.87,
+    "min": 631.5,
+    "max": 951.5,
+    "last_year": 2024,
+    "last_production": 734.48,
+    "years_available": 10
+  },
+  "BROCCOLI_KIBUNGAN": {
+    "crop": "BROCCOLI",
+    "municipality": "KIBUNGAN",
+    "average": 913.6,
+    "min": 601.6,
+    "max": 1164.6,
+    "last_year": 2024,
+    "last_production": 1061.0,
+    "years_available": 9
+  },
+  "BROCCOLI_LATRINIDAD": {
+    "crop": "BROCCOLI",
+    "municipality": "LATRINIDAD",
+    "average": 4368.02,
+    "min": 2110.6,
+    "max": 8194.11,
+    "last_year": 2024,
+    "last_production": 5785.3,
+    "years_available": 10
+  },
+  "BROCCOLI_MANKAYAN": {
+    "crop": "BROCCOLI",
+    "municipality": "MANKAYAN",
+    "average": 3133.88,
+    "min": 2684.67,
+    "max": 3224.0,
+    "last_year": 2024,
+    "last_production": 3224.0,
+    "years_available": 10
+  },
+  "BROCCOLI_SABLAN": {
+    "crop": "BROCCOLI",
+    "municipality": "SABLAN",
+    "average": 1254.0,
+    "min": 660.0,
+    "max": 1320.0,
+    "last_year": 2024,
+    "last_production": 1320.0,
+    "years_available": 10
+  },
+  "BROCCOLI_TUBA": {
+    "crop": "BROCCOLI",
+    "municipality": "TUBA",
+    "average": 933.85,
+    "min": 812.5,
+    "max": 1170.0,
+    "last_year": 2024,
+    "last_production": 965.81,
+    "years_available": 10
+  },
+  "BROCCOLI_TUBLAY": {
+    "crop": "BROCCOLI",
+    "municipality": "TUBLAY",
+    "average": 1041.97,
+    "min": 690.24,
+    "max": 1372.5,
+    "last_year": 2024,
+    "last_production": 894.32,
+    "years_available": 10
+  },
+  "CABBAGE_ATOK": {
+    "crop": "CABBAGE",
+    "municipality": "ATOK",
+    "average": 23567.25,
+    "min": 14993.91,
+    "max": 31039.26,
+    "last_year": 2024,
+    "last_production": 21143.64,
+    "years_available": 10
+  },
+  "CABBAGE_BAKUN": {
+    "crop": "CABBAGE",
+    "municipality": "BAKUN",
+    "average": 30912.34,
+    "min": 9334.19,
+    "max": 35681.8,
+    "last_year": 2024,
+    "last_production": 9334.19,
+    "years_available": 10
+  },
+  "CABBAGE_BOKOD": {
+    "crop": "CABBAGE",
+    "municipality": "BOKOD",
+    "average": 2758.58,
+    "min": 1657.6,
+    "max": 4329.4,
+    "last_year": 2024,
+    "last_production": 1779.4,
+    "years_available": 10
+  },
+  "CABBAGE_BUGUIAS": {
+    "crop": "CABBAGE",
+    "municipality": "BUGUIAS",
+    "average": 55419.6,
+    "min": 43632.0,
+    "max": 64226.6,
+    "last_year": 2024,
+    "last_production": 56367.5,
+    "years_available": 10
+  },
+  "CABBAGE_ITOGON": {
+    "crop": "CABBAGE",
+    "municipality": "ITOGON",
+    "average": 1474.7,
+    "min": 1285.0,
+    "max": 1575.0,
+    "last_year": 2024,
+    "last_production": 1566.0,
+    "years_available": 10
+  },
+  "CABBAGE_KABAYAN": {
+    "crop": "CABBAGE",
+    "municipality": "KABAYAN",
+    "average": 20195.85,
+    "min": 9385.0,
+    "max": 58120.0,
+    "last_year": 2024,
+    "last_production": 13905.0,
+    "years_available": 10
+  },
+  "CABBAGE_KAPANGAN": {
+    "crop": "CABBAGE",
+    "municipality": "KAPANGAN",
+    "average": 651.86,
+    "min": 390.87,
+    "max": 895.2,
+    "last_year": 2024,
+    "last_production": 390.87,
+    "years_available": 10
+  },
+  "CABBAGE_KIBUNGAN": {
+    "crop": "CABBAGE",
+    "municipality": "KIBUNGAN",
+    "average": 38021.73,
+    "min": 15897.0,
+    "max": 63945.0,
+    "last_year": 2024,
+    "last_production": 24981.0,
+    "years_available": 9
+  },
+  "CABBAGE_LATRINIDAD": {
+    "crop": "CABBAGE",
+    "municipality": "LATRINIDAD",
+    "average": 1280.55,
+    "min": 1095.59,
+    "max": 1584.56,
+    "last_year": 2024,
+    "last_production": 1352.91,
+    "years_available": 10
+  },
+  "CABBAGE_MANKAYAN": {
+    "crop": "CABBAGE",
+    "municipality": "MANKAYAN",
+    "average": 37255.58,
+    "min": 18543.51,
+    "max": 44545.0,
+    "last_year": 2024,
+    "last_production": 43062.56,
+    "years_available": 10
+  },
+  "CABBAGE_SABLAN": {
+    "crop": "CABBAGE",
+    "municipality": "SABLAN",
+    "average": 1183.94,
+    "min": 0.0,
+    "max": 1320.0,
+    "last_year": 2024,
+    "last_production": 1320.0,
+    "years_available": 10
+  },
+  "CABBAGE_TUBA": {
+    "crop": "CABBAGE",
+    "municipality": "TUBA",
+    "average": 1009.73,
+    "min": 837.48,
+    "max": 1279.0,
+    "last_year": 2024,
+    "last_production": 983.66,
+    "years_available": 10
+  },
+  "CABBAGE_TUBLAY": {
+    "crop": "CABBAGE",
+    "municipality": "TUBLAY",
+    "average": 994.59,
+    "min": 524.77,
+    "max": 1351.1,
+    "last_year": 2024,
+    "last_production": 824.71,
+    "years_available": 10
+  },
+  "CARROTS_ATOK": {
+    "crop": "CARROTS",
+    "municipality": "ATOK",
+    "average": 12286.82,
+    "min": 8322.35,
+    "max": 15185.4,
+    "last_year": 2024,
+    "last_production": 8322.35,
+    "years_available": 10
+  },
+  "CARROTS_BAKUN": {
+    "crop": "CARROTS",
+    "municipality": "BAKUN",
+    "average": 8288.84,
+    "min": 3186.92,
+    "max": 9579.34,
+    "last_year": 2024,
+    "last_production": 3186.92,
+    "years_available": 10
+  },
+  "CARROTS_BOKOD": {
+    "crop": "CARROTS",
+    "municipality": "BOKOD",
+    "average": 1841.92,
+    "min": 1409.88,
+    "max": 2340.0,
+    "last_year": 2024,
+    "last_production": 1844.32,
+    "years_available": 10
+  },
+  "CARROTS_BUGUIAS": {
+    "crop": "CARROTS",
+    "municipality": "BUGUIAS",
+    "average": 38791.72,
+    "min": 31525.19,
+    "max": 48773.0,
+    "last_year": 2024,
+    "last_production": 38957.0,
+    "years_available": 10
+  },
+  "CARROTS_ITOGON": {
+    "crop": "CARROTS",
+    "municipality": "ITOGON",
+    "average": 1230.1,
+    "min": 1185.0,
+    "max": 1300.0,
+    "last_year": 2024,
+    "last_production": 1210.0,
+    "years_available": 10
+  },
+  "CARROTS_KABAYAN": {
+    "crop": "CARROTS",
+    "municipality": "KABAYAN",
+    "average": 20415.24,
+    "min": 10900.0,
+    "max": 45200.0,
+    "last_year": 2024,
+    "last_production": 14510.0,
+    "years_available": 10
+  },
+  "CARROTS_KAPANGAN": {
+    "crop": "CARROTS",
+    "municipality": "KAPANGAN",
+    "average": 1283.07,
+    "min": 1170.0,
+    "max": 1320.0,
+    "last_year": 2024,
+    "last_production": 1170.0,
+    "years_available": 10
+  },
+  "CARROTS_KIBUNGAN": {
+    "crop": "CARROTS",
+    "municipality": "KIBUNGAN",
+    "average": 5040.72,
+    "min": 2920.0,
+    "max": 7348.5,
+    "last_year": 2024,
+    "last_production": 3256.0,
+    "years_available": 9
+  },
+  "CARROTS_LATRINIDAD": {
+    "crop": "CARROTS",
+    "municipality": "LATRINIDAD",
+    "average": 1611.88,
+    "min": 553.53,
+    "max": 3855.78,
+    "last_year": 2024,
+    "last_production": 1492.94,
+    "years_available": 10
+  },
+  "CARROTS_MANKAYAN": {
+    "crop": "CARROTS",
+    "municipality": "MANKAYAN",
+    "average": 9099.06,
+    "min": 5810.78,
+    "max": 10298.82,
+    "last_year": 2024,
+    "last_production": 10298.82,
+    "years_available": 10
+  },
+  "CARROTS_SABLAN": {
+    "crop": "CARROTS",
+    "municipality": "SABLAN",
+    "average": 1320.0,
+    "min": 1320.0,
+    "max": 1320.0,
+    "last_year": 2024,
+    "last_production": 1320.0,
+    "years_available": 10
+  },
+  "CARROTS_TUBA": {
+    "crop": "CARROTS",
+    "municipality": "TUBA",
+    "average": 1115.74,
+    "min": 879.0,
+    "max": 1320.0,
+    "last_year": 2024,
+    "last_production": 1320.0,
+    "years_available": 10
+  },
+  "CARROTS_TUBLAY": {
+    "crop": "CARROTS",
+    "municipality": "TUBLAY",
+    "average": 888.94,
+    "min": 529.32,
+    "max": 1144.5,
+    "last_year": 2024,
+    "last_production": 823.6,
+    "years_available": 10
+  },
+  "CAULIFLOWER_ATOK": {
+    "crop": "CAULIFLOWER",
+    "municipality": "ATOK",
+    "average": 1217.39,
+    "min": 1015.48,
+    "max": 1381.93,
+    "last_year": 2024,
+    "last_production": 1274.88,
+    "years_available": 10
+  },
+  "CAULIFLOWER_BAKUN": {
+    "crop": "CAULIFLOWER",
+    "municipality": "BAKUN",
+    "average": 1320.0,
+    "min": 1320.0,
+    "max": 1320.0,
+    "last_year": 2024,
+    "last_production": 1320.0,
+    "years_available": 10
+  },
+  "CAULIFLOWER_BOKOD": {
+    "crop": "CAULIFLOWER",
+    "municipality": "BOKOD",
+    "average": 1419.05,
+    "min": 1001.0,
+    "max": 3117.28,
+    "last_year": 2024,
+    "last_production": 1290.6,
+    "years_available": 10
+  },
+  "CAULIFLOWER_BUGUIAS": {
+    "crop": "CAULIFLOWER",
+    "municipality": "BUGUIAS",
+    "average": 776.92,
+    "min": 662.76,
+    "max": 872.6,
+    "last_year": 2024,
+    "last_production": 863.3,
+    "years_available": 10
+  },
+  "CAULIFLOWER_ITOGON": {
+    "crop": "CAULIFLOWER",
+    "municipality": "ITOGON",
+    "average": 1303.5,
+    "min": 1215.0,
+    "max": 1345.0,
+    "last_year": 2024,
+    "last_production": 1325.0,
+    "years_available": 10
+  },
+  "CAULIFLOWER_KABAYAN": {
+    "crop": "CAULIFLOWER",
+    "municipality": "KABAYAN",
+    "average": 5944.76,
+    "min": 3523.0,
+    "max": 8796.0,
+    "last_year": 2024,
+    "last_production": 3523.0,
+    "years_available": 10
+  },
+  "CAULIFLOWER_KAPANGAN": {
+    "crop": "CAULIFLOWER",
+    "municipality": "KAPANGAN",
+    "average": 823.41,
+    "min": 731.8,
+    "max": 948.5,
+    "last_year": 2024,
+    "last_production": 745.05,
+    "years_available": 10
+  },
+  "CAULIFLOWER_KIBUNGAN": {
+    "crop": "CAULIFLOWER",
+    "municipality": "KIBUNGAN",
+    "average": 794.64,
+    "min": 576.6,
+    "max": 1050.4,
+    "last_year": 2024,
+    "last_production": 617.2,
+    "years_available": 9
+  },
+  "CAULIFLOWER_LATRINIDAD": {
+    "crop": "CAULIFLOWER",
+    "municipality": "LATRINIDAD",
+    "average": 697.44,
+    "min": 425.04,
+    "max": 983.33,
+    "last_year": 2024,
+    "last_production": 425.04,
+    "years_available": 10
+  },
+  "CAULIFLOWER_MANKAYAN": {
+    "crop": "CAULIFLOWER",
+    "municipality": "MANKAYAN",
+    "average": 2028.7,
+    "min": 1320.0,
+    "max": 2395.0,
+    "last_year": 2024,
+    "last_production": 1320.0,
+    "years_available": 10
+  },
+  "CAULIFLOWER_SABLAN": {
+    "crop": "CAULIFLOWER",
+    "municipality": "SABLAN",
+    "average": 1254.0,
+    "min": 660.0,
+    "max": 1320.0,
+    "last_year": 2024,
+    "last_production": 1320.0,
+    "years_available": 10
+  },
+  "CAULIFLOWER_TUBA": {
+    "crop": "CAULIFLOWER",
+    "municipality": "TUBA",
+    "average": 1092.64,
+    "min": 895.98,
+    "max": 1430.0,
+    "last_year": 2024,
+    "last_production": 895.98,
+    "years_available": 10
+  },
+  "CAULIFLOWER_TUBLAY": {
+    "crop": "CAULIFLOWER",
+    "municipality": "TUBLAY",
+    "average": 1012.34,
+    "min": 792.84,
+    "max": 1339.43,
+    "last_year": 2024,
+    "last_production": 877.55,
+    "years_available": 10
+  },
+  "CHINESE CABBAGE_ATOK": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "ATOK",
+    "average": 5278.09,
+    "min": 2948.65,
+    "max": 6574.92,
+    "last_year": 2024,
+    "last_production": 6461.84,
+    "years_available": 10
+  },
+  "CHINESE CABBAGE_BAKUN": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "BAKUN",
+    "average": 17035.95,
+    "min": 5892.25,
+    "max": 19620.17,
+    "last_year": 2024,
+    "last_production": 5892.25,
+    "years_available": 10
+  },
+  "CHINESE CABBAGE_BOKOD": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "BOKOD",
+    "average": 1637.25,
+    "min": 1237.5,
+    "max": 2230.0,
+    "last_year": 2024,
+    "last_production": 1570.5,
+    "years_available": 10
+  },
+  "CHINESE CABBAGE_BUGUIAS": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "BUGUIAS",
+    "average": 24673.5,
+    "min": 20797.0,
+    "max": 27337.0,
+    "last_year": 2024,
+    "last_production": 27337.0,
+    "years_available": 10
+  },
+  "CHINESE CABBAGE_ITOGON": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "ITOGON",
+    "average": 1534.3,
+    "min": 1300.0,
+    "max": 1702.0,
+    "last_year": 2024,
+    "last_production": 1702.0,
+    "years_available": 10
+  },
+  "CHINESE CABBAGE_KABAYAN": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "KABAYAN",
+    "average": 2769.66,
+    "min": 2199.1,
+    "max": 4080.0,
+    "last_year": 2024,
+    "last_production": 2500.5,
+    "years_available": 10
+  },
+  "CHINESE CABBAGE_KAPANGAN": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "KAPANGAN",
+    "average": 708.2,
+    "min": 486.32,
+    "max": 880.05,
+    "last_year": 2024,
+    "last_production": 673.21,
+    "years_available": 10
+  },
+  "CHINESE CABBAGE_KIBUNGAN": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "KIBUNGAN",
+    "average": 1514.5,
+    "min": 1014.0,
+    "max": 2319.5,
+    "last_year": 2024,
+    "last_production": 1332.0,
+    "years_available": 9
+  },
+  "CHINESE CABBAGE_LATRINIDAD": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "LATRINIDAD",
+    "average": 1793.02,
+    "min": 1211.46,
+    "max": 2824.82,
+    "last_year": 2024,
+    "last_production": 1812.92,
+    "years_available": 10
+  },
+  "CHINESE CABBAGE_MANKAYAN": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "MANKAYAN",
+    "average": 20499.67,
+    "min": 13490.45,
+    "max": 25520.0,
+    "last_year": 2024,
+    "last_production": 22710.0,
+    "years_available": 10
+  },
+  "CHINESE CABBAGE_SABLAN": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "SABLAN",
+    "average": 1191.67,
+    "min": 600.0,
+    "max": 1268.0,
+    "last_year": 2024,
+    "last_production": 1212.7,
+    "years_available": 10
+  },
+  "CHINESE CABBAGE_TUBA": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "TUBA",
+    "average": 1064.58,
+    "min": 882.26,
+    "max": 1447.5,
+    "last_year": 2024,
+    "last_production": 927.96,
+    "years_available": 10
+  },
+  "CHINESE CABBAGE_TUBLAY": {
+    "crop": "CHINESE CABBAGE",
+    "municipality": "TUBLAY",
+    "average": 940.68,
+    "min": 502.22,
+    "max": 1145.02,
+    "last_year": 2024,
+    "last_production": 825.91,
+    "years_available": 10
+  },
+  "GARDEN PEAS_ATOK": {
+    "crop": "GARDEN PEAS",
+    "municipality": "ATOK",
+    "average": 1093.71,
+    "min": 921.72,
+    "max": 1341.59,
+    "last_year": 2024,
+    "last_production": 944.56,
+    "years_available": 10
+  },
+  "GARDEN PEAS_BAKUN": {
+    "crop": "GARDEN PEAS",
+    "municipality": "BAKUN",
+    "average": 1866.1,
+    "min": 1285.51,
+    "max": 2126.18,
+    "last_year": 2024,
+    "last_production": 1285.51,
+    "years_available": 10
+  },
+  "GARDEN PEAS_BOKOD": {
+    "crop": "GARDEN PEAS",
+    "municipality": "BOKOD",
+    "average": 765.15,
+    "min": 646.0,
+    "max": 1086.12,
+    "last_year": 2024,
+    "last_production": 734.72,
+    "years_available": 10
+  },
+  "GARDEN PEAS_BUGUIAS": {
+    "crop": "GARDEN PEAS",
+    "municipality": "BUGUIAS",
+    "average": 933.68,
+    "min": 877.8,
+    "max": 996.42,
+    "last_year": 2024,
+    "last_production": 996.42,
+    "years_available": 10
+  },
+  "GARDEN PEAS_ITOGON": {
+    "crop": "GARDEN PEAS",
+    "municipality": "ITOGON",
+    "average": 1097.15,
+    "min": 1035.0,
+    "max": 1166.5,
+    "last_year": 2024,
+    "last_production": 1105.0,
+    "years_available": 10
+  },
+  "GARDEN PEAS_KABAYAN": {
+    "crop": "GARDEN PEAS",
+    "municipality": "KABAYAN",
+    "average": 1359.1,
+    "min": 1225.0,
+    "max": 1460.0,
+    "last_year": 2024,
+    "last_production": 1225.0,
+    "years_available": 10
+  },
+  "GARDEN PEAS_KAPANGAN": {
+    "crop": "GARDEN PEAS",
+    "municipality": "KAPANGAN",
+    "average": 938.13,
+    "min": 734.2,
+    "max": 1185.0,
+    "last_year": 2024,
+    "last_production": 734.2,
+    "years_available": 10
+  },
+  "GARDEN PEAS_KIBUNGAN": {
+    "crop": "GARDEN PEAS",
+    "municipality": "KIBUNGAN",
+    "average": 756.72,
+    "min": 413.45,
+    "max": 936.5,
+    "last_year": 2024,
+    "last_production": 936.5,
+    "years_available": 9
+  },
+  "GARDEN PEAS_LATRINIDAD": {
+    "crop": "GARDEN PEAS",
+    "municipality": "LATRINIDAD",
+    "average": 632.02,
+    "min": 505.76,
+    "max": 925.11,
+    "last_year": 2024,
+    "last_production": 674.34,
+    "years_available": 10
+  },
+  "GARDEN PEAS_MANKAYAN": {
+    "crop": "GARDEN PEAS",
+    "municipality": "MANKAYAN",
+    "average": 1431.97,
+    "min": 1149.6,
+    "max": 1497.0,
+    "last_year": 2024,
+    "last_production": 1497.0,
+    "years_available": 10
+  },
+  "GARDEN PEAS_SABLAN": {
+    "crop": "GARDEN PEAS",
+    "municipality": "SABLAN",
+    "average": 1007.2,
+    "min": 970.04,
+    "max": 1031.4,
+    "last_year": 2024,
+    "last_production": 1014.48,
+    "years_available": 10
+  },
+  "GARDEN PEAS_TUBA": {
+    "crop": "GARDEN PEAS",
+    "municipality": "TUBA",
+    "average": 1038.55,
+    "min": 775.0,
+    "max": 1198.0,
+    "last_year": 2024,
+    "last_production": 1048.32,
+    "years_available": 10
+  },
+  "GARDEN PEAS_TUBLAY": {
+    "crop": "GARDEN PEAS",
+    "municipality": "TUBLAY",
+    "average": 856.27,
+    "min": 547.4,
+    "max": 1142.5,
+    "last_year": 2024,
+    "last_production": 547.4,
+    "years_available": 10
+  },
+  "LETTUCE_ATOK": {
+    "crop": "LETTUCE",
+    "municipality": "ATOK",
+    "average": 1581.42,
+    "min": 1000.16,
+    "max": 2759.6,
+    "last_year": 2024,
+    "last_production": 1493.2,
+    "years_available": 10
+  },
+  "LETTUCE_BAKUN": {
+    "crop": "LETTUCE",
+    "municipality": "BAKUN",
+    "average": 1844.26,
+    "min": 1152.8,
+    "max": 4362.9,
+    "last_year": 2024,
+    "last_production": 1152.8,
+    "years_available": 10
+  },
+  "LETTUCE_BOKOD": {
+    "crop": "LETTUCE",
+    "municipality": "BOKOD",
+    "average": 857.25,
+    "min": 621.5,
+    "max": 1521.5,
+    "last_year": 2024,
+    "last_production": 829.5,
+    "years_available": 10
+  },
+  "LETTUCE_BUGUIAS": {
+    "crop": "LETTUCE",
+    "municipality": "BUGUIAS",
+    "average": 3115.62,
+    "min": 2524.25,
+    "max": 4026.2,
+    "last_year": 2024,
+    "last_production": 4026.2,
+    "years_available": 10
+  },
+  "LETTUCE_ITOGON": {
+    "crop": "LETTUCE",
+    "municipality": "ITOGON",
+    "average": 1235.1,
+    "min": 1169.0,
+    "max": 1325.0,
+    "last_year": 2024,
+    "last_production": 1169.0,
+    "years_available": 10
+  },
+  "LETTUCE_KABAYAN": {
+    "crop": "LETTUCE",
+    "municipality": "KABAYAN",
+    "average": 752.05,
+    "min": 246.2,
+    "max": 964.29,
+    "last_year": 2024,
+    "last_production": 902.0,
+    "years_available": 10
+  },
+  "LETTUCE_KAPANGAN": {
+    "crop": "LETTUCE",
+    "municipality": "KAPANGAN",
+    "average": 575.45,
+    "min": 306.16,
+    "max": 839.02,
+    "last_year": 2024,
+    "last_production": 306.16,
+    "years_available": 10
+  },
+  "LETTUCE_KIBUNGAN": {
+    "crop": "LETTUCE",
+    "municipality": "KIBUNGAN",
+    "average": 776.02,
+    "min": 359.4,
+    "max": 1035.0,
+    "last_year": 2024,
+    "last_production": 764.5,
+    "years_available": 9
+  },
+  "LETTUCE_LATRINIDAD": {
+    "crop": "LETTUCE",
+    "municipality": "LATRINIDAD",
+    "average": 3252.38,
+    "min": 1120.06,
+    "max": 6755.42,
+    "last_year": 2024,
+    "last_production": 6755.42,
+    "years_available": 10
+  },
+  "LETTUCE_MANKAYAN": {
+    "crop": "LETTUCE",
+    "municipality": "MANKAYAN",
+    "average": 2796.96,
+    "min": 1823.16,
+    "max": 3223.5,
+    "last_year": 2024,
+    "last_production": 3223.5,
+    "years_available": 10
+  },
+  "LETTUCE_SABLAN": {
+    "crop": "LETTUCE",
+    "municipality": "SABLAN",
+    "average": 1254.0,
+    "min": 660.0,
+    "max": 1320.0,
+    "last_year": 2024,
+    "last_production": 1320.0,
+    "years_available": 10
+  },
+  "LETTUCE_TUBA": {
+    "crop": "LETTUCE",
+    "municipality": "TUBA",
+    "average": 898.35,
+    "min": 528.4,
+    "max": 1025.23,
+    "last_year": 2024,
+    "last_production": 926.9,
+    "years_available": 10
+  },
+  "LETTUCE_TUBLAY": {
+    "crop": "LETTUCE",
+    "municipality": "TUBLAY",
+    "average": 1092.06,
+    "min": 694.07,
+    "max": 3424.5,
+    "last_year": 2024,
+    "last_production": 805.87,
+    "years_available": 10
+  },
+  "SNAP BEANS_ATOK": {
+    "crop": "SNAP BEANS",
+    "municipality": "ATOK",
+    "average": 1561.45,
+    "min": 1254.99,
+    "max": 2184.73,
+    "last_year": 2024,
+    "last_production": 1367.54,
+    "years_available": 10
+  },
+  "SNAP BEANS_BAKUN": {
+    "crop": "SNAP BEANS",
+    "municipality": "BAKUN",
+    "average": 3780.48,
+    "min": 1481.33,
+    "max": 4670.9,
+    "last_year": 2024,
+    "last_production": 1481.33,
+    "years_available": 10
+  },
+  "SNAP BEANS_BOKOD": {
+    "crop": "SNAP BEANS",
+    "municipality": "BOKOD",
+    "average": 1057.54,
+    "min": 792.0,
+    "max": 1219.0,
+    "last_year": 2024,
+    "last_production": 965.56,
+    "years_available": 10
+  },
+  "SNAP BEANS_BUGUIAS": {
+    "crop": "SNAP BEANS",
+    "municipality": "BUGUIAS",
+    "average": 831.31,
+    "min": 756.88,
+    "max": 876.0,
+    "last_year": 2024,
+    "last_production": 872.27,
+    "years_available": 10
+  },
+  "SNAP BEANS_ITOGON": {
+    "crop": "SNAP BEANS",
+    "municipality": "ITOGON",
+    "average": 1308.1,
+    "min": 734.0,
+    "max": 1408.0,
+    "last_year": 2024,
+    "last_production": 1384.5,
+    "years_available": 10
+  },
+  "SNAP BEANS_KABAYAN": {
+    "crop": "SNAP BEANS",
+    "municipality": "KABAYAN",
+    "average": 1341.89,
+    "min": 1074.0,
+    "max": 1619.51,
+    "last_year": 2024,
+    "last_production": 1074.0,
+    "years_available": 10
+  },
+  "SNAP BEANS_KAPANGAN": {
+    "crop": "SNAP BEANS",
+    "municipality": "KAPANGAN",
+    "average": 2153.32,
+    "min": 1630.5,
+    "max": 3931.6,
+    "last_year": 2024,
+    "last_production": 1799.95,
+    "years_available": 10
+  },
+  "SNAP BEANS_KIBUNGAN": {
+    "crop": "SNAP BEANS",
+    "municipality": "KIBUNGAN",
+    "average": 1119.51,
+    "min": 637.5,
+    "max": 1621.0,
+    "last_year": 2024,
+    "last_production": 1164.0,
+    "years_available": 9
+  },
+  "SNAP BEANS_LATRINIDAD": {
+    "crop": "SNAP BEANS",
+    "municipality": "LATRINIDAD",
+    "average": 1497.15,
+    "min": 603.0,
+    "max": 3226.58,
+    "last_year": 2024,
+    "last_production": 1978.51,
+    "years_available": 10
+  },
+  "SNAP BEANS_MANKAYAN": {
+    "crop": "SNAP BEANS",
+    "municipality": "MANKAYAN",
+    "average": 2946.54,
+    "min": 1509.43,
+    "max": 3282.16,
+    "last_year": 2024,
+    "last_production": 3232.22,
+    "years_available": 10
+  },
+  "SNAP BEANS_SABLAN": {
+    "crop": "SNAP BEANS",
+    "municipality": "SABLAN",
+    "average": 2428.08,
+    "min": 2019.26,
+    "max": 2827.3,
+    "last_year": 2024,
+    "last_production": 2019.26,
+    "years_available": 10
+  },
+  "SNAP BEANS_TUBA": {
+    "crop": "SNAP BEANS",
+    "municipality": "TUBA",
+    "average": 3138.03,
+    "min": 1945.12,
+    "max": 7171.4,
+    "last_year": 2024,
+    "last_production": 2730.31,
+    "years_available": 10
+  },
+  "SNAP BEANS_TUBLAY": {
+    "crop": "SNAP BEANS",
+    "municipality": "TUBLAY",
+    "average": 1112.32,
+    "min": 575.11,
+    "max": 1529.0,
+    "last_year": 2024,
+    "last_production": 881.61,
+    "years_available": 10
+  },
+  "SWEET PEPPER_ATOK": {
+    "crop": "SWEET PEPPER",
+    "municipality": "ATOK",
+    "average": 1109.53,
+    "min": 860.15,
+    "max": 1261.65,
+    "last_year": 2024,
+    "last_production": 1244.75,
+    "years_available": 10
+  },
+  "SWEET PEPPER_BAKUN": {
+    "crop": "SWEET PEPPER",
+    "municipality": "BAKUN",
+    "average": 2007.07,
+    "min": 1287.42,
+    "max": 2292.84,
+    "last_year": 2024,
+    "last_production": 1287.42,
+    "years_available": 10
+  },
+  "SWEET PEPPER_BOKOD": {
+    "crop": "SWEET PEPPER",
+    "municipality": "BOKOD",
+    "average": 1076.46,
+    "min": 855.0,
+    "max": 1271.0,
+    "last_year": 2024,
+    "last_production": 1007.16,
+    "years_available": 10
+  },
+  "SWEET PEPPER_BUGUIAS": {
+    "crop": "SWEET PEPPER",
+    "municipality": "BUGUIAS",
+    "average": 1098.68,
+    "min": 893.95,
+    "max": 1374.25,
+    "last_year": 2024,
+    "last_production": 1374.25,
+    "years_available": 10
+  },
+  "SWEET PEPPER_ITOGON": {
+    "crop": "SWEET PEPPER",
+    "municipality": "ITOGON",
+    "average": 1173.3,
+    "min": 1136.0,
+    "max": 1220.0,
+    "last_year": 2024,
+    "last_production": 1139.0,
+    "years_available": 10
+  },
+  "SWEET PEPPER_KABAYAN": {
+    "crop": "SWEET PEPPER",
+    "municipality": "KABAYAN",
+    "average": 1330.98,
+    "min": 987.0,
+    "max": 2124.0,
+    "last_year": 2024,
+    "last_production": 987.0,
+    "years_available": 10
+  },
+  "SWEET PEPPER_KAPANGAN": {
+    "crop": "SWEET PEPPER",
+    "municipality": "KAPANGAN",
+    "average": 7476.83,
+    "min": 1816.4,
+    "max": 17230.55,
+    "last_year": 2024,
+    "last_production": 6434.85,
+    "years_available": 10
+  },
+  "SWEET PEPPER_KIBUNGAN": {
+    "crop": "SWEET PEPPER",
+    "municipality": "KIBUNGAN",
+    "average": 1164.72,
+    "min": 656.45,
+    "max": 1664.0,
+    "last_year": 2024,
+    "last_production": 1007.0,
+    "years_available": 9
+  },
+  "SWEET PEPPER_LATRINIDAD": {
+    "crop": "SWEET PEPPER",
+    "municipality": "LATRINIDAD",
+    "average": 1091.92,
+    "min": 574.12,
+    "max": 2157.81,
+    "last_year": 2024,
+    "last_production": 1298.68,
+    "years_available": 10
+  },
+  "SWEET PEPPER_MANKAYAN": {
+    "crop": "SWEET PEPPER",
+    "municipality": "MANKAYAN",
+    "average": 1694.24,
+    "min": 1153.43,
+    "max": 1812.0,
+    "last_year": 2024,
+    "last_production": 1812.0,
+    "years_available": 10
+  },
+  "SWEET PEPPER_SABLAN": {
+    "crop": "SWEET PEPPER",
+    "municipality": "SABLAN",
+    "average": 1356.2,
+    "min": 1174.15,
+    "max": 1433.12,
+    "last_year": 2024,
+    "last_production": 1174.15,
+    "years_available": 10
+  },
+  "SWEET PEPPER_TUBA": {
+    "crop": "SWEET PEPPER",
+    "municipality": "TUBA",
+    "average": 1053.97,
+    "min": 988.27,
+    "max": 1156.5,
+    "last_year": 2024,
+    "last_production": 1045.9,
+    "years_available": 10
+  },
+  "SWEET PEPPER_TUBLAY": {
+    "crop": "SWEET PEPPER",
+    "municipality": "TUBLAY",
+    "average": 1325.73,
+    "min": 766.63,
+    "max": 1874.5,
+    "last_year": 2024,
+    "last_production": 917.39,
+    "years_available": 10
+  },
+  "WHITE POTATO_ATOK": {
+    "crop": "WHITE POTATO",
+    "municipality": "ATOK",
+    "average": 20752.12,
+    "min": 12683.41,
+    "max": 27267.35,
+    "last_year": 2024,
+    "last_production": 17729.62,
+    "years_available": 10
+  },
+  "WHITE POTATO_BAKUN": {
+    "crop": "WHITE POTATO",
+    "municipality": "BAKUN",
+    "average": 30381.3,
+    "min": 9553.47,
+    "max": 36241.0,
+    "last_year": 2024,
+    "last_production": 9553.47,
+    "years_available": 10
+  },
+  "WHITE POTATO_BOKOD": {
+    "crop": "WHITE POTATO",
+    "municipality": "BOKOD",
+    "average": 2023.86,
+    "min": 1472.96,
+    "max": 2624.0,
+    "last_year": 2024,
+    "last_production": 1832.32,
+    "years_available": 10
+  },
+  "WHITE POTATO_BUGUIAS": {
+    "crop": "WHITE POTATO",
+    "municipality": "BUGUIAS",
+    "average": 63275.56,
+    "min": 51616.2,
+    "max": 67290.2,
+    "last_year": 2024,
+    "last_production": 65517.72,
+    "years_available": 10
+  },
+  "WHITE POTATO_ITOGON": {
+    "crop": "WHITE POTATO",
+    "municipality": "ITOGON",
+    "average": 1243.8,
+    "min": 1190.0,
+    "max": 1300.0,
+    "last_year": 2024,
+    "last_production": 1250.0,
+    "years_available": 10
+  },
+  "WHITE POTATO_KABAYAN": {
+    "crop": "WHITE POTATO",
+    "municipality": "KABAYAN",
+    "average": 5036.92,
+    "min": 3942.0,
+    "max": 6290.0,
+    "last_year": 2024,
+    "last_production": 3942.0,
+    "years_available": 10
+  },
+  "WHITE POTATO_KAPANGAN": {
+    "crop": "WHITE POTATO",
+    "municipality": "KAPANGAN",
+    "average": 2094.12,
+    "min": 1155.45,
+    "max": 9390.0,
+    "last_year": 2024,
+    "last_production": 9390.0,
+    "years_available": 10
+  },
+  "WHITE POTATO_KIBUNGAN": {
+    "crop": "WHITE POTATO",
+    "municipality": "KIBUNGAN",
+    "average": 33664.0,
+    "min": 11910.0,
+    "max": 51669.0,
+    "last_year": 2024,
+    "last_production": 11910.0,
+    "years_available": 9
+  },
+  "WHITE POTATO_LATRINIDAD": {
+    "crop": "WHITE POTATO",
+    "municipality": "LATRINIDAD",
+    "average": 2119.01,
+    "min": 575.29,
+    "max": 4975.83,
+    "last_year": 2024,
+    "last_production": 2376.24,
+    "years_available": 10
+  },
+  "WHITE POTATO_MANKAYAN": {
+    "crop": "WHITE POTATO",
+    "municipality": "MANKAYAN",
+    "average": 46602.38,
+    "min": 34475.0,
+    "max": 53155.0,
+    "last_year": 2024,
+    "last_production": 51251.0,
+    "years_available": 10
+  },
+  "WHITE POTATO_SABLAN": {
+    "crop": "WHITE POTATO",
+    "municipality": "SABLAN",
+    "average": 1320.0,
+    "min": 1320.0,
+    "max": 1320.0,
+    "last_year": 2024,
+    "last_production": 1320.0,
+    "years_available": 10
+  },
+  "WHITE POTATO_TUBA": {
+    "crop": "WHITE POTATO",
+    "municipality": "TUBA",
+    "average": 1126.79,
+    "min": 921.0,
+    "max": 1746.0,
+    "last_year": 2024,
+    "last_production": 975.9,
+    "years_available": 10
+  },
+  "WHITE POTATO_TUBLAY": {
+    "crop": "WHITE POTATO",
+    "municipality": "TUBLAY",
+    "average": 974.97,
+    "min": 588.46,
+    "max": 1220.0,
+    "last_year": 2024,
+    "last_production": 851.5,
+    "years_available": 10
+  }
+}
