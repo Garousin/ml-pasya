@@ -1,6 +1,6 @@
 {
   "$schema": "https://schema.railpack.com",
   "deploy": {
-    "startCommand": "python ml_api.py --port ${PORT:-5000}"
+    "startCommand": "python ml_api.py"
   }
 }

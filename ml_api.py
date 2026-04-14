@@ -27,27 +27,57 @@ MODEL_DIR = 'model_artifacts'
 
 print("Loading ML API V2 (Productivity-First)...")
 
-# Load models
-model = joblib.load(os.path.join(MODEL_DIR, 'best_model.pkl'))
-rf_model = joblib.load(os.path.join(MODEL_DIR, 'best_rf_model.pkl'))
+model = None
+rf_model = None
+metadata = {}
+feature_stats = {}
+startup_errors = []
 
-with open(os.path.join(MODEL_DIR, 'model_metadata.json'), 'r') as f:
-    metadata = json.load(f)
-with open(os.path.join(MODEL_DIR, 'feature_statistics.json'), 'r') as f:
-    feature_stats = json.load(f)
+try:
+    model = joblib.load(os.path.join(MODEL_DIR, 'best_model.pkl'))
+except Exception as e:
+    startup_errors.append(f"best_model.pkl failed to load: {e}")
+
+try:
+    rf_model = joblib.load(os.path.join(MODEL_DIR, 'best_rf_model.pkl'))
+except Exception as e:
+    startup_errors.append(f"best_rf_model.pkl failed to load: {e}")
+
+try:
+    with open(os.path.join(MODEL_DIR, 'model_metadata.json'), 'r') as f:
+        metadata = json.load(f)
+except Exception as e:
+    startup_errors.append(f"model_metadata.json failed to load: {e}")
+
+try:
+    with open(os.path.join(MODEL_DIR, 'feature_statistics.json'), 'r') as f:
+        feature_stats = json.load(f)
+except Exception as e:
+    startup_errors.append(f"feature_statistics.json failed to load: {e}")
 
 # Check if using productivity-first model
 PRODUCTIVITY_FIRST = metadata.get('prediction_target') == 'PRODUCTIVITY'
 print(f"[OK] Model type: {metadata.get('model_type', 'Unknown')}")
 print(f"[OK] Prediction target: {'PRODUCTIVITY' if PRODUCTIVITY_FIRST else 'PRODUCTION'}")
-print(f"[OK] R² Score: {metadata.get('test_r2_score', 'N/A'):.4f}")
 print(f"[OK] Database: {'Connected' if DB_AVAILABLE else 'Not available (using CSV)'}")
 
+if 'test_r2_score' in metadata:
+    print(f"[OK] R² Score: {metadata.get('test_r2_score', 0):.4f}")
+
+if startup_errors:
+    print("[WARNING] Startup completed with missing artifacts:")
+    for err in startup_errors:
+        print(f"  - {err}")
+
 # Feature engineering maps
-season_map = metadata['feature_engineering']['season_map']
-month_to_num = metadata['feature_engineering']['month_to_num']
-year_min = metadata['feature_engineering']['year_min']
-year_max = metadata['feature_engineering']['year_max']
+feature_engineering = metadata.get('feature_engineering', {})
+season_map = feature_engineering.get('season_map', {})
+month_to_num = feature_engineering.get('month_to_num', {
+    'JAN': 1, 'FEB': 2, 'MAR': 3, 'APR': 4, 'MAY': 5, 'JUN': 6,
+    'JUL': 7, 'AUG': 8, 'SEP': 9, 'OCT': 10, 'NOV': 11, 'DEC': 12
+})
+year_min = feature_engineering.get('year_min', 2000)
+year_max = feature_engineering.get('year_max', datetime.now().year)
 
 # Month name to abbreviation mapping
 month_full_to_abbr = {
@@ -247,6 +277,10 @@ def get_prediction_with_confidence(input_df, area):
         return None
 
 
+def model_is_ready():
+    return model is not None and rf_model is not None
+
+
 @app.route('/')
 def home():
     return jsonify({
@@ -272,6 +306,13 @@ def home():
 def predict():
     """Make a single prediction - returns both productivity and production"""
     try:
+        if not model_is_ready():
+            return jsonify({
+                'success': False,
+                'error': 'Model artifacts not loaded. Check deploy logs for startup warnings.',
+                'startup_errors': startup_errors
+            }), 503
+
         data = request.get_json()
         
         required = ['municipality', 'farm_type', 'year', 'month', 'crop', 'area_planted']
@@ -365,6 +406,13 @@ def predict():
 def batch_predict():
     """Batch predictions"""
     try:
+        if not model_is_ready():
+            return jsonify({
+                'success': False,
+                'error': 'Model artifacts not loaded. Check deploy logs for startup warnings.',
+                'startup_errors': startup_errors
+            }), 503
+
         data = request.get_json()
         
         if 'predictions' not in data:
@@ -482,11 +530,14 @@ def get_crop_productivity(crop):
 
 @app.route('/health', methods=['GET'])
 def health():
+    status = 'healthy' if model_is_ready() else 'degraded'
     return jsonify({
-        'status': 'healthy',
+        'status': status,
         'model_loaded': model is not None,
+        'rf_model_loaded': rf_model is not None,
         'database_connected': DB_AVAILABLE,
-        'prediction_method': 'PRODUCTIVITY_FIRST' if PRODUCTIVITY_FIRST else 'PRODUCTION'
+        'prediction_method': 'PRODUCTIVITY_FIRST' if PRODUCTIVITY_FIRST else 'PRODUCTION',
+        'startup_errors': startup_errors
     })
 
 
@@ -609,8 +660,14 @@ def get_data_summary():
 
 if __name__ == '__main__':
     import argparse
+    port_from_env = os.environ.get('PORT', '5000')
+    try:
+        default_port = int(port_from_env)
+    except ValueError:
+        default_port = 5000
+
     parser = argparse.ArgumentParser()
-    parser.add_argument('--port', type=int, default=5000)
+    parser.add_argument('--port', type=int, default=default_port)
     args = parser.parse_args()
     
     print("\n" + "="*70)
