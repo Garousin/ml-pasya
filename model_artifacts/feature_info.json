@@ -18,8 +18,9 @@
     "CROP_SEASON_PRODUCTIVITY",
     "PRODUCTIVITY_CV",
     "LOG_AREA",
-    "AREA_RATIO"
+    "AREA_RATIO",
+    "YEAR_TREND"
   ],
   "prediction_target": "PRODUCTIVITY",
-  "usage_note": "Model predicts PRODUCTIVITY. Multiply by area for PRODUCTION."
+  "usage_note": "Model predicts PRODUCTIVITY (MT/HA). Multiply by area for PRODUCTION."
 }

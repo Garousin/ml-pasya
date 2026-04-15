@@ -251,6 +251,10 @@ def calculate_features_v2(input_df):
         area_median = feature_stats.get('crop_area_median', feature_stats.get('crop_area_avg', {})).get(crop, 5)
         input_df.loc[idx, 'LOG_AREA'] = np.log1p(area)
         input_df.loc[idx, 'AREA_RATIO'] = area / (area_median + 0.01)
+        
+        # Year trend feature
+        year_trend = feature_stats.get('year_trend', feature_stats.get('prod_trends', {})).get(key, 0.0)
+        input_df.loc[idx, 'YEAR_TREND'] = year_trend
     
     return input_df
 

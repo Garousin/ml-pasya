@@ -1,15 +1,19 @@
 {
-  "model_type": "Extra Trees",
+  "model_type": "Random Forest (tuned)",
   "prediction_target": "PRODUCTIVITY",
   "prediction_method": "PRODUCTIVITY_FIRST",
   "usage": "production = model.predict(X) * area",
-  "sklearn_version": "1.3.2",
-  "training_date": "2026-02-25T20:03:21.624710",
-  "test_r2_score": 0.8256824881616662,
-  "test_mae": 0.7906980453957331,
-  "test_mape": 156.95420860906782,
-  "n_samples_train": 24647,
-  "n_samples_test": 6162,
+  "sklearn_version": "1.8.0",
+  "training_date": "2026-04-15T20:40:46.112051",
+  "test_r2_score": 0.8166807652617496,
+  "test_mae": 0.8615871346639334,
+  "test_mape": 147.80657771550682,
+  "test_rmse": 1.7086747620223122,
+  "cv_r2_mean": 0.7870245176735265,
+  "cv_r2_std": 0.009965118681727123,
+  "n_samples_train": 24665,
+  "n_samples_test": 6167,
+  "data_source": "database",
   "categorical_features": [
     "MUNICIPALITY",
     "FARM TYPE",
@@ -29,7 +33,16 @@
     "CROP_SEASON_PRODUCTIVITY",
     "PRODUCTIVITY_CV",
     "LOG_AREA",
-    "AREA_RATIO"
+    "AREA_RATIO",
+    "YEAR_TREND"
+  ],
+  "optimizations": [
+    "leak-free aggregates (train-only)",
+    "IQR outlier removal per crop",
+    "year trend feature",
+    "tuned hyperparameters",
+    "cross-validated model selection",
+    "safe MAPE (min_val=1.0)"
   ],
   "feature_engineering": {
     "season_map": {
@@ -62,5 +75,35 @@
     },
     "year_min": 2015,
     "year_max": 2024
+  },
+  "all_models": {
+    "Extra Trees (tuned)": {
+      "r2": 0.8113107204540986,
+      "mae": 0.8295151820930124,
+      "rmse": 1.733520572701561,
+      "mape_production": 145.44319373242476,
+      "cv_r2_mean": 0.7794084289943995
+    },
+    "Random Forest (tuned)": {
+      "r2": 0.8166807652617496,
+      "mae": 0.8615871346639334,
+      "rmse": 1.7086747620223122,
+      "mape_production": 147.80657771550682,
+      "cv_r2_mean": 0.7870245176735265
+    },
+    "Gradient Boosting": {
+      "r2": 0.7899519917522578,
+      "mae": 1.1264158997522828,
+      "rmse": 1.8290040653851947,
+      "mape_production": 147.70903739794306,
+      "cv_r2_mean": 0.7792098668079651
+    },
+    "HistGradientBoosting": {
+      "r2": 0.7854884038479819,
+      "mae": 1.1317863889937243,
+      "rmse": 1.848335369223021,
+      "mape_production": 148.5944862245456,
+      "cv_r2_mean": 0.7772284709010472
+    }
   }
 }
