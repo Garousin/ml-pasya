@@ -11,6 +11,7 @@ Key improvements over retrain_model.py:
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.base import clone
 from sklearn.ensemble import (
     RandomForestRegressor, ExtraTreesRegressor,
     GradientBoostingRegressor, HistGradientBoostingRegressor
@@ -128,6 +129,26 @@ month_to_num = {
     'JUL': 7, 'AUG': 8, 'SEP': 9, 'OCT': 10, 'NOV': 11, 'DEC': 12
 }
 
+AREA_CONTEXT_SMALL_RATIO = 0.75
+AREA_CONTEXT_LARGE_RATIO = 1.25
+OFFICIAL_ML_TASK = 'PRODUCTIVITY_FIRST_PLANNING_ESTIMATE'
+OFFICIAL_TRAINING_PIPELINE = 'retrain_model_optimized.py'
+
+
+def derive_area_context(area, reference_area):
+    """Bucket planted area as weak context rather than a direct yield driver."""
+    if pd.isna(area) or area <= 0:
+        return 'UNKNOWN'
+
+    baseline = max(reference_area, 0.01)
+    ratio = area / baseline
+
+    if ratio < AREA_CONTEXT_SMALL_RATIO:
+        return 'SMALL'
+    if ratio > AREA_CONTEXT_LARGE_RATIO:
+        return 'LARGE'
+    return 'TYPICAL'
+
 df['SEASON'] = df['MONTH'].map(season_map)
 df['MONTH_NUM'] = df['MONTH'].map(month_to_num)
 df['MONTH_SIN'] = np.sin(2 * np.pi * df['MONTH_NUM'] / 12)
@@ -136,7 +157,6 @@ df['MONTH_COS'] = np.cos(2 * np.pi * df['MONTH_NUM'] / 12)
 year_min = int(df['YEAR'].min())
 year_max = int(df['YEAR'].max())
 df['YEAR_NORMALIZED'] = (df['YEAR'] - year_min) / (year_max - year_min + 1)
-df['LOG_AREA'] = np.log1p(df['AREA_PLANTED'])
 
 # Split FIRST
 train_df, test_df = train_test_split(df, test_size=0.2, random_state=42)
@@ -147,28 +167,6 @@ print(f"  Train: {len(train_df)}, Test: {len(test_df)}")
 # ============================================================================
 print("\n[4/8] Computing leak-free aggregate features...")
 
-overall_productivity = float(train_df['TARGET_PRODUCTIVITY'].median())
-
-# Aggregate dictionaries (train only)
-crop_productivity = train_df.groupby('CROP')['TARGET_PRODUCTIVITY'].median().to_dict()
-crop_productivity_mean = train_df.groupby('CROP')['TARGET_PRODUCTIVITY'].mean().to_dict()
-muni_productivity = train_df.groupby('MUNICIPALITY')['TARGET_PRODUCTIVITY'].median().to_dict()
-
-crop_muni_agg = train_df.groupby(['CROP', 'MUNICIPALITY'])['TARGET_PRODUCTIVITY'].agg(['median', 'mean', 'std', 'count'])
-crop_muni_prod_dict = {f"{i[0]}_{i[1]}": r['median'] for i, r in crop_muni_agg.iterrows()}
-crop_muni_prod_mean_dict = {f"{i[0]}_{i[1]}": r['mean'] for i, r in crop_muni_agg.iterrows()}
-crop_muni_prod_std_dict = {f"{i[0]}_{i[1]}": (r['std'] if not pd.isna(r['std']) else 0) for i, r in crop_muni_agg.iterrows()}
-
-crop_muni_month_prod = train_df.groupby(['CROP', 'MUNICIPALITY', 'MONTH'])['TARGET_PRODUCTIVITY'].median()
-crop_muni_month_dict = {f"{c}_{m}_{mo}": v for (c, m, mo), v in crop_muni_month_prod.items()}
-
-crop_season_prod = train_df.groupby(['CROP', 'SEASON'])['TARGET_PRODUCTIVITY'].median()
-crop_season_dict = {f"{c}_{s}": v for (c, s), v in crop_season_prod.items()}
-
-crop_area_avg = train_df.groupby('CROP')['AREA_PLANTED'].mean().to_dict()
-crop_area_median = train_df.groupby('CROP')['AREA_PLANTED'].median().to_dict()
-
-# Year trend per crop-municipality (train only)
 def _calc_trend(group):
     if len(group) > 2:
         years = group['YEAR'].values.astype(float)
@@ -177,15 +175,63 @@ def _calc_trend(group):
             return np.polyfit(years, prod, 1)[0]
     return 0.0
 
-year_trends = train_df.groupby(['CROP', 'MUNICIPALITY']).apply(_calc_trend)
-year_trend_dict = {f"{i[0]}_{i[1]}": float(v) for i, v in year_trends.items()}
 
-print(f"  Computed {len(crop_muni_prod_dict)} crop-municipality aggregates (train only)")
+def build_feature_context(train_frame):
+    """Compute leak-free feature aggregates from a training frame only."""
+    overall_productivity = float(train_frame['TARGET_PRODUCTIVITY'].median())
+
+    crop_productivity = train_frame.groupby('CROP')['TARGET_PRODUCTIVITY'].median().to_dict()
+    crop_productivity_mean = train_frame.groupby('CROP')['TARGET_PRODUCTIVITY'].mean().to_dict()
+    muni_productivity = train_frame.groupby('MUNICIPALITY')['TARGET_PRODUCTIVITY'].median().to_dict()
+
+    crop_muni_agg = train_frame.groupby(['CROP', 'MUNICIPALITY'])['TARGET_PRODUCTIVITY'].agg(['median', 'mean', 'std', 'count'])
+    crop_muni_prod_dict = {f"{i[0]}_{i[1]}": r['median'] for i, r in crop_muni_agg.iterrows()}
+    crop_muni_prod_mean_dict = {f"{i[0]}_{i[1]}": r['mean'] for i, r in crop_muni_agg.iterrows()}
+    crop_muni_prod_std_dict = {f"{i[0]}_{i[1]}": (r['std'] if not pd.isna(r['std']) else 0) for i, r in crop_muni_agg.iterrows()}
+
+    crop_muni_month_prod = train_frame.groupby(['CROP', 'MUNICIPALITY', 'MONTH'])['TARGET_PRODUCTIVITY'].median()
+    crop_muni_month_dict = {f"{c}_{m}_{mo}": v for (c, m, mo), v in crop_muni_month_prod.items()}
+
+    crop_season_prod = train_frame.groupby(['CROP', 'SEASON'])['TARGET_PRODUCTIVITY'].median()
+    crop_season_dict = {f"{c}_{s}": v for (c, s), v in crop_season_prod.items()}
+
+    crop_area_avg = train_frame.groupby('CROP')['AREA_PLANTED'].mean().to_dict()
+    crop_area_median = train_frame.groupby('CROP')['AREA_PLANTED'].median().to_dict()
+
+    year_trends = train_frame.groupby(['CROP', 'MUNICIPALITY']).apply(_calc_trend)
+    year_trend_dict = {f"{i[0]}_{i[1]}": float(v) for i, v in year_trends.items()}
+
+    return {
+        'overall_productivity': overall_productivity,
+        'crop_productivity': crop_productivity,
+        'crop_productivity_mean': crop_productivity_mean,
+        'muni_productivity': muni_productivity,
+        'crop_muni_productivity': crop_muni_prod_dict,
+        'crop_muni_productivity_mean': crop_muni_prod_mean_dict,
+        'crop_muni_productivity_std': crop_muni_prod_std_dict,
+        'crop_muni_month_productivity': crop_muni_month_dict,
+        'crop_season_productivity': crop_season_dict,
+        'crop_area_avg': crop_area_avg,
+        'crop_area_median': crop_area_median,
+        'year_trend': year_trend_dict,
+    }
 
 
-def apply_aggregate_features(frame):
-    """Apply aggregate features to any dataframe (works for train, test, or inference)."""
+def apply_feature_context(frame, feature_context):
+    """Apply feature aggregates to any dataframe using an explicit context."""
     out = frame.copy()
+
+    overall_productivity = feature_context['overall_productivity']
+    crop_productivity = feature_context['crop_productivity']
+    crop_productivity_mean = feature_context['crop_productivity_mean']
+    muni_productivity = feature_context['muni_productivity']
+    crop_muni_prod_dict = feature_context['crop_muni_productivity']
+    crop_muni_prod_mean_dict = feature_context['crop_muni_productivity_mean']
+    crop_muni_prod_std_dict = feature_context['crop_muni_productivity_std']
+    crop_muni_month_dict = feature_context['crop_muni_month_productivity']
+    crop_season_dict = feature_context['crop_season_productivity']
+    crop_area_median = feature_context['crop_area_median']
+    year_trend_dict = feature_context['year_trend']
 
     out['CROP_PRODUCTIVITY'] = out['CROP'].map(crop_productivity).fillna(overall_productivity)
     out['MUNI_PRODUCTIVITY'] = out['MUNICIPALITY'].map(muni_productivity).fillna(overall_productivity)
@@ -211,8 +257,13 @@ def apply_aggregate_features(frame):
 
     out['PRODUCTIVITY_CV'] = out['PRODUCTIVITY_STD'] / (out['CROP_MUNI_PRODUCTIVITY'] + 0.01)
 
-    out['AREA_RATIO'] = out.apply(
-        lambda r: r['AREA_PLANTED'] / (crop_area_median.get(r['CROP'], 5) + 0.01), axis=1)
+    out['AREA_CONTEXT'] = out.apply(
+        lambda r: derive_area_context(
+            r['AREA_PLANTED'],
+            crop_area_median.get(r['CROP'], 5)
+        ),
+        axis=1
+    )
 
     out['YEAR_TREND'] = out.apply(
         lambda r: year_trend_dict.get(f"{r['CROP']}_{r['MUNICIPALITY']}", 0.0), axis=1)
@@ -220,21 +271,46 @@ def apply_aggregate_features(frame):
     return out
 
 
-train_df = apply_aggregate_features(train_df)
-test_df = apply_aggregate_features(test_df)
+feature_context = build_feature_context(train_df)
+overall_productivity = feature_context['overall_productivity']
+crop_productivity = feature_context['crop_productivity']
+crop_productivity_mean = feature_context['crop_productivity_mean']
+muni_productivity = feature_context['muni_productivity']
+crop_muni_prod_dict = feature_context['crop_muni_productivity']
+crop_muni_prod_mean_dict = feature_context['crop_muni_productivity_mean']
+crop_muni_prod_std_dict = feature_context['crop_muni_productivity_std']
+crop_muni_month_dict = feature_context['crop_muni_month_productivity']
+crop_season_dict = feature_context['crop_season_productivity']
+crop_area_avg = feature_context['crop_area_avg']
+crop_area_median = feature_context['crop_area_median']
+year_trend_dict = feature_context['year_trend']
+
+print(f"  Computed {len(crop_muni_prod_dict)} crop-municipality aggregates (train only)")
+
+train_df = apply_feature_context(train_df, feature_context)
+test_df = apply_feature_context(test_df, feature_context)
+
+farm_size_thresholds = {
+    'small': float(train_df['AREA_PLANTED'].quantile(0.33)),
+    'large': float(train_df['AREA_PLANTED'].quantile(0.66)),
+}
+production_scale_thresholds = {
+    'small': float(train_df['PRODUCTION'].quantile(0.33)),
+    'large': float(train_df['PRODUCTION'].quantile(0.66)),
+}
 
 # ============================================================================
 # STEP 5: Prepare features
 # ============================================================================
 print("\n[5/8] Preparing features...")
 
-categorical_features = ['MUNICIPALITY', 'FARM TYPE', 'MONTH', 'CROP', 'SEASON']
+categorical_features = ['MUNICIPALITY', 'FARM TYPE', 'MONTH', 'CROP', 'SEASON', 'AREA_CONTEXT']
 numerical_features = [
     'YEAR_NORMALIZED', 'MONTH_SIN', 'MONTH_COS',
     'CROP_PRODUCTIVITY', 'MUNI_PRODUCTIVITY',
     'CROP_MUNI_PRODUCTIVITY', 'CROP_MUNI_PRODUCTIVITY_MEAN',
     'CROP_MUNI_MONTH_PRODUCTIVITY', 'CROP_SEASON_PRODUCTIVITY',
-    'PRODUCTIVITY_CV', 'LOG_AREA', 'AREA_RATIO', 'YEAR_TREND'
+    'PRODUCTIVITY_CV', 'YEAR_TREND'
 ]
 
 for col in numerical_features:
@@ -299,6 +375,152 @@ def safe_mape(y_true, y_pred, min_val=1.0):
     if mask.sum() == 0:
         return float('nan')
     return np.mean(np.abs((y_true[mask] - y_pred[mask]) / y_true[mask])) * 100
+
+
+def assign_bucket(value, small_threshold, large_threshold):
+    if value <= small_threshold:
+        return 'SMALL'
+    if value >= large_threshold:
+        return 'LARGE'
+    return 'MEDIUM'
+
+
+def build_evaluation_frame(
+    base_frame,
+    actual_productivity,
+    predicted_productivity,
+    actual_production,
+    predicted_production,
+    farm_size_thresholds,
+    production_scale_thresholds,
+):
+    eval_df = base_frame[['CROP', 'MUNICIPALITY', 'YEAR', 'AREA_PLANTED', 'AREA_CONTEXT']].copy()
+    eval_df['ACTUAL_PRODUCTIVITY'] = np.asarray(actual_productivity)
+    eval_df['PREDICTED_PRODUCTIVITY'] = np.asarray(predicted_productivity)
+    eval_df['ACTUAL_PRODUCTION'] = np.asarray(actual_production)
+    eval_df['PREDICTED_PRODUCTION'] = np.asarray(predicted_production)
+    eval_df['FARM_SIZE_BUCKET'] = eval_df['AREA_PLANTED'].apply(
+        lambda value: assign_bucket(value, farm_size_thresholds['small'], farm_size_thresholds['large'])
+    )
+    eval_df['PRODUCTION_SCALE_BUCKET'] = eval_df['ACTUAL_PRODUCTION'].apply(
+        lambda value: assign_bucket(value, production_scale_thresholds['small'], production_scale_thresholds['large'])
+    )
+    eval_df['YEAR_BUCKET'] = eval_df['YEAR'].astype(int).astype(str)
+    return eval_df
+
+
+def summarize_metrics(eval_df):
+    return {
+        'count': int(len(eval_df)),
+        'productivity_r2': float(r2_score(eval_df['ACTUAL_PRODUCTIVITY'], eval_df['PREDICTED_PRODUCTIVITY'])) if len(eval_df) > 1 and eval_df['ACTUAL_PRODUCTIVITY'].nunique() > 1 else None,
+        'productivity_mae': float(mean_absolute_error(eval_df['ACTUAL_PRODUCTIVITY'], eval_df['PREDICTED_PRODUCTIVITY'])),
+        'productivity_rmse': float(np.sqrt(mean_squared_error(eval_df['ACTUAL_PRODUCTIVITY'], eval_df['PREDICTED_PRODUCTIVITY']))),
+        'production_mae': float(mean_absolute_error(eval_df['ACTUAL_PRODUCTION'], eval_df['PREDICTED_PRODUCTION'])),
+        'production_mape': float(safe_mape(eval_df['ACTUAL_PRODUCTION'].values, eval_df['PREDICTED_PRODUCTION'].values, min_val=1.0)),
+        'actual_productivity_mean': float(eval_df['ACTUAL_PRODUCTIVITY'].mean()),
+        'predicted_productivity_mean': float(eval_df['PREDICTED_PRODUCTIVITY'].mean()),
+    }
+
+
+def summarize_by_group(eval_df, group_col):
+    summary = {}
+    for group_name, group in eval_df.groupby(group_col):
+        summary[str(group_name)] = summarize_metrics(group)
+    return summary
+
+
+def run_walk_forward_validation(
+    full_df,
+    categorical_features,
+    numerical_features,
+    model_template,
+    preprocessor,
+    farm_size_thresholds,
+    production_scale_thresholds,
+    minimum_train_years=5,
+):
+    unique_years = sorted(full_df['YEAR'].astype(int).unique())
+    evaluation_years = unique_years[minimum_train_years:]
+    fold_frames = []
+    fold_metrics = {}
+
+    print("\nWALK-FORWARD VALIDATION")
+    print("-" * 70)
+    for test_year in evaluation_years:
+        train_fold_raw = full_df[full_df['YEAR'] < test_year].copy()
+        test_fold_raw = full_df[full_df['YEAR'] == test_year].copy()
+
+        if test_fold_raw.empty or train_fold_raw['YEAR'].nunique() < minimum_train_years:
+            continue
+
+        fold_context = build_feature_context(train_fold_raw)
+        train_fold = apply_feature_context(train_fold_raw, fold_context)
+        test_fold = apply_feature_context(test_fold_raw, fold_context)
+
+        for col in numerical_features:
+            med = train_fold[col].median()
+            train_fold[col] = train_fold[col].fillna(med)
+            test_fold[col] = test_fold[col].fillna(med)
+
+        X_train_fold = train_fold[categorical_features + numerical_features].copy()
+        y_train_fold = train_fold['TARGET_PRODUCTIVITY'].values
+        X_test_fold = test_fold[categorical_features + numerical_features].copy()
+        y_test_fold = test_fold['TARGET_PRODUCTIVITY'].values
+        production_actual_fold = test_fold['PRODUCTION'].values
+        area_fold = test_fold['AREA_PLANTED'].values
+
+        fold_pipeline = Pipeline([
+            ('preprocessor', clone(preprocessor)),
+            ('model', clone(model_template)),
+        ])
+        fold_pipeline.fit(X_train_fold, y_train_fold)
+
+        y_pred_prod_fold = np.clip(fold_pipeline.predict(X_test_fold), 0.1, 50)
+        y_pred_production_fold = y_pred_prod_fold * area_fold
+
+        fold_eval_df = build_evaluation_frame(
+            test_fold,
+            y_test_fold,
+            y_pred_prod_fold,
+            production_actual_fold,
+            y_pred_production_fold,
+            farm_size_thresholds,
+            production_scale_thresholds,
+        )
+
+        fold_metrics[str(test_year)] = {
+            'train_years': {
+                'min': int(train_fold_raw['YEAR'].min()),
+                'max': int(train_fold_raw['YEAR'].max()),
+            },
+            **summarize_metrics(fold_eval_df),
+        }
+        fold_frames.append(fold_eval_df)
+        print(
+            f"  Test year {test_year}: count={len(fold_eval_df):>5} "
+            f"Prod MAE={fold_metrics[str(test_year)]['production_mae']:.1f} "
+            f"Prod MAPE={fold_metrics[str(test_year)]['production_mape']:.1f}%"
+        )
+
+    if not fold_frames:
+        return {
+            'validation_type': 'walk_forward_next_year',
+            'enabled': False,
+            'error': 'Not enough yearly folds for walk-forward validation',
+        }
+
+    combined_eval_df = pd.concat(fold_frames, ignore_index=True)
+    return {
+        'validation_type': 'walk_forward_next_year',
+        'enabled': True,
+        'years_evaluated': list(fold_metrics.keys()),
+        'overall': summarize_metrics(combined_eval_df),
+        'by_year': fold_metrics,
+        'by_crop': summarize_by_group(combined_eval_df, 'CROP'),
+        'by_municipality': summarize_by_group(combined_eval_df, 'MUNICIPALITY'),
+        'by_farm_size': summarize_by_group(combined_eval_df, 'FARM_SIZE_BUCKET'),
+        'by_production_scale': summarize_by_group(combined_eval_df, 'PRODUCTION_SCALE_BUCKET'),
+    }
 
 
 for name, regressor in models.items():
@@ -368,6 +590,72 @@ for name, r in sorted(results.items(), key=lambda x: -x[1]['r2']):
 print(f"\n  WINNER: {best_name}")
 print(f"  R²: {results[best_name]['r2']:.4f}  |  MAE: {results[best_name]['mae']:.2f} MT/HA  |  Production MAPE: {results[best_name]['mape_production']:.1f}%")
 
+best_pred_prod = np.clip(best_model_pipeline.predict(X_test), 0.1, 50)
+best_pred_production = best_pred_prod * area_test
+test_eval_df = build_evaluation_frame(
+    test_df,
+    y_test,
+    best_pred_prod,
+    production_actual,
+    best_pred_production,
+    farm_size_thresholds,
+    production_scale_thresholds,
+)
+
+area_context_metrics = {}
+print("\nAREA CONTEXT PERFORMANCE")
+print("-" * 70)
+for area_context, group in test_eval_df.groupby('AREA_CONTEXT'):
+    mae_context = mean_absolute_error(group['ACTUAL_PRODUCTIVITY'], group['PREDICTED_PRODUCTIVITY'])
+    area_context_metrics[area_context] = {
+        'count': int(len(group)),
+        'mae': float(mae_context),
+        'actual_mean': float(group['ACTUAL_PRODUCTIVITY'].mean()),
+        'predicted_mean': float(group['PREDICTED_PRODUCTIVITY'].mean())
+    }
+    print(
+        f"  {area_context:<8} count={len(group):>5}  "
+        f"MAE={mae_context:>6.2f}  "
+        f"Actual mean={group['ACTUAL_PRODUCTIVITY'].mean():>6.2f}  "
+        f"Pred mean={group['PREDICTED_PRODUCTIVITY'].mean():>6.2f}"
+    )
+
+evaluation_report = {
+    'official_ml_task': OFFICIAL_ML_TASK,
+    'training_pipeline': OFFICIAL_TRAINING_PIPELINE,
+    'planning_inputs': [
+        'MUNICIPALITY',
+        'FARM TYPE',
+        'YEAR',
+        'MONTH',
+        'CROP',
+        'AREA_PLANTED',
+    ],
+    'random_split': {
+        'overall': summarize_metrics(test_eval_df),
+        'by_area_context': area_context_metrics,
+        'by_farm_size': summarize_by_group(test_eval_df, 'FARM_SIZE_BUCKET'),
+        'by_crop': summarize_by_group(test_eval_df, 'CROP'),
+        'by_municipality': summarize_by_group(test_eval_df, 'MUNICIPALITY'),
+        'by_production_scale': summarize_by_group(test_eval_df, 'PRODUCTION_SCALE_BUCKET'),
+        'by_year': summarize_by_group(test_eval_df, 'YEAR_BUCKET'),
+    },
+    'thresholds': {
+        'farm_size_hectares': farm_size_thresholds,
+        'production_scale_mt': production_scale_thresholds,
+    },
+}
+
+evaluation_report['walk_forward'] = run_walk_forward_validation(
+    df,
+    categorical_features,
+    numerical_features,
+    models[best_name],
+    preprocessor,
+    farm_size_thresholds,
+    production_scale_thresholds,
+)
+
 # ============================================================================
 # STEP 8: Save models & artifacts
 # ============================================================================
@@ -379,9 +667,14 @@ joblib.dump(best_rf_pipeline, 'model_artifacts/best_rf_model.pkl')
 
 metadata = {
     'model_type': best_name,
+    'official_ml_task': OFFICIAL_ML_TASK,
     'prediction_target': 'PRODUCTIVITY',
     'prediction_method': 'PRODUCTIVITY_FIRST',
     'usage': 'production = model.predict(X) * area',
+    'area_handling': 'Planted area is used only as a weak contextual bucket for productivity; production is calculated as predicted productivity multiplied by planted area.',
+    'training_pipeline': OFFICIAL_TRAINING_PIPELINE,
+    'deployment_source_policy': 'scripted_training_only',
+    'planning_inputs': ['MUNICIPALITY', 'FARM TYPE', 'YEAR', 'MONTH', 'CROP', 'AREA_PLANTED'],
     'sklearn_version': sklearn.__version__,
     'training_date': pd.Timestamp.now().isoformat(),
     'test_r2_score': results[best_name]['r2'],
@@ -399,6 +692,7 @@ metadata = {
         'leak-free aggregates (train-only)',
         'IQR outlier removal per crop',
         'year trend feature',
+        'planted area treated as contextual bucket instead of direct productivity driver',
         'tuned hyperparameters',
         'cross-validated model selection',
         'safe MAPE (min_val=1.0)',
@@ -407,8 +701,15 @@ metadata = {
         'season_map': season_map,
         'month_to_num': month_to_num,
         'year_min': year_min,
-        'year_max': year_max
+        'year_max': year_max,
+        'area_context': {
+            'small_ratio': AREA_CONTEXT_SMALL_RATIO,
+            'large_ratio': AREA_CONTEXT_LARGE_RATIO,
+            'reference': 'crop_area_median'
+        }
     },
+    'area_context_performance': area_context_metrics,
+    'evaluation_artifact': 'model_artifacts/evaluation_report.json',
     'all_models': {
         name: {
             'r2': r['r2'],
@@ -424,6 +725,9 @@ metadata = {
 with open('model_artifacts/model_metadata.json', 'w') as f:
     json.dump(metadata, f, indent=2)
 
+with open('model_artifacts/evaluation_report.json', 'w') as f:
+    json.dump(evaluation_report, f, indent=2)
+
 # Feature statistics (for API inference)
 feature_stats = {
     'overall_productivity': overall_productivity,
@@ -436,6 +740,11 @@ feature_stats = {
     'crop_muni_productivity_std': {k: float(v) for k, v in crop_muni_prod_std_dict.items()},
     'crop_area_avg': {k: float(v) for k, v in crop_area_avg.items()},
     'crop_area_median': {k: float(v) for k, v in crop_area_median.items()},
+    'area_context_thresholds': {
+        'small_ratio': AREA_CONTEXT_SMALL_RATIO,
+        'large_ratio': AREA_CONTEXT_LARGE_RATIO,
+        'reference': 'crop_area_median'
+    },
     'year_trend': {k: float(v) for k, v in year_trend_dict.items()},
     # Legacy compatibility
     'overall_mean': float(train_df['PRODUCTION'].mean()),
@@ -453,8 +762,9 @@ with open('model_artifacts/feature_statistics.json', 'w') as f:
 feature_info = {
     'categorical_features': categorical_features,
     'numerical_features': numerical_features,
+    'official_ml_task': OFFICIAL_ML_TASK,
     'prediction_target': 'PRODUCTIVITY',
-    'usage_note': 'Model predicts PRODUCTIVITY (MT/HA). Multiply by area for PRODUCTION.'
+    'usage_note': 'Model predicts PRODUCTIVITY (MT/HA). Planted area is weak context only; multiply predicted productivity by area for PRODUCTION.'
 }
 
 with open('model_artifacts/feature_info.json', 'w') as f:
@@ -480,12 +790,12 @@ def predict_production(crop, municipality, area, month='JAN', year=2025, farm_ty
     c_season = crop_season_dict.get(f"{crop}_{season}", crop_prod)
     cm_std = crop_muni_prod_std_dict.get(f"{crop}_{municipality}", 0)
     prod_cv = cm_std / (cm_prod + 0.01)
-    area_med = crop_area_median.get(crop, 5)
+    area_context = derive_area_context(area, crop_area_median.get(crop, 5))
     y_trend = year_trend_dict.get(f"{crop}_{municipality}", 0.0)
 
     test_input = pd.DataFrame({
         'MUNICIPALITY': [municipality], 'FARM TYPE': [farm_type],
-        'MONTH': [month], 'CROP': [crop], 'SEASON': [season],
+        'MONTH': [month], 'CROP': [crop], 'SEASON': [season], 'AREA_CONTEXT': [area_context],
         'YEAR_NORMALIZED': [(year - year_min) / (year_max - year_min + 1)],
         'MONTH_SIN': [np.sin(2 * np.pi * month_num / 12)],
         'MONTH_COS': [np.cos(2 * np.pi * month_num / 12)],
@@ -496,8 +806,6 @@ def predict_production(crop, municipality, area, month='JAN', year=2025, farm_ty
         'CROP_MUNI_MONTH_PRODUCTIVITY': [cm_month],
         'CROP_SEASON_PRODUCTIVITY': [c_season],
         'PRODUCTIVITY_CV': [prod_cv],
-        'LOG_AREA': [np.log1p(area)],
-        'AREA_RATIO': [area / (area_med + 0.01)],
         'YEAR_TREND': [y_trend],
     })
     p = best_model_pipeline.predict(test_input)[0]
@@ -505,12 +813,17 @@ def predict_production(crop, municipality, area, month='JAN', year=2025, farm_ty
     return p, p * area
 
 
-print("\n  Linear Scaling Check (CABBAGE, ATOK):")
-_, prod_1 = predict_production('CABBAGE', 'ATOK', 1)
-_, prod_10 = predict_production('CABBAGE', 'ATOK', 10)
-_, prod_100 = predict_production('CABBAGE', 'ATOK', 100)
-print(f"    1 ha -> 10 ha:  {prod_10/prod_1:.2f}x  (ideal: 10x)")
-print(f"    1 ha -> 100 ha: {prod_100/prod_1:.2f}x  (ideal: 100x)")
+print("\n  Area Sensitivity Check (CABBAGE, ATOK):")
+area_sensitivity = []
+for area in [1, 5, 10, 50, 100]:
+    pred_productivity, pred_production = predict_production('CABBAGE', 'ATOK', area)
+    area_sensitivity.append((area, pred_productivity, pred_production))
+    print(f"    {area:>3} ha -> {pred_productivity:>6.2f} MT/HA | {pred_production:>8.1f} MT")
+
+baseline_productivity = area_sensitivity[0][1]
+for area, pred_productivity, _ in area_sensitivity[1:]:
+    productivity_delta_pct = ((pred_productivity - baseline_productivity) / baseline_productivity) * 100 if baseline_productivity else 0
+    print(f"      Productivity drift vs 1 ha at {area:>3} ha: {productivity_delta_pct:>6.2f}%")
 
 print("\n  Multi-Crop Test (10 ha, ATOK, JAN 2025):")
 hist_prod = crop_muni_prod_dict

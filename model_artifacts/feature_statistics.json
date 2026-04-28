@@ -2031,6 +2031,11 @@
     "SWEET PEPPER": 5.0,
     "WHITE POTATO": 5.0
   },
+  "area_context_thresholds": {
+    "small_ratio": 0.75,
+    "large_ratio": 1.25,
+    "reference": "crop_area_median"
+  },
   "year_trend": {
     "BROCCOLI_ATOK": -0.17841290023072362,
     "BROCCOLI_BAKUN": 0.06749894974030198,

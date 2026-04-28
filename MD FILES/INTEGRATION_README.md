@@ -175,7 +175,8 @@ echo "Predicted: " . $result['prediction']['production_mt'] . " mt";
 ## 📚 Documentation
 
 - **Complete Guide**: `LARAVEL_INTEGRATION_GUIDE.md`
-- **Model Training**: `UPDATED ML MODEL.ipynb`
+- **Official Training Pipeline**: `retrain_model_optimized.py`
+- **Research Notebook**: `UPDATED ML MODEL.ipynb` (analysis only, not a deployment source)
 - **Feature Analysis**: Other markdown files in this directory
 
 ---
@@ -183,7 +184,7 @@ echo "Predicted: " . $result['prediction']['production_mt'] . " mt";
 ## 🔄 Workflow
 
 ```
-1. Train Model (Jupyter Notebook)
+1. Train Model (`retrain_model_optimized.py`)
    ↓
 2. Export Model Files (model_artifacts/)
    ↓
@@ -211,11 +212,13 @@ Or run as a Windows service using NSSM (see guide for details).
 
 ## 📈 Model Performance
 
-- **Model**: Random Forest Regressor
-- **CV Score**: 0.9888 (98.88% accuracy)
-- **Training Date**: 2025-11-02
-- **Features**: 8 input features
-- **Target**: Production (metric tons)
+- **Model**: Random Forest (tuned)
+- **Official Task**: Productivity-first planning estimate
+- **Training Pipeline**: `retrain_model_optimized.py`
+- **R² Score**: 0.8145
+- **MAE**: 0.86 MT/HA
+- **Production MAPE**: 148.1%
+- **Target**: Productivity (MT/HA), then production = productivity × planted area
 
 ---
 
@@ -235,4 +238,4 @@ Or run as a Windows service using NSSM (see guide for details).
 
 For detailed instructions, see `LARAVEL_INTEGRATION_GUIDE.md`
 
-For model details, see `UPDATED ML MODEL.ipynb`
+For deployment model details, inspect `model_artifacts/model_metadata.json` and `model_artifacts/evaluation_report.json`

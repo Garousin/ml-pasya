@@ -583,4 +583,5 @@ nssm start MLPredictionAPI
 
 - Flask Documentation: https://flask.palletsprojects.com/
 - Laravel HTTP Client: https://laravel.com/docs/http-client
-- Model Training Notebook: `UPDATED ML MODEL.ipynb`
+- Official Training Pipeline: `retrain_model_optimized.py`
+- Research Notebook: `UPDATED ML MODEL.ipynb` (do not use as a deployment source)

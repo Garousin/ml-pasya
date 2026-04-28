@@ -4,7 +4,8 @@
     "FARM TYPE",
     "MONTH",
     "CROP",
-    "SEASON"
+    "SEASON",
+    "AREA_CONTEXT"
   ],
   "numerical_features": [
     "YEAR_NORMALIZED",
@@ -17,10 +18,9 @@
     "CROP_MUNI_MONTH_PRODUCTIVITY",
     "CROP_SEASON_PRODUCTIVITY",
     "PRODUCTIVITY_CV",
-    "LOG_AREA",
-    "AREA_RATIO",
     "YEAR_TREND"
   ],
+  "official_ml_task": "PRODUCTIVITY_FIRST_PLANNING_ESTIMATE",
   "prediction_target": "PRODUCTIVITY",
-  "usage_note": "Model predicts PRODUCTIVITY (MT/HA). Multiply by area for PRODUCTION."
+  "usage_note": "Model predicts PRODUCTIVITY (MT/HA). Planted area is weak context only; multiply predicted productivity by area for PRODUCTION."
 }

@@ -1,16 +1,28 @@
 {
   "model_type": "Random Forest (tuned)",
+  "official_ml_task": "PRODUCTIVITY_FIRST_PLANNING_ESTIMATE",
   "prediction_target": "PRODUCTIVITY",
   "prediction_method": "PRODUCTIVITY_FIRST",
   "usage": "production = model.predict(X) * area",
+  "area_handling": "Planted area is used only as a weak contextual bucket for productivity; production is calculated as predicted productivity multiplied by planted area.",
+  "training_pipeline": "retrain_model_optimized.py",
+  "deployment_source_policy": "scripted_training_only",
+  "planning_inputs": [
+    "MUNICIPALITY",
+    "FARM TYPE",
+    "YEAR",
+    "MONTH",
+    "CROP",
+    "AREA_PLANTED"
+  ],
   "sklearn_version": "1.8.0",
-  "training_date": "2026-04-15T20:40:46.112051",
-  "test_r2_score": 0.8166807652617496,
-  "test_mae": 0.8615871346639334,
-  "test_mape": 147.80657771550682,
-  "test_rmse": 1.7086747620223122,
-  "cv_r2_mean": 0.7870245176735265,
-  "cv_r2_std": 0.009965118681727123,
+  "training_date": "2026-04-28T22:45:24.500948",
+  "test_r2_score": 0.8144847943825801,
+  "test_mae": 0.8638020080087608,
+  "test_mape": 148.06161721070677,
+  "test_rmse": 1.7188783557127574,
+  "cv_r2_mean": 0.7876599028794442,
+  "cv_r2_std": 0.00937709356141748,
   "n_samples_train": 24665,
   "n_samples_test": 6167,
   "data_source": "database",
@@ -19,7 +31,8 @@
     "FARM TYPE",
     "MONTH",
     "CROP",
-    "SEASON"
+    "SEASON",
+    "AREA_CONTEXT"
   ],
   "numerical_features": [
     "YEAR_NORMALIZED",
@@ -32,14 +45,13 @@
     "CROP_MUNI_MONTH_PRODUCTIVITY",
     "CROP_SEASON_PRODUCTIVITY",
     "PRODUCTIVITY_CV",
-    "LOG_AREA",
-    "AREA_RATIO",
     "YEAR_TREND"
   ],
   "optimizations": [
     "leak-free aggregates (train-only)",
     "IQR outlier removal per crop",
     "year trend feature",
+    "planted area treated as contextual bucket instead of direct productivity driver",
     "tuned hyperparameters",
     "cross-validated model selection",
     "safe MAPE (min_val=1.0)"
@@ -74,36 +86,62 @@
       "DEC": 12
     },
     "year_min": 2015,
-    "year_max": 2024
+    "year_max": 2024,
+    "area_context": {
+      "small_ratio": 0.75,
+      "large_ratio": 1.25,
+      "reference": "crop_area_median"
+    }
   },
+  "area_context_performance": {
+    "LARGE": {
+      "count": 1471,
+      "mae": 1.0692917618332256,
+      "actual_mean": 13.230557443915705,
+      "predicted_mean": 13.28345730139415
+    },
+    "SMALL": {
+      "count": 1059,
+      "mae": 1.1390431870178868,
+      "actual_mean": 10.966704438149199,
+      "predicted_mean": 10.992142005462645
+    },
+    "TYPICAL": {
+      "count": 3637,
+      "mae": 0.700547722485953,
+      "actual_mean": 11.04354412977729,
+      "predicted_mean": 11.025941739648804
+    }
+  },
+  "evaluation_artifact": "model_artifacts/evaluation_report.json",
   "all_models": {
     "Extra Trees (tuned)": {
-      "r2": 0.8113107204540986,
-      "mae": 0.8295151820930124,
-      "rmse": 1.733520572701561,
-      "mape_production": 145.44319373242476,
-      "cv_r2_mean": 0.7794084289943995
+      "r2": 0.8072567173794828,
+      "mae": 0.8432873426302894,
+      "rmse": 1.7520440156827763,
+      "mape_production": 145.9508030384484,
+      "cv_r2_mean": 0.77477690545236
     },
     "Random Forest (tuned)": {
-      "r2": 0.8166807652617496,
-      "mae": 0.8615871346639334,
-      "rmse": 1.7086747620223122,
-      "mape_production": 147.80657771550682,
-      "cv_r2_mean": 0.7870245176735265
+      "r2": 0.8144847943825801,
+      "mae": 0.8638020080087608,
+      "rmse": 1.7188783557127574,
+      "mape_production": 148.06161721070677,
+      "cv_r2_mean": 0.7876599028794442
     },
     "Gradient Boosting": {
-      "r2": 0.7899519917522578,
-      "mae": 1.1264158997522828,
-      "rmse": 1.8290040653851947,
-      "mape_production": 147.70903739794306,
-      "cv_r2_mean": 0.7792098668079651
+      "r2": 0.7917747498356718,
+      "mae": 1.1035465150173795,
+      "rmse": 1.821050892867702,
+      "mape_production": 150.77736015446789,
+      "cv_r2_mean": 0.7817893168869686
     },
     "HistGradientBoosting": {
-      "r2": 0.7854884038479819,
-      "mae": 1.1317863889937243,
-      "rmse": 1.848335369223021,
-      "mape_production": 148.5944862245456,
-      "cv_r2_mean": 0.7772284709010472
+      "r2": 0.7884439793042626,
+      "mae": 1.115035042574886,
+      "rmse": 1.8355578721734886,
+      "mape_production": 151.07153708171367,
+      "cv_r2_mean": 0.7804112845853269
     }
   }
 }

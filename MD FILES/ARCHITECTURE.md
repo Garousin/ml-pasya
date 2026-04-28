@@ -233,7 +233,7 @@ Machine Learning/
 │   ├── INTEGRATION_README.md     # Full documentation
 │   └── laravel_api_routes_example.php  # Example routes
 │
-└── UPDATED ML MODEL.ipynb        # Model training notebook
+└── UPDATED ML MODEL.ipynb        # Research notebook only (not a deployment source)
 
 
 Your Laravel Project/

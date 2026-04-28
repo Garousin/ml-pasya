@@ -93,6 +93,9 @@ rf_model = None
 metadata = {}
 feature_stats = {}
 startup_errors = []
+OFFICIAL_ML_TASK = 'PRODUCTIVITY_FIRST_PLANNING_ESTIMATE'
+OFFICIAL_TRAINING_PIPELINE = 'retrain_model_optimized.py'
+HEURISTIC_CONFIDENCE_NOTE = 'Confidence intervals are based on random-forest tree dispersion and are not yet calibrated uncertainty estimates.'
 
 for artifact_name in ('best_model.pkl', 'best_rf_model.pkl'):
     download_error = ensure_model_artifact(artifact_name)
@@ -123,6 +126,10 @@ except Exception as e:
 
 # Check if using productivity-first model
 PRODUCTIVITY_FIRST = metadata.get('prediction_target') == 'PRODUCTIVITY'
+if not PRODUCTIVITY_FIRST:
+    startup_errors.append(
+        'Deployment is frozen to the PRODUCTIVITY_FIRST planning task. Retrain and deploy artifacts from retrain_model_optimized.py only.'
+    )
 print(f"[OK] Model type: {metadata.get('model_type', 'Unknown')}")
 print(f"[OK] Prediction target: {'PRODUCTIVITY' if PRODUCTIVITY_FIRST else 'PRODUCTION'}")
 print(f"[OK] Database: {'Connected' if DB_AVAILABLE else 'Not available (using CSV)'}")
@@ -144,6 +151,11 @@ month_to_num = feature_engineering.get('month_to_num', {
 })
 year_min = feature_engineering.get('year_min', 2000)
 year_max = feature_engineering.get('year_max', datetime.now().year)
+productivity_categorical_features = set(metadata.get('categorical_features', []))
+productivity_numerical_features = set(metadata.get('numerical_features', []))
+area_context_config = feature_engineering.get('area_context', {})
+area_context_small_ratio = area_context_config.get('small_ratio', 0.75)
+area_context_large_ratio = area_context_config.get('large_ratio', 1.25)
 
 # Month name to abbreviation mapping
 month_full_to_abbr = {
@@ -184,6 +196,27 @@ def get_historical_data_range():
     df['YEAR'] = pd.to_numeric(df['YEAR'], errors='coerce')
     df = df.dropna(subset=['YEAR'])
     return int(df['YEAR'].min()), int(df['YEAR'].max())
+
+
+def get_crop_area_reference(crop):
+    """Return the typical planted area for a crop."""
+    crop_area_lookup = feature_stats.get('crop_area_median', feature_stats.get('crop_area_avg', {}))
+    return crop_area_lookup.get(crop, 5)
+
+
+def derive_area_context(area, reference_area):
+    """Bucket planted area as weak context instead of a direct productivity driver."""
+    if pd.isna(area) or area <= 0:
+        return 'UNKNOWN'
+
+    baseline = max(reference_area, 0.01)
+    ratio = area / baseline
+
+    if ratio < area_context_small_ratio:
+        return 'SMALL'
+    if ratio > area_context_large_ratio:
+        return 'LARGE'
+    return 'TYPICAL'
 
 
 def calculate_features_v2(input_df):
@@ -246,11 +279,14 @@ def calculate_features_v2(input_df):
         # Productivity CV
         prod_std = feature_stats.get('crop_muni_productivity_std', {}).get(key, 0)
         input_df.loc[idx, 'PRODUCTIVITY_CV'] = prod_std / (crop_muni_prod + 0.01)
-        
-        # Area features
-        area_median = feature_stats.get('crop_area_median', feature_stats.get('crop_area_avg', {})).get(crop, 5)
-        input_df.loc[idx, 'LOG_AREA'] = np.log1p(area)
-        input_df.loc[idx, 'AREA_RATIO'] = area / (area_median + 0.01)
+
+        # Area is weak context for productivity, not a direct yield driver.
+        area_reference = get_crop_area_reference(crop)
+        input_df.loc[idx, 'AREA_CONTEXT'] = derive_area_context(area, area_reference)
+        if 'LOG_AREA' in productivity_numerical_features:
+            input_df.loc[idx, 'LOG_AREA'] = np.log1p(area)
+        if 'AREA_RATIO' in productivity_numerical_features:
+            input_df.loc[idx, 'AREA_RATIO'] = area / (area_reference + 0.01)
         
         # Year trend feature
         year_trend = feature_stats.get('year_trend', feature_stats.get('prod_trends', {})).get(key, 0.0)
@@ -348,7 +384,7 @@ def get_prediction_with_confidence(input_df, area):
 
 
 def model_is_ready():
-    return model is not None and rf_model is not None
+    return model is not None and rf_model is not None and PRODUCTIVITY_FIRST
 
 
 @app.route('/')
@@ -356,16 +392,27 @@ def home():
     return jsonify({
         'message': 'Benguet Crop Production ML API V2',
         'version': '2.0 (Productivity-First)',
+        'official_ml_task': OFFICIAL_ML_TASK,
+        'training_pipeline': metadata.get('training_pipeline', OFFICIAL_TRAINING_PIPELINE),
         'model': metadata.get('model_type', 'Unknown'),
         'prediction_target': 'PRODUCTIVITY (MT/HA)',
+        'area_handling': metadata.get(
+            'area_handling',
+            'Planted area is weak context only; production is calculated from predicted productivity multiplied by planted area.'
+        ),
         'performance': {
             'r2_score': f"{metadata.get('test_r2_score', 0):.4f}",
             'mae_productivity': f"{metadata.get('test_mae', 0):.2f} MT/HA"
+        },
+        'prediction_systems': {
+            'planning_estimate': 'Live productivity-first estimate for user-provided crop, municipality, month, year, farm type, and planted area.',
+            'trend_projection': 'Separate chart-oriented monthly projection endpoint; not the same as the live planning estimate model.'
         },
         'endpoints': {
             '/predict': 'POST - Single prediction',
             '/batch-predict': 'POST - Batch predictions',
             '/model-info': 'GET - Model information',
+            '/forecast/monthly': 'GET - Trend projection for charts',
             '/crops': 'GET - Available crops',
             '/municipalities': 'GET - Available municipalities'
         }
@@ -409,21 +456,12 @@ def predict():
             'Area planted(ha)': [area]
         })
         
-        # Calculate features based on model type
-        if PRODUCTIVITY_FIRST:
-            input_data = calculate_features_v2(input_data)
-            
-            # Predict productivity
-            pred_productivity = model.predict(input_data)[0]
-            pred_productivity = np.clip(pred_productivity, 0.5, 50)  # Reasonable bounds
-            
-            # Calculate production
-            pred_production = pred_productivity * area
-        else:
-            input_data = calculate_features_legacy(input_data)
-            pred_production = model.predict(input_data)[0]
-            pred_production = max(0, pred_production)
-            pred_productivity = pred_production / area if area > 0 else 0
+        input_data = calculate_features_v2(input_data)
+
+        # Predict productivity for the official planning task.
+        pred_productivity = model.predict(input_data)[0]
+        pred_productivity = np.clip(pred_productivity, 0.5, 50)
+        pred_production = pred_productivity * area
         
         # Get confidence intervals
         confidence_data = get_prediction_with_confidence(input_data, area)
@@ -439,6 +477,7 @@ def predict():
         response = {
             'success': True,
             'prediction': {
+                'system_type': 'planning_estimate',
                 'production_mt': round(pred_production, 2),
                 'productivity_mt_ha': round(pred_productivity, 2),
                 'area_planted_ha': area,
@@ -453,8 +492,14 @@ def predict():
             },
             'model_info': {
                 'model_type': metadata.get('model_type', 'Unknown'),
-                'prediction_method': 'PRODUCTIVITY_FIRST' if PRODUCTIVITY_FIRST else 'PRODUCTION',
-                'r2_score': round(metadata.get('test_r2_score', 0), 4)
+                'official_ml_task': OFFICIAL_ML_TASK,
+                'prediction_method': 'PRODUCTIVITY_FIRST',
+                'r2_score': round(metadata.get('test_r2_score', 0), 4),
+                'training_pipeline': metadata.get('training_pipeline', OFFICIAL_TRAINING_PIPELINE),
+                'area_handling': metadata.get(
+                    'area_handling',
+                    'Planted area is weak context only; production is calculated from predicted productivity multiplied by planted area.'
+                )
             },
             'input': data
         }
@@ -465,6 +510,9 @@ def predict():
                 'upper': round(confidence_data['upper_95'], 2)
             }
             response['prediction']['confidence_score'] = round(confidence_data['confidence'] * 100, 2)
+            response['prediction']['confidence_type'] = 'heuristic_tree_dispersion'
+            response['prediction']['confidence_calibrated'] = False
+            response['prediction']['confidence_note'] = HEURISTIC_CONFIDENCE_NOTE
         
         return jsonify(response)
         
@@ -503,16 +551,12 @@ def batch_predict():
                     'Area planted(ha)': [area]
                 })
                 
-                if PRODUCTIVITY_FIRST:
-                    input_data = calculate_features_v2(input_data)
-                    pred_productivity = np.clip(model.predict(input_data)[0], 0.5, 50)
-                    pred_production = pred_productivity * area
-                else:
-                    input_data = calculate_features_legacy(input_data)
-                    pred_production = max(0, model.predict(input_data)[0])
-                    pred_productivity = pred_production / area if area > 0 else 0
+                input_data = calculate_features_v2(input_data)
+                pred_productivity = np.clip(model.predict(input_data)[0], 0.5, 50)
+                pred_production = pred_productivity * area
                 
                 results.append({
+                    'system_type': 'planning_estimate',
                     'production_mt': round(pred_production, 2),
                     'productivity_mt_ha': round(pred_productivity, 2),
                     'area_planted_ha': area,
@@ -536,8 +580,15 @@ def model_info():
     """Get model information"""
     return jsonify({
         'model_type': metadata.get('model_type', 'Unknown'),
-        'prediction_target': 'PRODUCTIVITY' if PRODUCTIVITY_FIRST else 'PRODUCTION',
-        'prediction_method': metadata.get('prediction_method', 'STANDARD'),
+        'official_ml_task': OFFICIAL_ML_TASK,
+        'prediction_target': 'PRODUCTIVITY',
+        'prediction_method': 'PRODUCTIVITY_FIRST',
+        'training_pipeline': metadata.get('training_pipeline', OFFICIAL_TRAINING_PIPELINE),
+        'deployment_source_policy': metadata.get('deployment_source_policy', 'scripted_training_only'),
+        'area_handling': metadata.get(
+            'area_handling',
+            'Planted area is weak context only; production is calculated from predicted productivity multiplied by planted area.'
+        ),
         'training_date': metadata.get('training_date', 'Unknown'),
         'performance': {
             'r2_score': metadata.get('test_r2_score', 0),
@@ -606,7 +657,8 @@ def health():
         'model_loaded': model is not None,
         'rf_model_loaded': rf_model is not None,
         'database_connected': DB_AVAILABLE,
-        'prediction_method': 'PRODUCTIVITY_FIRST' if PRODUCTIVITY_FIRST else 'PRODUCTION',
+        'official_ml_task': OFFICIAL_ML_TASK,
+        'prediction_method': 'PRODUCTIVITY_FIRST',
         'startup_errors': startup_errors
     })
 
@@ -650,6 +702,11 @@ def get_monthly_forecast():
         
         if not result['success']:
             return jsonify(result), 404
+
+        result['system_type'] = 'trend_projection'
+        result['projection_method'] = 'AGGREGATED_TREND_PROJECTION'
+        result['is_same_as_planning_estimate'] = False
+        result['note'] = 'This endpoint is a chart-oriented trend projection and is separate from the live productivity-first planning estimate.'
         
         return jsonify(result)
         
@@ -696,6 +753,11 @@ def get_forecast_methodology():
         
         if not result.get('success', False):
             return jsonify(result), 404
+
+        result['system_type'] = 'trend_projection'
+        result['projection_method'] = 'AGGREGATED_TREND_PROJECTION'
+        result['is_same_as_planning_estimate'] = False
+        result['note'] = 'This methodology describes the chart projection logic, not the live productivity-first planning estimate model.'
         
         return jsonify(result)
         
@@ -720,6 +782,7 @@ def get_data_summary():
     return jsonify({
         'year_range': {'min': min_year, 'max': max_year},
         'forecast_range': {'min': max_year + 1, 'max': max_year + 5},
+        'official_ml_task': OFFICIAL_ML_TASK,
         'crops_count': len(crops),
         'municipalities_count': len(municipalities),
         'crops': sorted(crops),
@@ -744,7 +807,7 @@ if __name__ == '__main__':
     print("BENGUET CROP PRODUCTION ML API V2")
     print("="*70)
     print(f"Model: {metadata.get('model_type', 'Unknown')}")
-    print(f"Prediction: {'PRODUCTIVITY-FIRST' if PRODUCTIVITY_FIRST else 'PRODUCTION'}")
+    print(f"Prediction: PRODUCTIVITY-FIRST ({OFFICIAL_ML_TASK})")
     print(f"R²: {metadata.get('test_r2_score', 0):.4f}")
     print(f"Database: {'Connected' if DB_AVAILABLE else 'Not available'}")
     print(f"Port: {args.port}")

@@ -1,0 +1,805 @@
+{
+  "official_ml_task": "PRODUCTIVITY_FIRST_PLANNING_ESTIMATE",
+  "training_pipeline": "retrain_model_optimized.py",
+  "planning_inputs": [
+    "MUNICIPALITY",
+    "FARM TYPE",
+    "YEAR",
+    "MONTH",
+    "CROP",
+    "AREA_PLANTED"
+  ],
+  "random_split": {
+    "overall": {
+      "count": 6167,
+      "productivity_r2": 0.8144847943825801,
+      "productivity_mae": 0.8638020080087608,
+      "productivity_rmse": 1.7188783557127574,
+      "production_mae": 186.8343617604053,
+      "production_mape": 148.06161721070677,
+      "actual_productivity_mean": 11.552012323658182,
+      "predicted_productivity_mean": 11.558617509524638
+    },
+    "by_area_context": {
+      "LARGE": {
+        "count": 1471,
+        "mae": 1.0692917618332256,
+        "actual_mean": 13.230557443915705,
+        "predicted_mean": 13.28345730139415
+      },
+      "SMALL": {
+        "count": 1059,
+        "mae": 1.1390431870178868,
+        "actual_mean": 10.966704438149199,
+        "predicted_mean": 10.992142005462645
+      },
+      "TYPICAL": {
+        "count": 3637,
+        "mae": 0.700547722485953,
+        "actual_mean": 11.04354412977729,
+        "predicted_mean": 11.025941739648804
+      }
+    },
+    "by_farm_size": {
+      "LARGE": {
+        "count": 1627,
+        "productivity_r2": 0.8588095891190557,
+        "productivity_mae": 1.0417851354359258,
+        "productivity_rmse": 1.875459312484252,
+        "production_mae": 452.6846647124794,
+        "production_mape": 386.26380371712605,
+        "actual_productivity_mean": 12.973724646588813,
+        "predicted_productivity_mean": 13.027665250780103
+      },
+      "SMALL": {
+        "count": 4540,
+        "productivity_r2": 0.7651533832811881,
+        "productivity_mae": 0.8000181867920213,
+        "productivity_rmse": 1.6591716034342663,
+        "production_mae": 91.56157698000338,
+        "production_mape": 61.93829333383025,
+        "actual_productivity_mean": 11.04251321585903,
+        "predicted_productivity_mean": 11.032154805775155
+      }
+    },
+    "by_crop": {
+      "BROCCOLI": {
+        "count": 583,
+        "productivity_r2": 0.5489232948703147,
+        "productivity_mae": 0.714449629739708,
+        "productivity_rmse": 1.7619905554832793,
+        "production_mae": 24.527813435542157,
+        "production_mape": 86.34787424487384,
+        "actual_productivity_mean": 11.051749571183533,
+        "predicted_productivity_mean": 10.883559250884467
+      },
+      "CABBAGE": {
+        "count": 627,
+        "productivity_r2": 0.8330111131203384,
+        "productivity_mae": 1.0831765750587172,
+        "productivity_rmse": 2.002620453801518,
+        "production_mae": 507.80439719280685,
+        "production_mape": 305.7530024141241,
+        "actual_productivity_mean": 14.874657097288676,
+        "predicted_productivity_mean": 14.958263128910565
+      },
+      "CARROTS": {
+        "count": 648,
+        "productivity_r2": 0.7711270529484021,
+        "productivity_mae": 0.7690937539412881,
+        "productivity_rmse": 1.3191294927679504,
+        "production_mae": 267.5942330987114,
+        "production_mape": 151.01564720200975,
+        "actual_productivity_mean": 12.398703703703704,
+        "predicted_productivity_mean": 12.349032150607716
+      },
+      "CAULIFLOWER": {
+        "count": 622,
+        "productivity_r2": 0.6105994771251978,
+        "productivity_mae": 0.6203630157905622,
+        "productivity_rmse": 1.407495434615695,
+        "production_mae": 29.574657565890817,
+        "production_mape": 99.27098965969917,
+        "actual_productivity_mean": 11.127684887459807,
+        "predicted_productivity_mean": 11.225881973093381
+      },
+      "CHINESE CABBAGE": {
+        "count": 646,
+        "productivity_r2": 0.7856220415487508,
+        "productivity_mae": 1.2415782907662625,
+        "productivity_rmse": 2.273847482362236,
+        "production_mae": 158.4219798983602,
+        "production_mape": 126.83425528191685,
+        "actual_productivity_mean": 14.549628482972135,
+        "predicted_productivity_mean": 14.556273557065381
+      },
+      "GARDEN PEAS": {
+        "count": 632,
+        "productivity_r2": 0.7114942255670489,
+        "productivity_mae": 0.9342082092087373,
+        "productivity_rmse": 1.696839330336227,
+        "production_mae": 15.983070721426449,
+        "production_mape": 79.36865853677881,
+        "actual_productivity_mean": 8.451313291139241,
+        "predicted_productivity_mean": 8.387516763297409
+      },
+      "LETTUCE": {
+        "count": 607,
+        "productivity_r2": 0.6195955389594776,
+        "productivity_mae": 0.6071280992599098,
+        "productivity_rmse": 1.2465773222116514,
+        "production_mae": 22.257171381343746,
+        "production_mape": 73.9200041819601,
+        "actual_productivity_mean": 10.3297528830313,
+        "predicted_productivity_mean": 10.394629163086627
+      },
+      "SNAP BEANS": {
+        "count": 596,
+        "productivity_r2": 0.6624347865527316,
+        "productivity_mae": 0.5671402399799025,
+        "productivity_rmse": 1.1221880969576965,
+        "production_mae": 42.719291849418674,
+        "production_mape": 86.08148152474934,
+        "actual_productivity_mean": 9.589010067114096,
+        "predicted_productivity_mean": 9.659384150185378
+      },
+      "SWEET PEPPER": {
+        "count": 622,
+        "productivity_r2": 0.5687705169320545,
+        "productivity_mae": 0.882522474678556,
+        "productivity_rmse": 1.6184547647418794,
+        "production_mae": 38.96327646013319,
+        "production_mape": 70.79009249843355,
+        "actual_productivity_mean": 9.163472668810288,
+        "predicted_productivity_mean": 9.181204848343295
+      },
+      "WHITE POTATO": {
+        "count": 584,
+        "productivity_r2": 0.7301056408729354,
+        "productivity_mae": 1.197263879675517,
+        "productivity_rmse": 2.2866057593231943,
+        "production_mae": 774.0925993329539,
+        "production_mape": 410.7551214050769,
+        "actual_productivity_mean": 13.853972602739725,
+        "predicted_productivity_mean": 13.85594375316129
+      }
+    },
+    "by_municipality": {
+      "ATOK": {
+        "count": 505,
+        "productivity_r2": 0.769925299411889,
+        "productivity_mae": 1.4086062839151077,
+        "productivity_rmse": 2.127068709384613,
+        "production_mae": 168.17308254047185,
+        "production_mape": 143.69680730202765,
+        "actual_productivity_mean": 11.703029702970298,
+        "predicted_productivity_mean": 11.749383714733536
+      },
+      "BAKUN": {
+        "count": 499,
+        "productivity_r2": 0.7485089391748755,
+        "productivity_mae": 0.9566826205801523,
+        "productivity_rmse": 2.0068108419658643,
+        "production_mae": 492.1338175906023,
+        "production_mape": 423.2872602986974,
+        "actual_productivity_mean": 12.152364729458919,
+        "predicted_productivity_mean": 12.10840961989484
+      },
+      "BOKOD": {
+        "count": 481,
+        "productivity_r2": 0.909185977976753,
+        "productivity_mae": 0.4588437723288434,
+        "productivity_rmse": 1.1106392061272343,
+        "production_mae": 18.93704608607532,
+        "production_mape": 47.13127179036029,
+        "actual_productivity_mean": 11.49873180873181,
+        "predicted_productivity_mean": 11.398660349047148
+      },
+      "BUGUIAS": {
+        "count": 475,
+        "productivity_r2": 0.9260466245055295,
+        "productivity_mae": 0.7155234716978698,
+        "productivity_rmse": 1.2551783408105668,
+        "production_mae": 589.7326452083364,
+        "production_mape": 234.81339002059403,
+        "actual_productivity_mean": 12.463831578947367,
+        "predicted_productivity_mean": 12.389082863189785
+      },
+      "ITOGON": {
+        "count": 481,
+        "productivity_r2": 0.7571578916140841,
+        "productivity_mae": 0.424231922180919,
+        "productivity_rmse": 0.8865525631866358,
+        "production_mae": 8.216383610992438,
+        "production_mape": 15.796464846303262,
+        "actual_productivity_mean": 10.38920997920998,
+        "predicted_productivity_mean": 10.412277500595446
+      },
+      "KABAYAN": {
+        "count": 440,
+        "productivity_r2": 0.8436101230026525,
+        "productivity_mae": 1.1247989910065408,
+        "productivity_rmse": 2.0531491473346692,
+        "production_mae": 184.15442244751426,
+        "production_mape": 99.67588510789025,
+        "actual_productivity_mean": 12.8295,
+        "predicted_productivity_mean": 12.79440456852584
+      },
+      "KAPANGAN": {
+        "count": 473,
+        "productivity_r2": 0.5200558217501265,
+        "productivity_mae": 1.034247449101176,
+        "productivity_rmse": 1.993118104149372,
+        "production_mae": 37.583776990974336,
+        "production_mape": 140.83624677499415,
+        "actual_productivity_mean": 10.849936575052855,
+        "predicted_productivity_mean": 10.963759471392175
+      },
+      "KIBUNGAN": {
+        "count": 419,
+        "productivity_r2": 0.6762481468954181,
+        "productivity_mae": 1.433821653228803,
+        "productivity_rmse": 2.2859245192558357,
+        "production_mae": 447.9003486302148,
+        "production_mape": 393.2301510005503,
+        "actual_productivity_mean": 11.346849642004774,
+        "predicted_productivity_mean": 11.445112317937662
+      },
+      "LATRINIDAD": {
+        "count": 473,
+        "productivity_r2": 0.7975049292963641,
+        "productivity_mae": 0.9987654132380017,
+        "productivity_rmse": 1.764389579625633,
+        "production_mae": 19.845688799574635,
+        "production_mape": 38.23739398529043,
+        "actual_productivity_mean": 12.213023255813955,
+        "predicted_productivity_mean": 12.179446359323586
+      },
+      "MANKAYAN": {
+        "count": 491,
+        "productivity_r2": 0.9601712503242902,
+        "productivity_mae": 0.4589968801397948,
+        "productivity_rmse": 1.1345045037142925,
+        "production_mae": 430.191868694984,
+        "production_mape": 184.3773470516888,
+        "actual_productivity_mean": 12.821140529531569,
+        "predicted_productivity_mean": 12.80478886592005
+      },
+      "SABLAN": {
+        "count": 484,
+        "productivity_r2": 0.8139804616993082,
+        "productivity_mae": 0.18605887075421723,
+        "productivity_rmse": 0.6299559157774671,
+        "production_mae": 10.755401718415259,
+        "production_mape": 33.06441297478791,
+        "actual_productivity_mean": 10.743099173553718,
+        "predicted_productivity_mean": 10.780123572501275
+      },
+      "TUBA": {
+        "count": 455,
+        "productivity_r2": 0.6094251075151735,
+        "productivity_mae": 0.4852548695519079,
+        "productivity_rmse": 1.5811551177333396,
+        "production_mae": 13.129158293752123,
+        "production_mape": 50.87857579836296,
+        "actual_productivity_mean": 11.156615384615385,
+        "predicted_productivity_mean": 11.14921400579494
+      },
+      "TUBLAY": {
+        "count": 491,
+        "productivity_r2": 0.6337371348409542,
+        "productivity_mae": 1.588990395836544,
+        "productivity_rmse": 2.4089076358403667,
+        "production_mae": 20.887174951156748,
+        "production_mape": 133.07603295698956,
+        "actual_productivity_mean": 10.060264765784114,
+        "predicted_productivity_mean": 10.144976772072052
+      }
+    },
+    "by_production_scale": {
+      "LARGE": {
+        "count": 1561,
+        "productivity_r2": 0.8651614578547923,
+        "productivity_mae": 1.1100467959630083,
+        "productivity_rmse": 1.9996160266871352,
+        "production_mae": 533.0857661479638,
+        "production_mape": 66.14738738602155,
+        "actual_productivity_mean": 14.745432415118513,
+        "predicted_productivity_mean": 14.292259561197426
+      },
+      "SMALL": {
+        "count": 4606,
+        "productivity_r2": 0.608694907190206,
+        "productivity_mae": 0.7803482272887045,
+        "productivity_rmse": 1.612684653854573,
+        "production_mae": 69.48776118529048,
+        "production_mape": 176.06602210696903,
+        "actual_productivity_mean": 10.469743812418585,
+        "predicted_productivity_mean": 10.632170431222159
+      }
+    },
+    "by_year": {
+      "2015": {
+        "count": 604,
+        "productivity_r2": 0.7701512741834889,
+        "productivity_mae": 1.1624549852872215,
+        "productivity_rmse": 1.99252688893189,
+        "production_mae": 195.19287128952175,
+        "production_mape": 178.7355876731295,
+        "actual_productivity_mean": 10.814056291390727,
+        "predicted_productivity_mean": 10.892315304955094
+      },
+      "2016": {
+        "count": 630,
+        "productivity_r2": 0.8051963389670345,
+        "productivity_mae": 0.7963733642235098,
+        "productivity_rmse": 1.5072918171142247,
+        "production_mae": 189.3310827813874,
+        "production_mape": 155.0394614943566,
+        "actual_productivity_mean": 11.488412698412699,
+        "predicted_productivity_mean": 11.426988996106129
+      },
+      "2017": {
+        "count": 619,
+        "productivity_r2": 0.8631608669754118,
+        "productivity_mae": 0.6649786837692998,
+        "productivity_rmse": 1.3660025134289082,
+        "production_mae": 189.60337192999106,
+        "production_mape": 172.48397003298714,
+        "actual_productivity_mean": 11.611970920840063,
+        "predicted_productivity_mean": 11.459333186303482
+      },
+      "2018": {
+        "count": 605,
+        "productivity_r2": 0.7669880728203357,
+        "productivity_mae": 0.8742506967540296,
+        "productivity_rmse": 1.8255466410785761,
+        "production_mae": 195.96090146594622,
+        "production_mape": 193.66358746985284,
+        "actual_productivity_mean": 11.060826446280991,
+        "predicted_productivity_mean": 11.27051469005867
+      },
+      "2019": {
+        "count": 646,
+        "productivity_r2": 0.8510862096304446,
+        "productivity_mae": 0.7159483580336222,
+        "productivity_rmse": 1.5298670848496836,
+        "production_mae": 205.6529061625159,
+        "production_mape": 121.93052757071455,
+        "actual_productivity_mean": 11.591486068111456,
+        "predicted_productivity_mean": 11.567315606017969
+      },
+      "2020": {
+        "count": 570,
+        "productivity_r2": 0.8640600556301133,
+        "productivity_mae": 0.7118773064019878,
+        "productivity_rmse": 1.4895039611430416,
+        "production_mae": 168.90544975458818,
+        "production_mape": 86.22510642233935,
+        "actual_productivity_mean": 11.590122807017543,
+        "predicted_productivity_mean": 11.618921422140973
+      },
+      "2021": {
+        "count": 581,
+        "productivity_r2": 0.8043302682829184,
+        "productivity_mae": 0.886060874244506,
+        "productivity_rmse": 1.7902889758516984,
+        "production_mae": 198.5950124056678,
+        "production_mape": 190.4394098114247,
+        "actual_productivity_mean": 11.844320137693632,
+        "predicted_productivity_mean": 11.953263655499159
+      },
+      "2022": {
+        "count": 634,
+        "productivity_r2": 0.8430649099351548,
+        "productivity_mae": 0.8486634831482602,
+        "productivity_rmse": 1.6715462739386449,
+        "production_mae": 189.53283386773734,
+        "production_mape": 131.3807717338864,
+        "actual_productivity_mean": 12.039905362776025,
+        "predicted_productivity_mean": 11.90994623516677
+      },
+      "2023": {
+        "count": 649,
+        "productivity_r2": 0.8437191651907073,
+        "productivity_mae": 0.8537626686616198,
+        "productivity_rmse": 1.6359765868972544,
+        "production_mae": 189.91264012630953,
+        "production_mape": 126.68071299000587,
+        "actual_productivity_mean": 11.512773497688752,
+        "predicted_productivity_mean": 11.59230599785984
+      },
+      "2024": {
+        "count": 629,
+        "productivity_r2": 0.7253582888746076,
+        "productivity_mae": 1.124748464028699,
+        "productivity_rmse": 2.210293238419621,
+        "production_mae": 144.96485515230282,
+        "production_mape": 126.5708204546435,
+        "actual_productivity_mean": 11.941414944356122,
+        "predicted_productivity_mean": 11.888098979382525
+      }
+    }
+  },
+  "thresholds": {
+    "farm_size_hectares": {
+      "small": 5.0,
+      "large": 5.0
+    },
+    "production_scale_mt": {
+      "small": 55.0,
+      "large": 55.0
+    }
+  },
+  "walk_forward": {
+    "validation_type": "walk_forward_next_year",
+    "enabled": true,
+    "years_evaluated": [
+      "2020",
+      "2021",
+      "2022",
+      "2023",
+      "2024"
+    ],
+    "overall": {
+      "count": 15227,
+      "productivity_r2": 0.7349584080549252,
+      "productivity_mae": 1.009778621813207,
+      "productivity_rmse": 2.1234229302311483,
+      "production_mae": 181.1621854271123,
+      "production_mape": 144.83650556314228,
+      "actual_productivity_mean": 11.72899316405667,
+      "predicted_productivity_mean": 11.641799738726606
+    },
+    "by_year": {
+      "2020": {
+        "train_years": {
+          "min": 2015,
+          "max": 2019
+        },
+        "count": 2771,
+        "productivity_r2": 0.8287873150986199,
+        "productivity_mae": 0.772939456652187,
+        "productivity_rmse": 1.7103957044984341,
+        "production_mae": 161.19544666418298,
+        "production_mape": 129.8874685239949,
+        "actual_productivity_mean": 11.465906892818477,
+        "predicted_productivity_mean": 11.487295864925821
+      },
+      "2021": {
+        "train_years": {
+          "min": 2015,
+          "max": 2020
+        },
+        "count": 3117,
+        "productivity_r2": 0.6474828508835555,
+        "productivity_mae": 1.0730693627753085,
+        "productivity_rmse": 2.320250070082923,
+        "production_mae": 199.06952460888212,
+        "production_mape": 167.05481625914297,
+        "actual_productivity_mean": 11.582605068976578,
+        "predicted_productivity_mean": 11.428506099667404
+      },
+      "2022": {
+        "train_years": {
+          "min": 2015,
+          "max": 2021
+        },
+        "count": 3114,
+        "productivity_r2": 0.7399725726833616,
+        "productivity_mae": 1.0155998045917154,
+        "productivity_rmse": 2.1462616431474504,
+        "production_mae": 212.90834359132475,
+        "production_mape": 143.5475057459536,
+        "actual_productivity_mean": 11.975221579961463,
+        "predicted_productivity_mean": 11.56282365415458
+      },
+      "2023": {
+        "train_years": {
+          "min": 2015,
+          "max": 2022
+        },
+        "count": 3112,
+        "productivity_r2": 0.7779503519414993,
+        "productivity_mae": 0.9290327627970602,
+        "productivity_rmse": 1.9363350996779396,
+        "production_mae": 191.4990628260948,
+        "production_mape": 151.50396098160385,
+        "actual_productivity_mean": 11.714614688011217,
+        "predicted_productivity_mean": 11.892231618500631
+      },
+      "2024": {
+        "train_years": {
+          "min": 2015,
+          "max": 2023
+        },
+        "count": 3113,
+        "productivity_r2": 0.6821303425609053,
+        "productivity_mae": 1.2321229961043376,
+        "productivity_rmse": 2.38839190524993,
+        "production_mae": 138.9150790646033,
+        "production_mape": 130.44260888798584,
+        "actual_productivity_mean": 11.877818824285256,
+        "predicted_productivity_mean": 11.821547257117244
+      }
+    },
+    "by_crop": {
+      "BROCCOLI": {
+        "count": 1521,
+        "productivity_r2": 0.32668299067423,
+        "productivity_mae": 1.0353096737188445,
+        "productivity_rmse": 2.350448564264405,
+        "production_mae": 28.61739083974201,
+        "production_mape": 93.76499906428211,
+        "actual_productivity_mean": 11.248040762656148,
+        "predicted_productivity_mean": 11.09337144332054
+      },
+      "CABBAGE": {
+        "count": 1508,
+        "productivity_r2": 0.7430180769375963,
+        "productivity_mae": 1.344529607597873,
+        "productivity_rmse": 2.5546057042083414,
+        "production_mae": 533.2085744255961,
+        "production_mape": 304.72991760815955,
+        "actual_productivity_mean": 15.457506631299733,
+        "predicted_productivity_mean": 15.260964960450378
+      },
+      "CARROTS": {
+        "count": 1534,
+        "productivity_r2": 0.5368766781716479,
+        "productivity_mae": 0.940284404015289,
+        "productivity_rmse": 1.9300093819760855,
+        "production_mae": 306.5831392733617,
+        "production_mape": 158.7210702750169,
+        "actual_productivity_mean": 12.721675951167475,
+        "predicted_productivity_mean": 12.595132609181528
+      },
+      "CAULIFLOWER": {
+        "count": 1521,
+        "productivity_r2": 0.37519431748066845,
+        "productivity_mae": 0.9248491342536515,
+        "productivity_rmse": 2.0650634919084356,
+        "production_mae": 31.542552515011277,
+        "production_mape": 109.47788219601287,
+        "actual_productivity_mean": 11.42388560157791,
+        "predicted_productivity_mean": 11.317053487904323
+      },
+      "CHINESE CABBAGE": {
+        "count": 1522,
+        "productivity_r2": 0.6498000610936776,
+        "productivity_mae": 1.4591311304480623,
+        "productivity_rmse": 2.8115959864547797,
+        "production_mae": 142.33691785587553,
+        "production_mape": 118.28691742420125,
+        "actual_productivity_mean": 14.876340341655716,
+        "predicted_productivity_mean": 14.773260263874763
+      },
+      "GARDEN PEAS": {
+        "count": 1534,
+        "productivity_r2": 0.6789478819442925,
+        "productivity_mae": 0.8976995900620548,
+        "productivity_rmse": 1.826772973343696,
+        "production_mae": 16.714657929127025,
+        "production_mape": 76.95115845200907,
+        "actual_productivity_mean": 8.106041720990874,
+        "predicted_productivity_mean": 8.198567815099736
+      },
+      "LETTUCE": {
+        "count": 1508,
+        "productivity_r2": 0.481542165925799,
+        "productivity_mae": 0.7596149224801065,
+        "productivity_rmse": 1.5364685453958964,
+        "production_mae": 28.06186629475657,
+        "production_mape": 70.75039052544237,
+        "actual_productivity_mean": 10.344323607427055,
+        "predicted_productivity_mean": 10.24392545486993
+      },
+      "SNAP BEANS": {
+        "count": 1516,
+        "productivity_r2": 0.4272937508427773,
+        "productivity_mae": 0.6307818068125967,
+        "productivity_rmse": 1.2855779835346632,
+        "production_mae": 41.53078951871592,
+        "production_mape": 92.34417713845217,
+        "actual_productivity_mean": 9.77122691292876,
+        "predicted_productivity_mean": 9.729786161678643
+      },
+      "SWEET PEPPER": {
+        "count": 1530,
+        "productivity_r2": 0.332691354172147,
+        "productivity_mae": 0.9077626065331307,
+        "productivity_rmse": 1.8565113767072672,
+        "production_mae": 46.46975060085631,
+        "production_mape": 64.68491685033571,
+        "actual_productivity_mean": 9.150117647058824,
+        "predicted_productivity_mean": 9.176889937094096
+      },
+      "WHITE POTATO": {
+        "count": 1533,
+        "productivity_r2": 0.6707410363566552,
+        "productivity_mae": 1.1976781092535946,
+        "productivity_rmse": 2.5184809551957197,
+        "production_mae": 635.3701851499176,
+        "production_mape": 357.33215442391105,
+        "actual_productivity_mean": 14.220384866275277,
+        "predicted_productivity_mean": 14.056501994501211
+      }
+    },
+    "by_municipality": {
+      "ATOK": {
+        "count": 1190,
+        "productivity_r2": 0.8032421167029923,
+        "productivity_mae": 1.4627943861958308,
+        "productivity_rmse": 2.0985201791658614,
+        "production_mae": 239.9362764075788,
+        "production_mape": 162.56575211555108,
+        "actual_productivity_mean": 11.906252100840335,
+        "predicted_productivity_mean": 12.07420916080093
+      },
+      "BAKUN": {
+        "count": 1200,
+        "productivity_r2": 0.4709816877204934,
+        "productivity_mae": 1.1449910334156448,
+        "productivity_rmse": 2.681388644172528,
+        "production_mae": 467.82154153926706,
+        "production_mape": 348.1536620593564,
+        "actual_productivity_mean": 11.766333333333334,
+        "predicted_productivity_mean": 11.882912553883541
+      },
+      "BOKOD": {
+        "count": 1197,
+        "productivity_r2": 0.9496276877906222,
+        "productivity_mae": 0.27222443631959703,
+        "productivity_rmse": 0.8537469529515823,
+        "production_mae": 21.509491499481292,
+        "production_mape": 57.427170877762315,
+        "actual_productivity_mean": 11.219232171337435,
+        "predicted_productivity_mean": 11.209150681451458
+      },
+      "BUGUIAS": {
+        "count": 1200,
+        "productivity_r2": 0.8818392446888257,
+        "productivity_mae": 0.9729175664392671,
+        "productivity_rmse": 1.6379746152188401,
+        "production_mae": 513.4282711273364,
+        "production_mape": 210.17589328880027,
+        "actual_productivity_mean": 12.74875,
+        "predicted_productivity_mean": 12.373025533685416
+      },
+      "ITOGON": {
+        "count": 1199,
+        "productivity_r2": 0.6396278900268446,
+        "productivity_mae": 0.412624001328312,
+        "productivity_rmse": 1.039574908278936,
+        "production_mae": 7.498855359873987,
+        "production_mape": 16.12254522592172,
+        "actual_productivity_mean": 10.516672226855713,
+        "predicted_productivity_mean": 10.444743610765393
+      },
+      "KABAYAN": {
+        "count": 1188,
+        "productivity_r2": 0.7451712582383849,
+        "productivity_mae": 1.3997237127304878,
+        "productivity_rmse": 2.651197156053879,
+        "production_mae": 271.98895803617427,
+        "production_mape": 124.92775988585414,
+        "actual_productivity_mean": 12.960471380471379,
+        "predicted_productivity_mean": 12.883961268459812
+      },
+      "KAPANGAN": {
+        "count": 1193,
+        "productivity_r2": 0.3624746448729579,
+        "productivity_mae": 1.6434609136043445,
+        "productivity_rmse": 2.831714063025581,
+        "production_mae": 56.12969901888076,
+        "production_mape": 152.80014799080814,
+        "actual_productivity_mean": 10.975113160100587,
+        "predicted_productivity_mean": 10.795901660002988
+      },
+      "KIBUNGAN": {
+        "count": 958,
+        "productivity_r2": 0.6242930673070559,
+        "productivity_mae": 1.5067539316753824,
+        "productivity_rmse": 2.5464376989680533,
+        "production_mae": 332.4505280524846,
+        "production_mape": 366.50742846948674,
+        "actual_productivity_mean": 11.85212943632568,
+        "predicted_productivity_mean": 11.671010823373415
+      },
+      "LATRINIDAD": {
+        "count": 1185,
+        "productivity_r2": 0.6448221973762728,
+        "productivity_mae": 1.3542024158952848,
+        "productivity_rmse": 2.4577838151545257,
+        "production_mae": 31.946616648745835,
+        "production_mape": 46.544791421905366,
+        "actual_productivity_mean": 12.391645569620254,
+        "predicted_productivity_mean": 12.454929243664749
+      },
+      "MANKAYAN": {
+        "count": 1199,
+        "productivity_r2": 0.96864508230272,
+        "productivity_mae": 0.3236728315142339,
+        "productivity_rmse": 1.037095714119027,
+        "production_mae": 383.71626383257984,
+        "production_mape": 214.6430927719331,
+        "actual_productivity_mean": 12.98792326939116,
+        "predicted_productivity_mean": 12.867748032058799
+      },
+      "SABLAN": {
+        "count": 1124,
+        "productivity_r2": 0.5892520939489805,
+        "productivity_mae": 0.2619302573141661,
+        "productivity_rmse": 1.106033157241636,
+        "production_mae": 12.94278977256436,
+        "production_mape": 52.370358823489795,
+        "actual_productivity_mean": 10.59179537366548,
+        "predicted_productivity_mean": 10.704132456926464
+      },
+      "TUBA": {
+        "count": 1197,
+        "productivity_r2": 0.7592460982988329,
+        "productivity_mae": 0.34121897738978985,
+        "productivity_rmse": 1.2929455568532482,
+        "production_mae": 10.340587368483133,
+        "production_mape": 53.41913072689104,
+        "actual_productivity_mean": 11.1315455304929,
+        "predicted_productivity_mean": 11.152253858476717
+      },
+      "TUBLAY": {
+        "count": 1197,
+        "productivity_r2": 0.34069341015065613,
+        "productivity_mae": 2.097277683297049,
+        "productivity_rmse": 3.351945034796635,
+        "production_mae": 22.860088281607716,
+        "production_mape": 116.97463661397637,
+        "actual_productivity_mean": 11.395973266499581,
+        "predicted_productivity_mean": 10.792773792548314
+      }
+    },
+    "by_farm_size": {
+      "LARGE": {
+        "count": 4317,
+        "productivity_r2": 0.827242925382718,
+        "productivity_mae": 1.1413993785749617,
+        "productivity_rmse": 2.183064755333511,
+        "production_mae": 420.3260825742392,
+        "production_mape": 340.2390851159805,
+        "actual_productivity_mean": 12.90608313854318,
+        "predicted_productivity_mean": 12.89088935985506
+      },
+      "SMALL": {
+        "count": 10910,
+        "productivity_r2": 0.6346360651073011,
+        "productivity_mae": 0.9576973379506503,
+        "productivity_rmse": 2.0993553095776067,
+        "production_mae": 86.52693849914284,
+        "production_mape": 67.22559969051345,
+        "actual_productivity_mean": 11.263228047662695,
+        "predicted_productivity_mean": 11.147544936305753
+      }
+    },
+    "by_production_scale": {
+      "LARGE": {
+        "count": 4039,
+        "productivity_r2": 0.7973946097335116,
+        "productivity_mae": 1.3299387488248497,
+        "productivity_rmse": 2.474790792093312,
+        "production_mae": 498.6022817613983,
+        "production_mape": 62.34690955371912,
+        "actual_productivity_mean": 14.814206486754145,
+        "predicted_productivity_mean": 14.257651772459923
+      },
+      "SMALL": {
+        "count": 11188,
+        "productivity_r2": 0.48099425171643695,
+        "productivity_mae": 0.8941970385990468,
+        "productivity_rmse": 1.981325562668533,
+        "production_mae": 66.56256537936642,
+        "production_mape": 174.7257563285554,
+        "actual_productivity_mean": 10.615194754119674,
+        "predicted_productivity_mean": 10.697446291796963
+      }
+    }
+  }
+}
