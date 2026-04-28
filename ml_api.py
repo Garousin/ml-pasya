@@ -166,6 +166,7 @@ month_full_to_abbr = {
     'JUN': 'JUN', 'JUL': 'JUL', 'AUG': 'AUG', 'SEP': 'SEP', 
     'OCT': 'OCT', 'NOV': 'NOV', 'DEC': 'DEC'
 }
+month_num_to_abbr = {value: key for key, value in month_to_num.items()}
 
 # Municipality name normalization (handle spaces/variations)
 municipality_normalize = {
@@ -196,6 +197,179 @@ def get_historical_data_range():
     df['YEAR'] = pd.to_numeric(df['YEAR'], errors='coerce')
     df = df.dropna(subset=['YEAR'])
     return int(df['YEAR'].min()), int(df['YEAR'].max())
+
+
+def get_first_present(payload, keys, default=None):
+    """Return the first non-empty value found for a set of possible keys."""
+    for key in keys:
+        value = payload.get(key)
+        if value is not None and value != '':
+            return value
+    return default
+
+
+def normalize_month_value(value):
+    """Accept month numbers, abbreviations, or full names and return JAN/FEB/..."""
+    if value is None:
+        return None
+
+    if isinstance(value, (int, np.integer)):
+        month_num = int(value)
+    elif isinstance(value, float) and value.is_integer():
+        month_num = int(value)
+    elif isinstance(value, str):
+        cleaned = value.strip()
+        if not cleaned:
+            return None
+        if cleaned.isdigit():
+            month_num = int(cleaned)
+        else:
+            month_key = month_full_to_abbr.get(cleaned.upper(), cleaned.upper()[:3])
+            if month_key not in month_to_num:
+                raise ValueError(f'Invalid month value: {value}')
+            return month_key
+    else:
+        raise ValueError(f'Invalid month value: {value}')
+
+    if month_num not in month_num_to_abbr:
+        raise ValueError(f'Invalid month number: {month_num}')
+    return month_num_to_abbr[month_num]
+
+
+def normalize_prediction_payload(raw_payload):
+    """Normalize old Laravel and new API payload shapes into one planning request."""
+    if not isinstance(raw_payload, dict):
+        raise ValueError('Request body must be a JSON object')
+
+    normalized = {
+        'municipality': get_first_present(raw_payload, ['municipality', 'MUNICIPALITY']),
+        'farm_type': get_first_present(raw_payload, ['farm_type', 'FARM_TYPE', 'farmType']),
+        'year': get_first_present(raw_payload, ['year', 'YEAR']),
+        'month': get_first_present(raw_payload, ['month', 'MONTH']),
+        'crop': get_first_present(raw_payload, ['crop', 'CROP']),
+        'area_planted': get_first_present(
+            raw_payload,
+            ['area_planted', 'area_planted_ha', 'Area_planted_ha', 'AREA_PLANTED_HA', 'Area planted(ha)']
+        ),
+    }
+
+    required = ['municipality', 'farm_type', 'year', 'month', 'crop', 'area_planted']
+    for field in required:
+        if normalized[field] is None:
+            raise KeyError(field)
+
+    normalized['municipality'] = str(normalized['municipality']).strip()
+    normalized['farm_type'] = str(normalized['farm_type']).strip().upper()
+    normalized['year'] = int(normalized['year'])
+    normalized['month'] = normalize_month_value(normalized['month'])
+    normalized['crop'] = str(normalized['crop']).strip().upper()
+    normalized['area_planted'] = float(normalized['area_planted'])
+    return normalized
+
+
+def build_available_options_response():
+    """Return Laravel-friendly dropdown options."""
+    if DB_AVAILABLE and db_manager:
+        crops = sorted(db_manager.get_available_crops())
+        municipalities = sorted(db_manager.get_available_municipalities())
+        source = 'database'
+    else:
+        crops = sorted(feature_stats.get('crop_productivity', {}).keys())
+        municipalities = sorted(feature_stats.get('muni_productivity', {}).keys())
+        source = 'model'
+
+    return {
+        'source': source,
+        'municipalities': municipalities,
+        'farm_types': ['IRRIGATED', 'RAINFED'],
+        'crops': crops,
+        'months': [
+            {'value': month_num, 'label': datetime(2000, month_num, 1).strftime('%B'), 'abbr': month_num_to_abbr[month_num]}
+            for month_num in range(1, 13)
+        ],
+    }
+
+
+def build_legacy_statistics_response():
+    """Return summary data for older Laravel integrations."""
+    if DB_AVAILABLE and db_manager:
+        min_year, max_year = db_manager.get_historical_data_range()
+        crops = db_manager.get_available_crops()
+        municipalities = db_manager.get_available_municipalities()
+        source = 'database'
+    else:
+        min_year, max_year = get_historical_data_range()
+        crops = list(feature_stats.get('crop_productivity', {}).keys())
+        municipalities = list(feature_stats.get('muni_productivity', {}).keys())
+        source = 'csv'
+
+    return {
+        'year_range': {'min': min_year, 'max': max_year},
+        'forecast_range': {'min': max_year + 1, 'max': max_year + 5},
+        'crops_count': len(crops),
+        'municipalities_count': len(municipalities),
+        'crops': sorted(crops),
+        'municipalities': sorted(municipalities),
+        'data_source': source,
+        'official_ml_task': OFFICIAL_ML_TASK,
+    }
+
+
+def build_legacy_history_response(filters, page, limit):
+    """Return historical production records in a Laravel-friendly format."""
+    query_filters = {}
+    if filters.get('municipality'):
+        query_filters['municipality'] = normalize_municipality(filters['municipality'])
+    if filters.get('crop'):
+        query_filters['crop'] = str(filters['crop']).upper()
+    if filters.get('year'):
+        query_filters['year_from'] = int(filters['year'])
+        query_filters['year_to'] = int(filters['year'])
+
+    if DB_AVAILABLE and db_manager:
+        history_df = db_manager.get_crop_production_data(query_filters)
+        source = 'database'
+    else:
+        history_df = load_data_from_database()
+        source = 'csv'
+        if query_filters.get('municipality'):
+            history_df = history_df[history_df['MUNICIPALITY'] == query_filters['municipality']]
+        if query_filters.get('crop'):
+            history_df = history_df[history_df['CROP'] == query_filters['crop']]
+        if query_filters.get('year_from'):
+            history_df = history_df[history_df['YEAR'] >= query_filters['year_from']]
+        if query_filters.get('year_to'):
+            history_df = history_df[history_df['YEAR'] <= query_filters['year_to']]
+
+    history_df = history_df.sort_values(['YEAR', 'MONTH']).reset_index(drop=True)
+    total = int(len(history_df))
+    start = max(0, (page - 1) * limit)
+    end = start + limit
+    page_df = history_df.iloc[start:end].copy()
+
+    records = []
+    for _, row in page_df.iterrows():
+        records.append({
+            'municipality': row['MUNICIPALITY'],
+            'farm_type': row.get('FARM_TYPE'),
+            'year': int(row['YEAR']),
+            'month': row['MONTH'],
+            'crop': row['CROP'],
+            'area_planted_ha': float(row['AREA_PLANTED']) if pd.notna(row['AREA_PLANTED']) else None,
+            'area_harvested_ha': float(row['AREA_HARVESTED']) if 'AREA_HARVESTED' in row and pd.notna(row['AREA_HARVESTED']) else None,
+            'production_mt': float(row['PRODUCTION']) if pd.notna(row['PRODUCTION']) else None,
+            'productivity_mt_ha': float(row['PRODUCTIVITY']) if 'PRODUCTIVITY' in row and pd.notna(row['PRODUCTIVITY']) else None,
+        })
+
+    return {
+        'success': True,
+        'source': source,
+        'total': total,
+        'page': page,
+        'limit': limit,
+        'records': records,
+        'data': records,
+    }
 
 
 def get_crop_area_reference(crop):
@@ -420,6 +594,7 @@ def home():
 
 
 @app.route('/predict', methods=['POST'])
+@app.route('/api/predict', methods=['POST'])
 def predict():
     """Make a single prediction - returns both productivity and production"""
     try:
@@ -430,15 +605,16 @@ def predict():
                 'startup_errors': startup_errors
             }), 503
 
-        data = request.get_json()
-        
-        required = ['municipality', 'farm_type', 'year', 'month', 'crop', 'area_planted']
-        for field in required:
-            if field not in data:
-                return jsonify({'error': f'Missing: {field}'}), 400
-        
-        year = int(data['year'])
-        area = float(data['area_planted'])
+        raw_data = request.get_json(silent=True) or {}
+        try:
+            data = normalize_prediction_payload(raw_data)
+        except KeyError as e:
+            return jsonify({'error': f'Missing: {e.args[0]}'}), 400
+        except ValueError as e:
+            return jsonify({'error': str(e)}), 400
+
+        year = data['year']
+        area = data['area_planted']
         
         if area <= 0:
             return jsonify({'error': 'area_planted must be positive'}), 400
@@ -451,7 +627,7 @@ def predict():
             'MUNICIPALITY': [normalized_muni],
             'FARM TYPE': [data['farm_type'].upper()],
             'YEAR': [year],
-            'MONTH': [data['month'].upper()],
+            'MONTH': [data['month']],
             'CROP': [data['crop'].upper()],
             'Area planted(ha)': [area]
         })
@@ -479,8 +655,11 @@ def predict():
             'prediction': {
                 'system_type': 'planning_estimate',
                 'production_mt': round(pred_production, 2),
+                'predicted_production_mt': round(pred_production, 2),
                 'productivity_mt_ha': round(pred_productivity, 2),
+                'predicted_productivity_mt_ha': round(pred_productivity, 2),
                 'area_planted_ha': area,
+                'data_source': 'database' if DB_AVAILABLE else 'csv',
                 'confidence_intervals': {}
             },
             'historical_comparison': {
@@ -521,6 +700,7 @@ def predict():
 
 
 @app.route('/batch-predict', methods=['POST'])
+@app.route('/api/batch-predict', methods=['POST'])
 def batch_predict():
     """Batch predictions"""
     try:
@@ -539,15 +719,16 @@ def batch_predict():
         results = []
         for item in data['predictions']:
             try:
-                area = float(item.get('area_planted', 1))
-                normalized_muni = normalize_municipality(item['municipality'])
+                normalized_item = normalize_prediction_payload(item)
+                area = normalized_item['area_planted']
+                normalized_muni = normalize_municipality(normalized_item['municipality'])
                 
                 input_data = pd.DataFrame({
                     'MUNICIPALITY': [normalized_muni],
-                    'FARM TYPE': [item['farm_type'].upper()],
-                    'YEAR': [int(item['year'])],
-                    'MONTH': [item['month'].upper()],
-                    'CROP': [item['crop'].upper()],
+                    'FARM TYPE': [normalized_item['farm_type']],
+                    'YEAR': [normalized_item['year']],
+                    'MONTH': [normalized_item['month']],
+                    'CROP': [normalized_item['crop']],
                     'Area planted(ha)': [area]
                 })
                 
@@ -558,9 +739,12 @@ def batch_predict():
                 results.append({
                     'system_type': 'planning_estimate',
                     'production_mt': round(pred_production, 2),
+                    'predicted_production_mt': round(pred_production, 2),
                     'productivity_mt_ha': round(pred_productivity, 2),
+                    'predicted_productivity_mt_ha': round(pred_productivity, 2),
                     'area_planted_ha': area,
-                    'input': item
+                    'data_source': 'database' if DB_AVAILABLE else 'csv',
+                    'input': normalized_item
                 })
             except Exception as e:
                 results.append({'error': str(e), 'input': item})
@@ -576,6 +760,7 @@ def batch_predict():
 
 
 @app.route('/model-info', methods=['GET'])
+@app.route('/api/model-info', methods=['GET'])
 def model_info():
     """Get model information"""
     return jsonify({
@@ -650,6 +835,7 @@ def get_crop_productivity(crop):
 
 
 @app.route('/health', methods=['GET'])
+@app.route('/api/health', methods=['GET'])
 def health():
     status = 'healthy' if model_is_ready() else 'degraded'
     return jsonify({
@@ -661,6 +847,68 @@ def health():
         'prediction_method': 'PRODUCTIVITY_FIRST',
         'startup_errors': startup_errors
     })
+
+
+@app.route('/api/available-options', methods=['GET'])
+def get_available_options():
+    """Backward-compatible endpoint for Laravel dropdown data."""
+    return jsonify(build_available_options_response())
+
+
+@app.route('/api/forecast', methods=['POST'])
+def legacy_forecast():
+    """Backward-compatible trend projection endpoint for Laravel integrations."""
+    try:
+        from forecast_aggregated import generate_monthly_forecast_aggregated
+
+        data = request.get_json(silent=True) or {}
+        crop = get_first_present(data, ['crop', 'CROP'])
+        municipality = get_first_present(data, ['municipality', 'MUNICIPALITY'])
+        forecast_years = int(get_first_present(data, ['forecast_years', 'FORECAST_YEARS'], 2))
+        start_year = get_first_present(data, ['start_year', 'START_YEAR'])
+
+        if not crop:
+            return jsonify({'error': 'crop is required', 'success': False}), 400
+
+        result = generate_monthly_forecast_aggregated(
+            crop=str(crop).upper(),
+            municipality=str(municipality).upper() if municipality else None,
+            forecast_years=forecast_years,
+            start_year=int(start_year) if start_year else None,
+        )
+
+        if not result.get('success'):
+            return jsonify(result), 404
+
+        result['system_type'] = 'trend_projection'
+        result['projection_method'] = 'AGGREGATED_TREND_PROJECTION'
+        result['is_same_as_planning_estimate'] = False
+        result['note'] = 'This endpoint is a chart-oriented trend projection and is separate from the live productivity-first planning estimate.'
+        return jsonify(result)
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route('/api/production/history', methods=['GET'])
+def legacy_production_history():
+    """Backward-compatible historical production endpoint."""
+    try:
+        page = max(1, int(request.args.get('page', 1)))
+        limit = max(1, min(500, int(request.args.get('limit', 50))))
+        filters = {
+            'municipality': request.args.get('municipality'),
+            'crop': request.args.get('crop'),
+            'year': request.args.get('year'),
+        }
+        return jsonify(build_legacy_history_response(filters, page, limit))
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route('/api/statistics', methods=['GET'])
+def legacy_statistics():
+    """Backward-compatible statistics endpoint."""
+    return jsonify(build_legacy_statistics_response())
 
 
 @app.route('/forecast/monthly', methods=['GET'])
@@ -768,27 +1016,7 @@ def get_forecast_methodology():
 @app.route('/data/summary', methods=['GET'])
 def get_data_summary():
     """Get summary statistics"""
-    if DB_AVAILABLE and db_manager:
-        min_year, max_year = db_manager.get_historical_data_range()
-        crops = db_manager.get_available_crops()
-        municipalities = db_manager.get_available_municipalities()
-        source = 'database'
-    else:
-        min_year, max_year = get_historical_data_range()
-        crops = list(feature_stats.get('crop_productivity', {}).keys())
-        municipalities = list(feature_stats.get('muni_productivity', {}).keys())
-        source = 'csv'
-    
-    return jsonify({
-        'year_range': {'min': min_year, 'max': max_year},
-        'forecast_range': {'min': max_year + 1, 'max': max_year + 5},
-        'official_ml_task': OFFICIAL_ML_TASK,
-        'crops_count': len(crops),
-        'municipalities_count': len(municipalities),
-        'crops': sorted(crops),
-        'municipalities': sorted(municipalities),
-        'data_source': source
-    })
+    return jsonify(build_legacy_statistics_response())
 
 
 if __name__ == '__main__':
