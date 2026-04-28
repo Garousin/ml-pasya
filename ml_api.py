@@ -251,6 +251,14 @@ def normalize_prediction_payload(raw_payload):
             raw_payload,
             ['area_planted', 'area_planted_ha', 'Area_planted_ha', 'AREA_PLANTED_HA', 'Area planted(ha)']
         ),
+        'area_harvested': get_first_present(
+            raw_payload,
+            ['area_harvested', 'area_harvested_ha', 'Area_harvested_ha', 'AREA_HARVESTED_HA', 'Area harvested(ha)']
+        ),
+        'productivity_input': get_first_present(
+            raw_payload,
+            ['productivity', 'productivity_mt_ha', 'Productivity_mt_ha', 'PRODUCTIVITY_MT_HA']
+        ),
     }
 
     required = ['municipality', 'farm_type', 'year', 'month', 'crop', 'area_planted']
@@ -264,6 +272,19 @@ def normalize_prediction_payload(raw_payload):
     normalized['month'] = normalize_month_value(normalized['month'])
     normalized['crop'] = str(normalized['crop']).strip().upper()
     normalized['area_planted'] = float(normalized['area_planted'])
+
+    if normalized['area_harvested'] is not None:
+        normalized['area_harvested'] = float(normalized['area_harvested'])
+        if normalized['area_harvested'] < 0:
+            raise ValueError('area_harvested must be non-negative')
+        if normalized['area_harvested'] > normalized['area_planted']:
+            raise ValueError('area_harvested cannot exceed area_planted')
+
+    if normalized['productivity_input'] is not None:
+        normalized['productivity_input'] = float(normalized['productivity_input'])
+        if normalized['productivity_input'] < 0:
+            raise ValueError('productivity must be non-negative')
+
     return normalized
 
 
@@ -638,6 +659,10 @@ def predict():
         pred_productivity = model.predict(input_data)[0]
         pred_productivity = np.clip(pred_productivity, 0.5, 50)
         pred_production = pred_productivity * area
+
+        manual_estimate = None
+        if data.get('area_harvested') is not None and data.get('productivity_input') is not None:
+            manual_estimate = data['area_harvested'] * data['productivity_input']
         
         # Get confidence intervals
         confidence_data = get_prediction_with_confidence(input_data, area)
@@ -659,6 +684,10 @@ def predict():
                 'productivity_mt_ha': round(pred_productivity, 2),
                 'predicted_productivity_mt_ha': round(pred_productivity, 2),
                 'area_planted_ha': area,
+                'area_harvested_ha': round(data['area_harvested'], 2) if data.get('area_harvested') is not None else None,
+                'expected_from_productivity': round(manual_estimate, 2) if manual_estimate is not None else round(pred_production, 2),
+                'difference': round(pred_production - manual_estimate, 2) if manual_estimate is not None else 0.0,
+                'manual_estimate_basis': 'productivity_input_x_area_harvested' if manual_estimate is not None else 'not_provided',
                 'data_source': 'database' if DB_AVAILABLE else 'csv',
                 'confidence_intervals': {}
             },

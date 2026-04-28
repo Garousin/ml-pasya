@@ -561,7 +561,7 @@
                 
                 <button type="submit" class="btn" id="submitBtn">
                     <span class="spinner hidden" id="spinner"></span>
-                    🔮 Calculate Production
+                    🔮 Predict Production
                 </button>
             </form>
             
@@ -572,8 +572,8 @@
                     <div class="production-highlight">
                         <div class="value" id="prodValue">--</div>
                         <div class="unit">Metric Tons</div>
-                        <div class="label">Calculated Total Production</div>
-                        <div class="label" style="font-size: 12px; opacity: 0.8; margin-top: 5px;">(Productivity × Area Harvested)</div>
+                        <div class="label">ML Predicted Production</div>
+                        <div class="label" style="font-size: 12px; opacity: 0.8; margin-top: 5px;">(Predicted Productivity × Area Planted)</div>
                     </div>
                     <div class="production-range">
                         <div class="range-item">
@@ -581,11 +581,11 @@
                             <div class="value" id="displayAreaPlanted">--</div>
                         </div>
                         <div class="range-item">
-                            <div class="label">Area Harvested</div>
+                            <div class="label">Area Used by Model</div>
                             <div class="value" id="displayAreaHarvested">--</div>
                         </div>
                         <div class="range-item">
-                            <div class="label">Productivity</div>
+                            <div class="label">Predicted Productivity</div>
                             <div class="value" id="displayProductivity">--</div>
                         </div>
                     </div>
@@ -593,11 +593,11 @@
                 
                 <!-- Production Breakdown -->
                 <div class="result-section">
-                    <h3>📊 Production Calculation Breakdown</h3>
+                    <h3>📊 ML Prediction Breakdown</h3>
                     <div class="formula-display" style="background: #e8f4fd; padding: 15px; border-radius: 8px; margin-bottom: 15px; text-align: center;">
                         <div style="font-size: 14px; color: #666; margin-bottom: 8px;">Formula Used:</div>
                         <div style="font-size: 18px; font-weight: 600; color: #333;">
-                            Production = Productivity × Area Harvested
+                            Predicted Production = Predicted Productivity × Area Planted
                         </div>
                         <div style="font-size: 14px; color: #667eea; margin-top: 8px;" id="formulaDetail">
                             -- MT/ha × -- ha = -- MT
@@ -605,24 +605,24 @@
                     </div>
                     <div class="breakdown-grid">
                         <div class="breakdown-item" style="border-left-color: #28a745;">
-                            <div class="label">✓ Calculated Production</div>
+                            <div class="label">✓ ML Predicted Production</div>
                             <div class="value" id="inputProduction" style="color: #28a745;">--</div>
-                            <div class="formula">Productivity (MT/ha) × Area Harvested (ha)</div>
+                            <div class="formula">Predicted productivity (MT/ha) × Area planted (ha)</div>
                         </div>
                         <div class="breakdown-item">
-                            <div class="label">Your Productivity Input</div>
+                            <div class="label">ML Predicted Productivity</div>
                             <div class="value" id="inputProductivityValue">--</div>
-                            <div class="formula">Yield per hectare you entered</div>
+                            <div class="formula">Predicted yield per hectare from the ML model</div>
                         </div>
                         <div class="breakdown-item">
-                            <div class="label">Your Area Harvested</div>
+                            <div class="label">Area Used by Model</div>
                             <div class="value" id="inputAreaHarvested">--</div>
-                            <div class="formula">Actual harvested area</div>
+                            <div class="formula">Planted area provided to the planning estimate</div>
                         </div>
                         <div class="breakdown-item">
-                            <div class="label">ML Model Estimate</div>
+                            <div class="label">Manual Estimate from Your Inputs</div>
                             <div class="value" id="mlProduction">--</div>
-                            <div class="formula">Based on historical patterns</div>
+                            <div class="formula">Your productivity input × harvested area</div>
                         </div>
                     </div>
                 </div>
@@ -653,17 +653,17 @@
                 
                 <!-- Production vs ML Comparison -->
                 <div class="result-section">
-                    <h3>📈 Production Comparison</h3>
+                    <h3>📈 Manual vs ML Comparison</h3>
                     <div class="result-item">
-                        <span class="result-label">Your Calculated Production</span>
+                        <span class="result-label">Your Manual Estimate</span>
                         <span class="result-value" id="yourCalcProd" style="color: #28a745;">-- MT</span>
                     </div>
                     <div class="result-item">
-                        <span class="result-label">ML Model Estimate</span>
+                        <span class="result-label">ML Predicted Production</span>
                         <span class="result-value" id="mlProdCompare">-- MT</span>
                     </div>
                     <div class="result-item">
-                        <span class="result-label">Difference (Yours - ML)</span>
+                        <span class="result-label">Difference (ML - Manual)</span>
                         <span class="result-value" id="prodDifferenceValue">-- MT</span>
                     </div>
                     <div class="result-item">
@@ -761,7 +761,7 @@
         // Load available options
         async function loadOptions() {
             try {
-                const response = await fetch(`${API_URL}/data/summary`);
+                const response = await fetch(`${API_URL}/api/available-options`);
                 const data = await response.json();
                 
                 // Populate municipalities
@@ -784,7 +784,7 @@
                 
                 // Populate farm types
                 const farmTypeSelect = document.getElementById('farm_type');
-                ['IRRIGATED', 'RAINFED UPLAND', 'RAINFED LOWLAND'].forEach(f => {
+                data.farm_types.forEach(f => {
                     const option = document.createElement('option');
                     option.value = f;
                     option.textContent = f;
@@ -793,17 +793,9 @@
                 
                 // Populate months
                 const monthSelect = document.getElementById('month');
-                const months = [
-                    {value: 'JAN', label: 'January'}, {value: 'FEB', label: 'February'},
-                    {value: 'MAR', label: 'March'}, {value: 'APR', label: 'April'},
-                    {value: 'MAY', label: 'May'}, {value: 'JUN', label: 'June'},
-                    {value: 'JUL', label: 'July'}, {value: 'AUG', label: 'August'},
-                    {value: 'SEP', label: 'September'}, {value: 'OCT', label: 'October'},
-                    {value: 'NOV', label: 'November'}, {value: 'DEC', label: 'December'}
-                ];
-                months.forEach(m => {
+                data.months.forEach(m => {
                     const option = document.createElement('option');
-                    option.value = m.value;
+                    option.value = m.abbr;
                     option.textContent = m.label;
                     monthSelect.appendChild(option);
                 });
@@ -822,12 +814,11 @@
             
             if (crop && municipality) {
                 try {
-                    const response = await fetch(`${API_URL}/productivity/${crop}`);
+                    const response = await fetch(`${API_URL}/productivity/${crop}?municipality=${encodeURIComponent(municipality)}`);
                     const data = await response.json();
                     
-                    if (data.success && data.productivity) {
-                        const prodValue = data.productivity.by_municipality?.[municipality] || data.productivity.overall;
-                        histInput.value = prodValue ? prodValue.toFixed(2) : '--';
+                    if (response.ok && typeof data.productivity_mt_ha === 'number') {
+                        histInput.value = data.productivity_mt_ha.toFixed(2);
                         refBadge.textContent = 'Historical Data';
                         refBadge.className = 'badge success';
                     } else {
@@ -892,12 +883,10 @@
                 const result = await response.json();
                 
                 if (result.success) {
-                    // Calculate production using CORRECT formula: Productivity × Area Harvested
-                    const calculatedProduction = productivityInput * areaHarvested;
-                    
                     // ML model predictions (for comparison)
                     const mlProduction = result.prediction.production_mt;
                     const mlProductivity = result.prediction.productivity_mt_ha;
+                    const manualProduction = result.prediction.expected_from_productivity ?? (productivityInput * areaHarvested);
                     
                     // Harvest efficiency
                     const harvestEfficiency = (areaHarvested / areaPlanted) * 100;
@@ -908,28 +897,28 @@
                     // Confidence score from ML
                     const confidenceScore = result.prediction.confidence_score || 85;
                     
-                    // Update main production display - show CALCULATED production (not ML prediction)
-                    document.getElementById('prodValue').textContent = calculatedProduction.toFixed(2);
+                    // Update main production display with the ML planning estimate.
+                    document.getElementById('prodValue').textContent = mlProduction.toFixed(2);
                     document.getElementById('displayAreaPlanted').textContent = areaPlanted.toFixed(2) + ' ha';
-                    document.getElementById('displayAreaHarvested').textContent = areaHarvested.toFixed(2) + ' ha';
-                    document.getElementById('displayProductivity').textContent = productivityInput.toFixed(2) + ' MT/ha';
+                    document.getElementById('displayAreaHarvested').textContent = areaPlanted.toFixed(2) + ' ha';
+                    document.getElementById('displayProductivity').textContent = mlProductivity.toFixed(2) + ' MT/ha';
                     
                     // Update formula display
                     document.getElementById('formulaDetail').textContent = 
-                        `${productivityInput.toFixed(2)} MT/ha × ${areaHarvested.toFixed(2)} ha = ${calculatedProduction.toFixed(2)} MT`;
+                        `${mlProductivity.toFixed(2)} MT/ha × ${areaPlanted.toFixed(2)} ha = ${mlProduction.toFixed(2)} MT`;
                     
                     // Update breakdown
-                    document.getElementById('inputProduction').textContent = calculatedProduction.toFixed(2) + ' MT';
-                    document.getElementById('inputProductivityValue').textContent = productivityInput.toFixed(2) + ' MT/ha';
-                    document.getElementById('inputAreaHarvested').textContent = areaHarvested.toFixed(2) + ' ha';
-                    document.getElementById('mlProduction').textContent = mlProduction.toFixed(2) + ' MT';
+                    document.getElementById('inputProduction').textContent = mlProduction.toFixed(2) + ' MT';
+                    document.getElementById('inputProductivityValue').textContent = mlProductivity.toFixed(2) + ' MT/ha';
+                    document.getElementById('inputAreaHarvested').textContent = areaPlanted.toFixed(2) + ' ha';
+                    document.getElementById('mlProduction').textContent = manualProduction.toFixed(2) + ' MT';
                     
-                    // Calculate difference between calculated and ML prediction
-                    const prodDifference = calculatedProduction - mlProduction;
-                    const diffPercent = ((calculatedProduction - mlProduction) / mlProduction * 100);
+                    // Calculate difference between ML prediction and manual estimate.
+                    const prodDifference = result.prediction.difference ?? (mlProduction - manualProduction);
+                    const diffPercent = mlProduction === 0 ? 0 : ((mlProduction - manualProduction) / mlProduction * 100);
                     
                     // Update Production Comparison section
-                    document.getElementById('yourCalcProd').textContent = calculatedProduction.toFixed(2) + ' MT';
+                    document.getElementById('yourCalcProd').textContent = manualProduction.toFixed(2) + ' MT';
                     document.getElementById('mlProdCompare').textContent = mlProduction.toFixed(2) + ' MT';
                     
                     const diffSign = prodDifference >= 0 ? '+' : '';
